@@ -517,45 +517,103 @@
     </section>
     
     <section class="py-24 relative transition-colors duration-500 overflow-hidden">
-        <div class="absolute top-0 left-0 w-1/2 h-full bg-white dark:bg-brand-dark"></div>
-        <div class="absolute top-0 right-0 w-1/2 h-full bg-slate-100 dark:bg-slate-900"></div>
+        <div class="absolute top-0 left-0 w-full lg:w-1/2 h-full bg-white dark:bg-brand-dark transition-colors duration-500"></div>
+        <div class="absolute top-0 right-0 w-full lg:w-1/2 h-full bg-slate-50 dark:bg-slate-900 transition-colors duration-500"></div>
 
         <div class="container mx-auto px-6 relative z-10">
             <div class="flex flex-col md:flex-row justify-between items-end mb-16" data-aos="fade-right">
-                <div>
-                    <span class="text-brand-primary font-bold tracking-widest uppercase text-xs dark:text-brand-accent">Lokasi & Fasilitas</span>
-                    <h2 class="text-4xl lg:text-5xl font-display font-bold mt-2 text-slate-900 dark:text-white">Dua Kampus,<br>Satu Visi Besar.</h2>
+                <div class="max-w-xl">
+                    <span class="inline-block py-1 px-3 rounded-full bg-brand-light/50 border border-brand-blue/10 text-brand-primary font-mono text-xs tracking-[0.2em] uppercase font-bold mb-4 backdrop-blur-sm">
+                        Lokasi & Fasilitas
+                    </span>
+                    <h2 class="text-4xl lg:text-5xl font-display font-bold text-slate-900 dark:text-white leading-tight">
+                        Dua Kampus, <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-brand-accent">Satu Visi Besar.</span>
+                    </h2>
                 </div>
-                <button class="mt-6 md:mt-0 px-6 py-3 rounded-full border border-slate-300 dark:border-slate-700 bg-white/50 backdrop-blur hover:bg-white hover:shadow-lg transition flex items-center gap-2 group">
-                    <i class="fas fa-map-marked-alt text-brand-primary"></i>
-                    <span class="text-sm font-bold text-slate-700 dark:text-slate-200">Lihat Peta Digital</span>
+                
+                <button class="mt-8 md:mt-0 px-6 py-3 rounded-full border border-slate-300 dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 backdrop-blur hover:bg-brand-primary hover:text-white hover:border-transparent transition-all duration-300 flex items-center gap-3 group shadow-sm">
+                    <div class="w-8 h-8 rounded-full bg-brand-light/50 dark:bg-slate-700 flex items-center justify-center text-brand-primary group-hover:bg-white group-hover:text-brand-primary transition-colors">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <span class="text-sm font-bold text-slate-700 dark:text-slate-200 group-hover:text-white">Peta Digital 360°</span>
                 </button>
             </div>
 
-            <div class="grid lg:grid-cols-2 gap-8">
-                <div class="group relative h-[500px] rounded-[2.5rem] overflow-hidden cursor-pointer shadow-2xl" data-aos="zoom-in-up">
-                    <img src="https://muallimin.my.id/wp-content/uploads/2021/10/image19.jpeg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-brand-blue/90 via-transparent to-transparent"></div>
-                    <div class="absolute bottom-0 left-0 p-10 w-full">
-                        <div class="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-3xl transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                            <span class="px-3 py-1 bg-brand-accent text-brand-blue text-xs font-bold rounded-full mb-3 inline-block">Historis</span>
-                            <h3 class="text-2xl font-bold text-white mb-2">Kampus Induk Wirobrajan</h3>
-                            <p class="text-slate-200 text-sm mb-4">Pusat administrasi dan pembelajaran nilai-nilai historis K.H. Ahmad Dahlan.</p>
+            <div class="grid lg:grid-cols-2 gap-8 lg:gap-12">
+                
+                <div class="group relative h-[550px] rounded-[2.5rem] overflow-hidden cursor-pointer shadow-2xl ring-1 ring-black/5 dark:ring-white/10" data-aos="fade-up">
+                    <img src="muallimin_induk.jpg" onerror="this.src='https://muallimin.my.id/wp-content/uploads/2021/10/image19.jpeg'" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="Kampus Induk Wirobrajan">
+                    
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-blue/95 via-brand-blue/20 to-transparent opacity-90 transition-opacity duration-500"></div>
+                    
+                    <div class="absolute bottom-0 left-0 w-full p-8 lg:p-10 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        <div class="bg-white/10 backdrop-blur-xl border border-white/20 p-6 rounded-3xl shadow-lg relative overflow-hidden">
+                            <div class="absolute top-0 -left-[100%] w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent transform skew-x-12 group-hover:animate-shimmer"></div>
+                            
+                            <div class="flex justify-between items-start mb-3">
+                                <span class="px-3 py-1 bg-brand-accent text-brand-blue text-xs font-bold rounded-full uppercase tracking-wider shadow-sm">
+                                    Kampus Historis
+                                </span>
+                                <i class="fas fa-arrow-up-right text-white/70 text-xl group-hover:text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+                            </div>
+                            
+                            <h3 class="text-2xl font-bold text-white mb-2 font-display">Kampus Induk Wirobrajan</h3>
+                            <p class="text-blue-100 text-sm mb-6 leading-relaxed border-l-2 border-brand-accent/50 pl-4">
+                                Pusat administrasi dan pembelajaran nilai-nilai historis K.H. Ahmad Dahlan. Tempat di mana tradisi dipelihara.
+                            </p>
+                            
+                            <div class="flex gap-3 pt-4 border-t border-white/10">
+                                <div class="flex items-center gap-2 text-xs font-medium text-white/90 bg-black/20 px-3 py-1.5 rounded-lg">
+                                    <i class="fas fa-mosque text-brand-accent"></i> Masjid Jami'
+                                </div>
+                                <div class="flex items-center gap-2 text-xs font-medium text-white/90 bg-black/20 px-3 py-1.5 rounded-lg">
+                                    <i class="fas fa-book-reader text-brand-accent"></i> Perpustakaan
+                                </div>
+                                <div class="flex items-center gap-2 text-xs font-medium text-white/90 bg-black/20 px-3 py-1.5 rounded-lg">
+                                    <i class="fas fa-history text-brand-accent"></i> Museum
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="group relative h-[500px] rounded-[2.5rem] overflow-hidden cursor-pointer shadow-2xl" data-aos="zoom-in-up" data-aos-delay="200">
-                    <img src="https://muallimin.sch.id/wp-content/uploads/2023/07/DJI_0444-scaled.jpg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-transparent to-transparent"></div>
-                    <div class="absolute bottom-0 left-0 p-10 w-full">
-                        <div class="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-3xl transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                            <span class="px-3 py-1 bg-blue-500 text-white text-xs font-bold rounded-full mb-3 inline-block">Modern</span>
-                            <h3 class="text-2xl font-bold text-white mb-2">Kampus Terpadu Sedayu</h3>
-                            <p class="text-slate-200 text-sm mb-4">Kota Kader modern dengan fasilitas asrama terpadu dan sport center.</p>
+                <div class="group relative h-[550px] rounded-[2.5rem] overflow-hidden cursor-pointer shadow-2xl ring-1 ring-black/5 dark:ring-white/10" data-aos="fade-up" data-aos-delay="200">
+                    <img src="muallimin_terpadu.jpg" onerror="this.src='https://muallimin.sch.id/wp-content/uploads/2023/07/DJI_0444-scaled.jpg'" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="Kampus Terpadu Sedayu">
+                    
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/95 via-brand-dark/20 to-transparent opacity-90 transition-opacity duration-500"></div>
+                    
+                    <div class="absolute bottom-0 left-0 w-full p-8 lg:p-10 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        <div class="bg-white/10 backdrop-blur-xl border border-white/20 p-6 rounded-3xl shadow-lg relative overflow-hidden">
+                            <div class="absolute top-0 -left-[100%] w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent transform skew-x-12 group-hover:animate-shimmer"></div>
+
+                            <div class="flex justify-between items-start mb-3">
+                                <span class="px-3 py-1 bg-blue-500 text-white text-xs font-bold rounded-full uppercase tracking-wider shadow-sm">
+                                    Kampus Modern
+                                </span>
+                                <i class="fas fa-arrow-up-right text-white/70 text-xl group-hover:text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+                            </div>
+                            
+                            <h3 class="text-2xl font-bold text-white mb-2 font-display">Kampus Terpadu Sedayu</h3>
+                            <p class="text-slate-300 text-sm mb-6 leading-relaxed border-l-2 border-blue-500/50 pl-4">
+                                "Kota Kader" modern di lahan 10 hektar. Fasilitas asrama terpadu, pusat olahraga, dan laboratorium alam.
+                            </p>
+                            
+                            <div class="flex gap-3 pt-4 border-t border-white/10 overflow-x-auto no-scrollbar">
+                                <div class="flex-shrink-0 flex items-center gap-2 text-xs font-medium text-white/90 bg-black/20 px-3 py-1.5 rounded-lg">
+                                    <i class="fas fa-futbol text-blue-400"></i> Sport Center
+                                </div>
+                                <div class="flex-shrink-0 flex items-center gap-2 text-xs font-medium text-white/90 bg-black/20 px-3 py-1.5 rounded-lg">
+                                    <i class="fas fa-wifi text-blue-400"></i> Smart Dorm
+                                </div>
+                                <div class="flex-shrink-0 flex items-center gap-2 text-xs font-medium text-white/90 bg-black/20 px-3 py-1.5 rounded-lg">
+                                    <i class="fas fa-flask text-blue-400"></i> Lab Sains
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
