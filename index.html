@@ -7,15 +7,12 @@
     <meta name="description" content="Pendidikan Integratif Holistik berbasis AI dan Nilai Islam untuk Pemimpin Masa Depan.">
     <link rel="icon" href="https://muallimin.my.id/wp-content/uploads/2017/01/logo-medium-150x150.png">
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
     
-    <!-- Icons & Animation -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
@@ -70,6 +67,7 @@
             }
         }
     </script>
+
     <style>
         /* Glassmorphism 2.0 */
         .glass-panel {
@@ -128,10 +126,8 @@
 </head>
 <body class="font-sans text-slate-800 dark:text-slate-100 bg-slate-50 dark:bg-brand-dark transition-colors duration-500 overflow-x-hidden selection:bg-brand-accent selection:text-brand-blue" id="main-body">
 
-    <!-- Global Noise Texture -->
     <div class="bg-noise"></div>
 
-    <!-- Accessibility Widget -->
     <div class="fixed left-6 bottom-6 z-50 group">
         <button class="w-12 h-12 rounded-full bg-brand-primary text-white shadow-lg flex items-center justify-center hover:scale-110 transition-transform focus:outline-none focus:ring-4 focus:ring-brand-light" aria-label="Accessibility Menu">
             <i class="fas fa-universal-access text-xl"></i>
@@ -147,9 +143,7 @@
         </div>
     </div>
 
-    <!-- Floating AI Assistant -->
     <div class="fixed right-6 bottom-6 z-50 flex flex-col items-end gap-4" id="ai-widget">
-        <!-- Chat Bubble -->
         <div id="ai-chat" class="hidden glass-panel rounded-2xl w-80 p-4 transform origin-bottom-right transition-all duration-300 mb-2">
             <div class="flex justify-between items-center mb-4 border-b border-gray-100 dark:border-gray-700 pb-2">
                 <div class="flex items-center gap-2">
@@ -171,17 +165,14 @@
             </div>
         </div>
         
-        <!-- Toggle Button -->
         <button onclick="toggleAI()" class="w-14 h-14 rounded-full bg-gradient-to-r from-brand-primary to-blue-600 text-white shadow-xl flex items-center justify-center hover:scale-110 hover:shadow-2xl transition-all duration-300 animate-bounce-slow border-2 border-white/20">
             <i class="fas fa-robot text-2xl"></i>
         </button>
     </div>
 
-    <!-- Intelligent Navbar -->
     <nav id="navbar" class="fixed w-full z-40 transition-all duration-500 py-4 top-0 border-b border-transparent">
         <div class="absolute inset-0 bg-white/0 backdrop-blur-0 transition-all duration-500" id="nav-bg"></div>
         <div class="container mx-auto px-6 relative z-10 flex justify-between items-center">
-            <!-- Brand -->
             <a href="#" class="flex items-center gap-3 group">
                 <img src="logo-putih-muallimin.webp" alt="Logo" class="h-10 w-auto group-hover:rotate-12 transition-transform duration-500">
                 <div class="leading-none">
@@ -189,7 +180,6 @@
                 </div>
             </a>
 
-            <!-- Menu -->
             <div class="hidden lg:flex items-center gap-1 p-1 rounded-full bg-white/10 backdrop-blur-md border border-white/10 shadow-lg px-2">
                 <a href="#home" class="px-5 py-2 rounded-full text-sm font-medium text-white hover:bg-white/20 transition-all">Beranda</a>
                 <a href="#about" class="px-5 py-2 rounded-full text-sm font-medium text-white hover:bg-white/20 transition-all">Tentang</a>
@@ -200,7 +190,6 @@
                 </a>
             </div>
 
-            <!-- Context Controls -->
             <div class="flex items-center gap-3">
                 <button onclick="toggleDarkMode()" class="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-all" aria-label="Toggle Theme">
                     <i class="fas fa-moon dark:hidden"></i>
@@ -211,9 +200,7 @@
         </div>
     </nav>
 
-    <!-- Immersive Hero Section -->
     <header id="home" class="relative min-h-screen flex items-center overflow-hidden">
-        <!-- 3D Parallax Background -->
         <div class="absolute inset-0 z-0 scale-105" id="hero-bg">
             <img src="Gemini_Generated_Image_spb1lospb1lospb1.png" class="w-full h-full object-cover" alt="Background">
             <div class="absolute inset-0 bg-gradient-to-r from-brand-dark/95 via-brand-blue/80 to-transparent mix-blend-multiply"></div>
@@ -222,7 +209,6 @@
 
         <div class="container mx-auto px-6 relative z-10 pt-20 grid lg:grid-cols-12 gap-12 items-center">
             
-            <!-- Context-Aware Greeting & Text -->
             <div class="lg:col-span-7 space-y-8" data-aos="fade-up" data-aos-duration="1200">
                 <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full glass-panel border-l-4 border-l-brand-accent">
                     <span class="text-brand-accent text-lg"><i class="fas fa-sun" id="greeting-icon"></i></span>
@@ -251,10 +237,8 @@
                 </div>
             </div>
 
-            <!-- 3D Interactive Card -->
             <div class="lg:col-span-5 relative perspective-container" data-aos="fade-left" data-aos-delay="200">
                 <div class="tilt-card glass-panel p-8 rounded-3xl relative overflow-hidden group hover:shadow-[0_20px_60px_-15px_rgba(254,205,47,0.3)] transition-shadow duration-500" id="hero-card">
-                    <!-- Iridescent Border Gradient -->
                     <div class="absolute inset-0 border-2 border-transparent rounded-3xl bg-gradient-to-br from-white/40 to-transparent opacity-50 pointer-events-none"></div>
                     
                     <div class="tilt-content relative z-10">
@@ -295,7 +279,6 @@
         </div>
     </header>
 
-    <!-- Holographic Stats Section (Restored & Upgraded) -->
     <section class="py-12 relative z-20 -mt-10">
         <div class="container mx-auto px-6">
             <div class="glass-panel rounded-3xl p-8 shadow-2xl bg-white/40 dark:bg-slate-900/40 backdrop-blur-2xl grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-slate-200 dark:divide-slate-700/50" data-aos="fade-up">
@@ -327,10 +310,8 @@
         </div>
     </section>
 
-    <!-- Immersive Quote Section (Restored) -->
     <section id="about" class="py-24 relative overflow-hidden">
         <div class="absolute inset-0 bg-brand-light/30 dark:bg-brand-dark/50"></div>
-        <!-- Animated Background Shape -->
         <div class="absolute -right-20 top-20 w-96 h-96 bg-brand-accent/20 rounded-full blur-3xl animate-pulse-slow"></div>
         
         <div class="container mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-16 items-center">
@@ -339,7 +320,6 @@
                     <img src="https://muallimin.my.id/wp-content/uploads/2021/10/image19.jpeg" alt="Historical" class="rounded-3xl shadow-2xl dark:opacity-80 relative z-10 border-4 border-white/20">
                     <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-brand-primary rounded-full blur-2xl z-0 opacity-50"></div>
                 </div>
-                <!-- Floating badge -->
                 <div class="absolute -bottom-6 -right-6 glass-panel p-4 rounded-2xl animate-float z-20">
                     <div class="flex items-center gap-3">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Ahmad_Dahlan.jpg" class="w-12 h-12 rounded-full object-cover border-2 border-brand-accent">
@@ -368,7 +348,6 @@
         </div>
     </section>
 
-    <!-- Interactive Bento Grid Programs -->
     <section id="programs" class="py-24 relative bg-white dark:bg-brand-dark/50">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16" data-aos="fade-up">
@@ -377,7 +356,6 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 h-auto md:h-[600px]">
-                <!-- Card 1: Large -->
                 <div class="md:col-span-2 glass-panel rounded-3xl p-8 relative overflow-hidden group cursor-pointer transition-transform hover:scale-[1.01]" data-aos="fade-up">
                     <div class="absolute top-0 right-0 w-64 h-64 bg-brand-accent/20 rounded-full blur-3xl group-hover:bg-brand-accent/30 transition-colors"></div>
                     <div class="relative z-10 h-full flex flex-col justify-between">
@@ -395,7 +373,6 @@
                     <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800" class="absolute bottom-0 right-0 w-1/2 h-full object-cover mask-image-linear opacity-50 group-hover:opacity-80 transition-opacity rounded-tl-[100px]">
                 </div>
 
-                <!-- Card 2: Vertical -->
                 <div class="glass-panel rounded-3xl p-8 relative overflow-hidden group hover:bg-brand-primary hover:text-white transition-colors duration-500" data-aos="fade-up" data-aos-delay="100">
                     <div class="relative z-10">
                         <i class="fas fa-quran text-4xl text-brand-primary group-hover:text-brand-accent mb-6 transition-colors"></i>
@@ -406,7 +383,6 @@
                     </div>
                 </div>
 
-                <!-- Card 3: Horizontal -->
                 <div class="md:col-span-3 glass-panel rounded-3xl p-8 flex flex-col md:flex-row items-center gap-8 group" data-aos="fade-up" data-aos-delay="200">
                     <div class="w-full md:w-1/3 aspect-video rounded-2xl overflow-hidden relative">
                         <img src="https://muallimin.sch.id/wp-content/uploads/2023/07/DJI_0444-scaled.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
@@ -428,7 +404,6 @@
         </div>
     </section>
 
-    <!-- News Section Smart Grid (Restored) -->
     <section id="news" class="py-24">
         <div class="container mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-end mb-12" data-aos="fade-in">
@@ -440,7 +415,6 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- News Item 1 -->
                 <div class="group glass-panel p-4 rounded-3xl hover:bg-white dark:hover:bg-slate-800 transition-colors" data-aos="fade-up">
                     <div class="aspect-[4/3] rounded-2xl overflow-hidden mb-4">
                         <img src="https://muallimin.my.id/wp-content/uploads/2021/09/MUALIMIN-Aerial-view-01_REV-01-1-scaled.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
@@ -450,7 +424,6 @@
                     <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">Kontingen Mu'allimin berhasil memborong 5 medali emas pada ajang bergengsi...</p>
                 </div>
 
-                <!-- News Item 2 -->
                 <div class="group glass-panel p-4 rounded-3xl hover:bg-white dark:hover:bg-slate-800 transition-colors" data-aos="fade-up" data-aos-delay="100">
                     <div class="aspect-[4/3] rounded-2xl overflow-hidden mb-4">
                         <img src="https://muallimin.sch.id/wp-content/uploads/2023/07/DJI_0444-scaled.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
@@ -460,7 +433,6 @@
                     <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">Pelepasan 20 santri untuk mengikuti program pertukaran pelajar di Tokyo...</p>
                 </div>
 
-                <!-- News Item 3 -->
                 <div class="group glass-panel p-4 rounded-3xl hover:bg-white dark:hover:bg-slate-800 transition-colors" data-aos="fade-up" data-aos-delay="200">
                     <div class="aspect-[4/3] rounded-2xl overflow-hidden mb-4">
                         <img src="https://muallimin.my.id/wp-content/uploads/2021/10/image19.jpeg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
@@ -470,7 +442,6 @@
                     <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">Fasilitas baru dengan smart room system untuk menunjang kenyamanan santri...</p>
                 </div>
 
-                <!-- Announcement Box -->
                 <div class="glass-panel p-6 rounded-3xl bg-gradient-to-br from-brand-primary to-brand-blue text-white flex flex-col justify-center" data-aos="fade-up" data-aos-delay="300">
                     <i class="fas fa-bullhorn text-4xl mb-4 text-brand-accent"></i>
                     <h3 class="font-bold text-xl mb-2">Pengumuman PPDB</h3>
@@ -481,7 +452,6 @@
         </div>
     </section>
 
-    <!-- PPDB CTA Section (Restored) -->
     <section id="ppdb" class="py-24 relative overflow-hidden bg-slate-900 text-white">
         <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
         <div class="container mx-auto px-6 relative z-10 text-center">
@@ -502,11 +472,9 @@
         </div>
     </section>
 
-    <!-- Expanded Footer (Restored) -->
     <footer class="pt-20 pb-10 bg-white dark:bg-brand-dark border-t border-slate-200 dark:border-slate-800 transition-colors duration-500">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-                <!-- Brand Info -->
                 <div class="space-y-6">
                     <div class="flex items-center gap-3">
                         <img src="https://muallimin.my.id/wp-content/uploads/2017/01/logo-medium.png" class="h-12">
@@ -525,7 +493,6 @@
                     </div>
                 </div>
 
-                <!-- Quick Links -->
                 <div>
                     <h4 class="font-bold text-slate-800 dark:text-white mb-6">Jelajahi</h4>
                     <ul class="space-y-4 text-sm text-slate-500 dark:text-slate-400">
@@ -537,7 +504,6 @@
                     </ul>
                 </div>
 
-                <!-- Contact -->
                 <div>
                     <h4 class="font-bold text-slate-800 dark:text-white mb-6">Hubungi Kami</h4>
                     <ul class="space-y-4 text-sm text-slate-500 dark:text-slate-400">
@@ -560,15 +526,14 @@
                     </ul>
                 </div>
 
-                <!-- Maps/Location -->
                 <div class="rounded-2xl overflow-hidden h-48 bg-slate-200 relative group">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.924872583849!2d110.35338131477755!3d-7.802521994377353!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a578912c90c73%3A0x6b77242137071e62!2sMadrasah%20Mu&#39;allimin%20Muhammadiyah%20Yogyakarta!5e0!3m2!1sen!2sid!4v1679808392113!5m2!1sen!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.924872583849!2d110.35338131477755!3d-7.802521994377353!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a578912c90c73%3A0x6b77242137071e62!2sMadrasah%20Mu'allimin%20Muhammadiyah%20Yogyakarta!5e0!3m2!1sen!2sid!4v1679808392113!5m2!1sen!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     <div class="absolute inset-0 bg-brand-primary/0 group-hover:bg-brand-primary/20 transition-colors pointer-events-none"></div>
                 </div>
             </div>
 
             <div class="border-t border-slate-200 dark:border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-xs text-slate-400">&copy; 2026 Madrasah Mu'allimin Muhammadiyah. All rights reserved.</p>
+                <p class="text-xs text-slate-400">© 2026 Madrasah Mu'allimin Muhammadiyah. All rights reserved.</p>
                 <div class="flex gap-6 text-xs text-slate-400 font-medium">
                     <a href="#" class="hover:text-brand-primary">Privacy Policy</a>
                     <a href="#" class="hover:text-brand-primary">Terms of Service</a>
@@ -577,7 +542,6 @@
         </div>
     </footer>
 
-    <!-- Voice Interface Overlay (Hidden) -->
     <div id="voice-overlay" class="fixed inset-0 z-[100] bg-brand-dark/95 hidden flex flex-col items-center justify-center backdrop-blur-xl transition-opacity duration-300 opacity-0">
         <div class="relative w-32 h-32 flex items-center justify-center">
             <div class="absolute inset-0 bg-brand-accent rounded-full animate-ping opacity-20"></div>
@@ -591,181 +555,8 @@
         <button onclick="closeVoiceUI()" class="mt-12 text-slate-500 hover:text-white text-sm uppercase tracking-widest font-bold">Batal</button>
     </div>
 
-    <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        // 1. Initialization
-        AOS.init({ once: true, duration: 800 });
-
-        // 2. Context-Aware Greeting Logic
-        function updateGreeting() {
-            const hour = new Date().getHours();
-            const textEl = document.getElementById('greeting-text');
-            const iconEl = document.getElementById('greeting-icon');
-            
-            if (hour < 11) {
-                textEl.innerText = 'Selamat Pagi, Calon Pemimpin';
-                iconEl.className = 'fas fa-sun text-yellow-400';
-            } else if (hour < 15) {
-                textEl.innerText = 'Selamat Siang, Generasi Unggul';
-                iconEl.className = 'fas fa-cloud-sun text-orange-400';
-            } else if (hour < 19) {
-                textEl.innerText = 'Selamat Sore, Sobat Muin';
-                iconEl.className = 'fas fa-cloud-moon text-indigo-400';
-            } else {
-                textEl.innerText = 'Selamat Malam, Istirahatlah';
-                iconEl.className = 'fas fa-moon text-blue-400';
-            }
-        }
-        updateGreeting();
-
-        // 3. Lightweight 3D Tilt Effect
-        const heroCard = document.getElementById('hero-card');
-        
-        heroCard.addEventListener('mousemove', (e) => {
-            const rect = heroCard.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            
-            const rotateX = ((y - centerY) / centerY) * -10;
-            const rotateY = ((x - centerX) / centerX) * 10;
-
-            heroCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-            heroCard.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.8), rgba(255,255,255,0.7) 40%)`;
-        });
-
-        heroCard.addEventListener('mouseleave', () => {
-            heroCard.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
-            heroCard.style.background = ''; 
-        });
-
-        // 4. Parallax Background
-        document.addEventListener('mousemove', (e) => {
-            const bg = document.getElementById('hero-bg');
-            const x = (window.innerWidth - e.pageX * 2) / 90;
-            const y = (window.innerHeight - e.pageY * 2) / 90;
-            bg.style.transform = `scale(1.05) translate(${x}px, ${y}px)`;
-        });
-
-        // 5. Intelligent Navbar Scroll
-        const navbar = document.getElementById('navbar');
-        const brandText = document.getElementById('brand-text');
-        const navBg = document.getElementById('nav-bg');
-        
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navBg.classList.remove('bg-white/0', 'backdrop-blur-0');
-                navBg.classList.add('bg-white/80', 'dark:bg-brand-dark/90', 'backdrop-blur-xl', 'shadow-sm');
-                brandText.classList.remove('text-white');
-                brandText.classList.add('text-brand-blue', 'dark:text-white');
-            } else {
-                navBg.classList.add('bg-white/0', 'backdrop-blur-0');
-                navBg.classList.remove('bg-white/80', 'dark:bg-brand-dark/90', 'backdrop-blur-xl', 'shadow-sm');
-                brandText.classList.add('text-white');
-                brandText.classList.remove('text-brand-blue', 'dark:text-white');
-            }
-        });
-
-        // 6. Voice Interaction UI
-        const voiceOverlay = document.getElementById('voice-overlay');
-        function activateVoiceUI() {
-            voiceOverlay.classList.remove('hidden');
-            void voiceOverlay.offsetWidth;
-            voiceOverlay.classList.remove('opacity-0');
-            
-            setTimeout(() => {
-                closeVoiceUI();
-                const chatContent = document.getElementById('chat-content');
-                chatContent.innerHTML += `<div class="bg-brand-primary text-white p-3 rounded-lg rounded-tr-none ml-auto max-w-[80%] mt-2">Saya ingin mendaftar.</div>`;
-                
-                setTimeout(() => {
-                    chatContent.innerHTML += `<div class="bg-brand-light/50 dark:bg-slate-700 p-3 rounded-lg rounded-tl-none mt-2">Baik, saya arahkan ke formulir pendaftaran. Mohon lengkapi nama Anda.</div>`;
-                    document.getElementById('inputName').focus();
-                    toggleAI(true); 
-                }, 1000);
-
-            }, 3000);
-        }
-
-        function closeVoiceUI() {
-            voiceOverlay.classList.add('opacity-0');
-            setTimeout(() => {
-                voiceOverlay.classList.add('hidden');
-            }, 300);
-        }
-
-        // 7. Toggle Dark Mode
-        function toggleDarkMode() {
-            document.documentElement.classList.toggle('dark');
-        }
-
-        // 8. Accessibility Features
-        function toggleContrast() {
-            document.body.classList.toggle('high-contrast');
-        }
-        function toggleTextSize() {
-            document.body.classList.toggle('text-lg'); 
-        }
-
-        // 9. AI Widget Toggle
-        function toggleAI(forceOpen = false) {
-            const chat = document.getElementById('ai-chat');
-            if (forceOpen) {
-                chat.classList.remove('hidden');
-            } else {
-                chat.classList.toggle('hidden');
-            }
-        }
-
-        function submitForm() {
-            Swal.fire({
-                title: 'Analisis AI Berjalan...',
-                text: 'Memeriksa kelayakan data awal Anda.',
-                icon: 'info',
-                timer: 2000,
-                timerProgressBar: true,
-                didOpen: () => {
-                    Swal.showLoading()
-                }
-            }).then(() => {
-                Swal.fire({
-                    title: 'Data Valid!',
-                    text: 'Silakan lanjutkan ke tahap wawancara virtual.',
-                    icon: 'success',
-                    confirmButtonColor: '#014a97'
-                });
-            });
-        }
-
-        // 10. Number Counter Animation (Observer)
-        const counters = document.querySelectorAll('.count-up');
-        const countObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const target = +entry.target.getAttribute('data-target');
-                    const duration = 2000; 
-                    const increment = target / (duration / 16); 
-                    
-                    let count = 0;
-                    const updateCount = () => {
-                        count += increment;
-                        if (count < target) {
-                            entry.target.innerText = Math.ceil(count);
-                            requestAnimationFrame(updateCount);
-                        } else {
-                            entry.target.innerText = target;
-                        }
-                    };
-                    updateCount();
-                    countObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-        counters.forEach(counter => countObserver.observe(counter));
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
