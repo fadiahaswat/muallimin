@@ -109,88 +109,155 @@
         <div id="nav-bg" class="absolute inset-0 bg-brand-blue/0 backdrop-blur-0 transition-all duration-500"></div>
 
         <div class="container mx-auto px-6 relative z-10 h-24 flex items-center justify-between">
+            
             <a href="#home" class="flex items-center gap-3 relative z-20 group">
-                <div class="relative">
-                    <div class="absolute -inset-2 bg-white/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                    <img src="logo-putih-muallimin.webp" onerror="this.src='https://muallimin.sch.id/wp-content/uploads/2019/11/Logo-Muallimin-Baru.png'" alt="Logo" class="relative h-10 w-auto group-hover:rotate-6 transition-transform duration-500 filter drop-shadow-md">
+                <div class="relative w-10 h-10">
+                    <div class="absolute inset-0 bg-brand-primary/50 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                    <img src="logo-putih-muallimin.webp" onerror="this.src='https://muallimin.sch.id/wp-content/uploads/2019/11/Logo-Muallimin-Baru.png'" alt="Logo" class="relative w-full h-full object-contain drop-shadow-md group-hover:scale-110 transition-transform duration-300">
                 </div>
-                <h1 class="font-display font-bold text-xl tracking-tight text-white transition-colors duration-300 drop-shadow-md group-hover:text-brand-accent">MU'ALLIMIN</h1>
+                <div class="flex flex-col">
+                    <span class="font-display font-bold text-xl tracking-tight text-white leading-none drop-shadow-sm group-hover:text-brand-accent transition-colors">MU'ALLIMIN</span>
+                    <span class="text-[10px] uppercase tracking-[0.3em] text-white/60 leading-none mt-1 group-hover:text-white transition-colors">Yogyakarta</span>
+                </div>
             </a>
 
             <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 hidden lg:block" id="nav-center">
-                <div class="flex items-center gap-1 nav-glass rounded-full p-1.5 px-2 shadow-2xl backdrop-blur-md">
-                    <a href="#home" class="px-5 py-2 rounded-full text-sm font-medium text-white hover:bg-white/10 transition-all relative group">
-                        Beranda
-                        <span class="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-1 h-1 bg-brand-accent rounded-full opacity-0 group-hover:opacity-100 transition-all"></span>
+                <div class="flex items-center gap-1 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full p-1.5 px-2 shadow-[0_8px_32px_rgba(0,0,0,0.1)] transition-all duration-300 hover:bg-white/15 hover:border-white/30 hover:scale-[1.02]">
+                    
+                    <a href="#home" class="px-6 py-2.5 rounded-full text-sm font-medium text-white transition-all hover:bg-white/20 relative group overflow-hidden">
+                        <span class="relative z-10">Beranda</span>
                     </a>
-                    <a href="#about" class="px-5 py-2 rounded-full text-sm font-medium text-white hover:bg-white/10 transition-all">Tentang</a>
+                    
+                    <a href="#about" class="px-6 py-2.5 rounded-full text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 transition-all">Tentang</a>
+                    
                     <div class="relative group/dropdown">
-                        <button class="px-5 py-2 rounded-full text-sm font-medium text-white hover:bg-white/10 transition-all flex items-center gap-1">
-                            Program <i class="fas fa-chevron-down text-[10px] opacity-70 group-hover/dropdown:rotate-180 transition-transform"></i>
+                        <button class="px-6 py-2.5 rounded-full text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 transition-all flex items-center gap-2">
+                            Program <i class="fas fa-chevron-down text-[10px] opacity-60 group-hover/dropdown:rotate-180 transition-transform duration-300"></i>
                         </button>
-                        <div class="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-64 p-2 bg-white/90 dark:bg-slate-900/95 backdrop-blur-xl rounded-2xl shadow-xl border border-white/20 opacity-0 invisible translate-y-2 group-hover/dropdown:opacity-100 group-hover/dropdown:visible group-hover/dropdown:translate-y-0 transition-all duration-300 transform origin-top">
-                            <a href="#program-inter" class="block px-4 py-3 rounded-xl hover:bg-brand-light/50 dark:hover:bg-slate-800 text-sm text-slate-800 dark:text-slate-200">Internasional</a>
-                            <a href="#program-tahfidz" class="block px-4 py-3 rounded-xl hover:bg-brand-light/50 dark:hover:bg-slate-800 text-sm text-slate-800 dark:text-slate-200">Tahfidz</a>
+                        
+                        <div class="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-60 p-2 bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl rounded-2xl shadow-2xl border border-white/20 opacity-0 invisible translate-y-4 group-hover/dropdown:opacity-100 group-hover/dropdown:visible group-hover/dropdown:translate-y-0 transition-all duration-300 transform origin-top">
+                            <a href="#program-inter" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-brand-light/50 dark:hover:bg-slate-800 transition-colors group/item">
+                                <div class="w-8 h-8 rounded-full bg-blue-100/50 text-brand-primary flex items-center justify-center group-hover/item:bg-brand-primary group-hover/item:text-white transition-colors"><i class="fas fa-globe"></i></div>
+                                <div>
+                                    <span class="block text-sm font-bold text-slate-800 dark:text-white">Internasional</span>
+                                    <span class="block text-[10px] text-slate-500">Cambridge Curriculum</span>
+                                </div>
+                            </a>
+                            <a href="#program-tahfidz" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-brand-light/50 dark:hover:bg-slate-800 transition-colors group/item">
+                                <div class="w-8 h-8 rounded-full bg-green-100/50 text-green-600 flex items-center justify-center group-hover/item:bg-green-600 group-hover/item:text-white transition-colors"><i class="fas fa-quran"></i></div>
+                                <div>
+                                    <span class="block text-sm font-bold text-slate-800 dark:text-white">Tahfidz</span>
+                                    <span class="block text-[10px] text-slate-500">Program Khusus</span>
+                                </div>
+                            </a>
                         </div>
                     </div>
-                    <a href="#news" class="px-5 py-2 rounded-full text-sm font-medium text-white hover:bg-white/10 transition-all">Berita</a>
+                    
+                    <a href="#news" class="px-6 py-2.5 rounded-full text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 transition-all">Berita</a>
                 </div>
             </div>
 
             <div class="flex items-center gap-3 relative z-20">
-                <button onclick="toggleDarkMode()" class="w-9 h-9 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-white/20 transition-all mr-2">
-                    <i class="fas fa-moon dark:hidden"></i><i class="fas fa-sun hidden dark:block text-yellow-300"></i>
+                <button onclick="toggleDarkMode()" class="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-all group" aria-label="Toggle Theme">
+                    <i class="fas fa-moon dark:hidden group-hover:-rotate-12 transition-transform"></i>
+                    <i class="fas fa-sun hidden dark:block text-yellow-300 group-hover:spin-slow"></i>
                 </button>
-                <a href="#ppdb" class="hidden sm:flex px-6 py-2.5 rounded-full text-sm font-bold text-brand-blue bg-brand-accent hover:bg-yellow-300 shadow-[0_0_20px_rgba(254,205,47,0.4)] transition-all transform hover:-translate-y-0.5 items-center gap-2 relative overflow-hidden group">
-                    <span class="relative z-10"><i class="fas fa-paper-plane text-xs"></i> PPDB</span>
-                    <div class="absolute inset-0 bg-white/30 transform -skew-x-12 translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
+
+                <a href="#ppdb" class="hidden sm:flex px-6 py-2.5 rounded-full text-sm font-bold text-brand-blue bg-brand-accent hover:bg-yellow-300 shadow-[0_0_20px_rgba(254,205,47,0.3)] hover:shadow-[0_0_30px_rgba(254,205,47,0.5)] transition-all transform hover:-translate-y-0.5 items-center gap-2 relative overflow-hidden group">
+                    <span class="absolute inset-0 bg-white/40 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+                    <span class="relative flex items-center gap-2"><i class="fas fa-paper-plane text-xs"></i> PPDB</span>
                 </a>
-                <button class="lg:hidden text-white text-2xl ml-2 hover:text-brand-accent transition-colors" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i></button>
+                
+                <button class="lg:hidden w-10 h-10 flex items-center justify-center text-white text-xl hover:text-brand-accent transition-colors" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
         </div>
     </nav>
 
     <header id="home" class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-brand-dark">
+        
         <div class="absolute inset-0 z-0">
-            <img src="Gemini_Generated_Image_spb1lospb1lospb1.png" class="w-full h-full object-cover opacity-80" alt="Muallimin Hero">
-            <div class="absolute inset-0 bg-gradient-to-b from-brand-blue/80 via-brand-dark/50 to-brand-dark mix-blend-multiply"></div>
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.8)_100%)]"></div>
+            <img src="Gemini_Generated_Image_spb1lospb1lospb1.png" class="w-full h-full object-cover opacity-90 animate-pulse-slow" style="animation-duration: 20s;" alt="Muallimin Hero">
+            
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_10%,rgba(2,6,23,0.8)_100%)]"></div>
+            <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-brand-dark to-transparent"></div>
+            <div class="absolute inset-0 bg-brand-blue/30 mix-blend-overlay"></div>
         </div>
 
         <div id="hero-content" class="container mx-auto px-6 relative z-10 flex-grow flex flex-col items-center justify-center text-center pt-24 pb-32 intro-hidden">
-            <div class="mb-8" data-aos="fade-down">
-                <div class="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-md cursor-default hover:bg-white/10 transition-colors">
-                    <i class="fas fa-sun text-brand-accent animate-spin-slow" id="greeting-icon"></i>
-                    <span class="text-xs font-bold text-white tracking-[0.2em] uppercase" id="greeting-text">Est. 1918 • Yogyakarta</span>
+            
+            <div class="mb-8" data-aos="fade-down" data-aos-duration="1000">
+                <div class="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-xl shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:border-brand-accent/50 transition-colors cursor-default">
+                    <i class="fas fa-star text-brand-accent animate-spin-slow text-[10px]"></i>
+                    <span class="text-xs font-bold text-white tracking-[0.3em] uppercase">Est. 1918 • Yogyakarta</span>
                 </div>
             </div>
-            <div class="space-y-4 mb-10 max-w-5xl mx-auto" data-aos="zoom-in">
-                <h2 class="text-lg md:text-xl font-sans font-medium text-blue-200 tracking-[0.4em] uppercase mb-4 animate-pulse-slow">The School of</h2>
+            
+            <div class="space-y-6 mb-12 max-w-5xl mx-auto" data-aos="zoom-in" data-aos-duration="1200">
+                <h2 class="text-lg md:text-xl font-sans font-medium text-blue-200 tracking-[0.4em] uppercase animate-pulse-slow">The School of</h2>
                 <h1 class="text-6xl md:text-8xl lg:text-9xl font-serif font-medium text-white leading-[0.9] drop-shadow-2xl">
-                    <span class="italic text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/60">Future</span> 
-                    <span class="">Leaders</span>
+                    <span class="italic font-light text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-slate-400">Future</span> 
+                    <span class="font-bold relative inline-block">
+                        Leaders
+                        <svg class="absolute w-full h-3 -bottom-2 left-0 text-brand-accent opacity-80" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 5 Q 50 10 100 5" stroke="currentColor" stroke-width="2" fill="none" /></svg>
+                    </span>
                 </h1>
-                <p class="text-xl md:text-2xl font-serif italic text-brand-accent/90 mt-6 tracking-wide">"Mencetak Kader Ulama, Pemimpin Bangsa"</p>
+                <p class="text-xl md:text-2xl font-serif italic text-slate-300 mt-8 tracking-wide max-w-2xl mx-auto">
+                    "Mencetak Kader Ulama, Intelektual, dan Pemimpin Bangsa yang Mencerahkan Semesta"
+                </p>
             </div>
-            <div class="flex flex-col sm:flex-row gap-5 items-center justify-center w-full" data-aos="fade-up">
-                <button class="px-8 py-4 rounded-full bg-white text-brand-blue font-bold text-sm tracking-wide hover:bg-brand-light transition-all shadow-[0_0_30px_rgba(255,255,255,0.3)] hover:scale-105 flex items-center gap-2 group">
+            
+            <div class="flex flex-col sm:flex-row gap-5 items-center justify-center w-full" data-aos="fade-up" data-aos-delay="400">
+                <button class="group px-8 py-4 rounded-full bg-white text-brand-blue font-bold text-sm tracking-wide hover:bg-brand-light transition-all shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:scale-105 flex items-center gap-3">
                     <span>JELAJAHI VIRTUAL</span>
-                    <i class="fas fa-vr-cardboard group-hover:rotate-12 transition-transform text-lg"></i>
+                    <div class="w-6 h-6 rounded-full bg-brand-blue text-white flex items-center justify-center group-hover:rotate-45 transition-transform">
+                        <i class="fas fa-arrow-up text-[10px]"></i>
+                    </div>
                 </button>
-                <button class="px-8 py-4 rounded-full border border-white/30 bg-white/5 backdrop-blur-sm text-white font-medium text-sm tracking-wide hover:bg-white/10 hover:border-white transition-all flex items-center gap-3 group">
-                    <div class="w-8 h-8 rounded-full bg-brand-accent text-brand-blue flex items-center justify-center group-hover:scale-110 transition-transform"><i class="fas fa-play text-[10px] ml-0.5"></i></div>
+                
+                <button class="group px-8 py-4 rounded-full border border-white/30 bg-white/5 backdrop-blur-md text-white font-medium text-sm tracking-wide hover:bg-white/10 hover:border-white transition-all flex items-center gap-3">
+                    <div class="relative w-8 h-8 flex items-center justify-center">
+                        <span class="absolute inset-0 rounded-full border border-white/30 group-hover:animate-ping opacity-75"></span>
+                        <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-sm">
+                            <i class="fas fa-play text-[10px] ml-0.5"></i>
+                        </div>
+                    </div>
                     <span>PROFIL 2026</span>
                 </button>
             </div>
         </div>
 
-        <div id="hero-stats" class="absolute bottom-0 w-full z-20 border-t border-white/10 bg-white/5 backdrop-blur-xl intro-hidden">
+        <div id="hero-stats" class="absolute bottom-0 w-full z-20 border-t border-white/5 bg-gradient-to-r from-brand-dark/80 via-brand-blue/80 to-brand-dark/80 backdrop-blur-xl intro-hidden">
             <div class="container mx-auto px-6">
-                <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
-                    <div class="py-6 text-center hover:bg-white/5 transition-colors cursor-default"><div class="text-3xl font-bold text-white mb-1"><span class="count-up" data-target="1918">0</span></div><div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Founded</div></div>
-                    <div class="py-6 text-center hover:bg-white/5 transition-colors cursor-default"><div class="text-3xl font-bold text-white mb-1"><span class="count-up" data-target="100">0</span>+</div><div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Years Legacy</div></div>
-                    <div class="py-6 text-center hover:bg-white/5 transition-colors cursor-default"><div class="text-3xl font-bold text-white mb-1"><span class="count-up" data-target="1650">0</span></div><div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Active Cadets</div></div>
-                    <div class="py-6 text-center hover:bg-white/5 transition-colors cursor-default"><div class="text-3xl font-bold text-white mb-1"><span class="count-up" data-target="98">0</span>%</div><div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Univ Acceptance</div></div>
+                <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/5">
+                    <div class="py-6 text-center hover:bg-white/5 transition-colors cursor-default group">
+                        <div class="text-3xl lg:text-4xl font-serif font-bold text-white mb-1 group-hover:-translate-y-1 transition-transform duration-300">
+                            <span class="count-up" data-target="1918">0</span>
+                        </div>
+                        <div class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] group-hover:text-brand-accent transition-colors">Founded</div>
+                    </div>
+                    
+                    <div class="py-6 text-center hover:bg-white/5 transition-colors cursor-default group">
+                        <div class="text-3xl lg:text-4xl font-serif font-bold text-white mb-1 group-hover:-translate-y-1 transition-transform duration-300">
+                            <span class="count-up" data-target="100">0</span>+
+                        </div>
+                        <div class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] group-hover:text-brand-accent transition-colors">Years Legacy</div>
+                    </div>
+                    
+                    <div class="py-6 text-center hover:bg-white/5 transition-colors cursor-default group">
+                        <div class="text-3xl lg:text-4xl font-serif font-bold text-white mb-1 group-hover:-translate-y-1 transition-transform duration-300">
+                            <span class="count-up" data-target="1650">0</span>
+                        </div>
+                        <div class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] group-hover:text-brand-accent transition-colors">Active Cadets</div>
+                    </div>
+                    
+                    <div class="py-6 text-center hover:bg-white/5 transition-colors cursor-default group">
+                        <div class="text-3xl lg:text-4xl font-serif font-bold text-white mb-1 group-hover:-translate-y-1 transition-transform duration-300">
+                            <span class="count-up" data-target="98">0</span>%
+                        </div>
+                        <div class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] group-hover:text-brand-accent transition-colors">Univ Acceptance</div>
+                    </div>
                 </div>
             </div>
         </div>
