@@ -174,3 +174,55 @@ const countObserver = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.5 });
 counters.forEach(counter => countObserver.observe(counter));
+
+/* --- Masukkan kode ini ke dalam file script.js Anda --- */
+
+// 1. Navbar Scroll Logic (Adaptive UI)
+const navbar = document.getElementById('navbar');
+const navBg = document.getElementById('nav-bg');
+const brandText = document.getElementById('brand-text');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+        // Saat di-scroll ke bawah: Background solid/glass, teks menyesuaikan
+        navBg.classList.remove('bg-brand-blue/0', 'backdrop-blur-0');
+        navBg.classList.add('bg-brand-blue/90', 'dark:bg-brand-dark/90', 'backdrop-blur-xl', 'shadow-md');
+        
+        // Opsional: Kecilkan padding navbar sedikit agar lebih compact
+        navbar.classList.remove('py-4');
+        navbar.classList.add('py-2');
+    } else {
+        // Saat di paling atas: Transparan
+        navBg.classList.add('bg-brand-blue/0', 'backdrop-blur-0');
+        navBg.classList.remove('bg-brand-blue/90', 'dark:bg-brand-dark/90', 'backdrop-blur-xl', 'shadow-md');
+        
+        navbar.classList.add('py-4');
+        navbar.classList.remove('py-2');
+    }
+});
+
+// 2. Mobile Menu Toggle Logic
+const mobileToggle = document.getElementById('mobile-toggle');
+const mobileClose = document.getElementById('mobile-close');
+const mobileMenu = document.getElementById('mobile-menu');
+const mobileLinks = document.querySelectorAll('.mobile-link');
+
+function toggleMobileMenu() {
+    const isOpen = mobileMenu.classList.contains('translate-x-0');
+    if (isOpen) {
+        mobileMenu.classList.remove('translate-x-0');
+        mobileMenu.classList.add('translate-x-full');
+    } else {
+        mobileMenu.classList.remove('translate-x-full');
+        mobileMenu.classList.add('translate-x-0');
+    }
+}
+
+// Event Listeners
+if(mobileToggle) mobileToggle.addEventListener('click', toggleMobileMenu);
+if(mobileClose) mobileClose.addEventListener('click', toggleMobileMenu);
+
+// Tutup menu saat link diklik
+mobileLinks.forEach(link => {
+    link.addEventListener('click', toggleMobileMenu);
+});
