@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Madrasah Muallimin Muhammadiyah – Future Ready Education</title>
+    <meta name="theme-color" content="#003366">
+    <title>Madrasah Muallimin – The Future of Islamic Leadership</title>
     <meta name="description" content="Pendidikan Integratif Holistik berbasis AI dan Nilai Islam untuk Pemimpin Masa Depan.">
     <link rel="icon" href="https://muallimin.my.id/wp-content/uploads/2017/01/logo-medium-150x150.png">
     
@@ -11,7 +12,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -29,6 +30,7 @@
                             accent: '#fecd2f',  
                             dark: '#020617',    
                             surface: '#ffffff',
+                            glass: 'rgba(255, 255, 255, 0.7)',
                         }
                     },
                     fontFamily: {
@@ -40,12 +42,15 @@
                     backgroundImage: {
                         'noise': "url('https://grainy-gradients.vercel.app/noise.svg')",
                         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                        'aurora': 'linear-gradient(135deg, #003366 0%, #014a97 50%, #00d4ff 100%)',
                     },
                     animation: {
-                        'float': 'float 6s ease-in-out infinite',
+                        'float': 'float 8s ease-in-out infinite',
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'gradient-x': 'gradient-x 15s ease infinite',
+                        'gradient-x': 'gradient-x 10s ease infinite',
                         'spin-slow': 'spin 12s linear infinite',
+                        'blob': 'blob 7s infinite',
+                        'shimmer': 'shimmer 2s linear infinite',
                     },
                     keyframes: {
                         float: {
@@ -53,15 +58,19 @@
                             '50%': { transform: 'translateY(-20px)' },
                         },
                         'gradient-x': {
-                            '0%, 100%': {
-                                'background-size': '200% 200%',
-                                'background-position': 'left center'
-                            },
-                            '50%': {
-                                'background-size': '200% 200%',
-                                'background-position': 'right center'
-                            },
+                            '0%, 100%': { 'background-position': 'left center' },
+                            '50%': { 'background-position': 'right center' },
                         },
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        shimmer: {
+                            'from': { backgroundPosition: '0 0' },
+                            'to': { backgroundPosition: '-200% 0' }
+                        }
                     }
                 }
             }
@@ -69,59 +78,72 @@
     </script>
 
     <style>
-        /* Glassmorphism 2.0 */
+        /* 2026 UI Trends: Liquid Glass & Depth */
         .glass-panel {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(16px) saturate(180%);
-            -webkit-backdrop-filter: blur(16px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 
+                0 4px 6px -1px rgba(0, 0, 0, 0.05), 
+                0 10px 15px -3px rgba(0, 0, 0, 0.05),
+                inset 0 0 20px rgba(255, 255, 255, 0.2); /* Inner glow for depth */
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
+        
         .dark .glass-panel {
-            background: rgba(15, 23, 42, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(2, 6, 23, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
         }
 
-        /* Spatial 3D Tilt Base */
-        .tilt-card {
-            transform-style: preserve-3d;
-            transform: perspective(1000px);
-        }
-        .tilt-content {
-            transform: translateZ(20px);
+        /* Hover Effect for Cards (Spatial) */
+        .glass-panel:hover {
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 
+                0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+                0 10px 10px -5px rgba(0, 0, 0, 0.04),
+                0 0 0 1px rgba(1, 74, 151, 0.3); /* Brand border highlight */
         }
 
-        /* Noise Texture Overlay */
+        /* 3D Tilt Setup */
+        .perspective-container { perspective: 1200px; }
+        .tilt-card { transform-style: preserve-3d; transition: transform 0.1s ease-out; }
+        .tilt-content { transform: translateZ(30px); }
+
+        /* Global Texture */
         .bg-noise {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: 50;
-            opacity: 0.03;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 50; opacity: 0.04;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
-        /* High Contrast Mode */
-        .high-contrast {
-            filter: contrast(1.5);
-        }
-        .high-contrast * {
-            background-color: white !important;
-            color: black !important;
-            border-color: black !important;
-            box-shadow: none !important;
-            text-shadow: none !important;
-        }
-        .high-contrast img {
-            filter: grayscale(100%) contrast(1.2);
-        }
+        /* Modern Typography */
+        h1, h2, h3 { text-wrap: balance; }
+        p { text-wrap: pretty; }
 
         /* Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar { width: 10px; }
         ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-        .dark ::-webkit-scrollbar-thumb { background: #334155; }
+        ::-webkit-scrollbar-thumb { 
+            background: linear-gradient(to bottom, #014a97, #e0f2fe); 
+            border-radius: 5px; 
+            border: 2px solid transparent; 
+            background-clip: content-box; 
+        }
+
+        /* High Contrast Mode (Accessibility) */
+        .high-contrast { filter: contrast(1.75) saturate(0.5); }
+        .high-contrast * { text-shadow: none !important; box-shadow: none !important; }
+        .high-contrast .glass-panel { background: white !important; border: 2px solid black !important; }
+        .dark.high-contrast .glass-panel { background: black !important; border: 2px solid white !important; }
+
+        /* Shimmer Button Effect */
+        .btn-shimmer {
+            background: linear-gradient(to right, #014a97 0%, #0066cc 20%, #014a97 40%, #014a97 100%);
+            background-size: 200% auto;
+            animation: shimmer 3s linear infinite;
+        }
     </style>
 </head>
 <body class="font-sans text-slate-800 dark:text-slate-100 bg-slate-50 dark:bg-brand-dark transition-colors duration-500 overflow-x-hidden selection:bg-brand-accent selection:text-brand-blue" id="main-body">
@@ -129,44 +151,74 @@
     <div class="bg-noise"></div>
 
     <div class="fixed left-6 bottom-6 z-50 group">
-        <button class="w-12 h-12 rounded-full bg-brand-primary text-white shadow-lg flex items-center justify-center hover:scale-110 transition-transform focus:outline-none focus:ring-4 focus:ring-brand-light" aria-label="Accessibility Menu">
-            <i class="fas fa-universal-access text-xl"></i>
+        <button class="w-14 h-14 rounded-full bg-brand-surface dark:bg-slate-800 text-brand-primary shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex items-center justify-center hover:scale-110 transition-transform focus:outline-none focus:ring-4 focus:ring-brand-light border border-slate-200 dark:border-slate-700" aria-label="Accessibility Menu">
+            <i class="fas fa-universal-access text-2xl"></i>
         </button>
-        <div class="absolute bottom-16 left-0 bg-white dark:bg-slate-800 rounded-xl shadow-2xl p-4 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-            <p class="text-xs font-bold text-gray-400 uppercase mb-2">Aksesibilitas</p>
-            <button onclick="toggleContrast()" class="flex items-center gap-3 w-full p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg text-sm transition">
-                <i class="fas fa-adjust"></i> High Contrast
-            </button>
-            <button onclick="toggleTextSize()" class="flex items-center gap-3 w-full p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg text-sm transition">
-                <i class="fas fa-text-height"></i> Perbesar Teks
-            </button>
+        <div class="absolute bottom-20 left-0 glass-panel rounded-2xl p-4 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 origin-bottom-left">
+            <div class="flex items-center justify-between mb-3">
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">A11y Tools</p>
+                <i class="fas fa-eye text-slate-400 text-xs"></i>
+            </div>
+            <div class="space-y-2">
+                <button onclick="toggleContrast()" class="flex items-center gap-3 w-full p-3 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-xl text-sm font-medium transition active:scale-95">
+                    <div class="w-8 h-8 rounded-lg bg-black text-white flex items-center justify-center"><i class="fas fa-adjust"></i></div>
+                    High Contrast
+                </button>
+                <button onclick="toggleTextSize()" class="flex items-center gap-3 w-full p-3 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-xl text-sm font-medium transition active:scale-95">
+                    <div class="w-8 h-8 rounded-lg bg-brand-primary text-white flex items-center justify-center"><i class="fas fa-text-height"></i></div>
+                    Perbesar Teks
+                </button>
+            </div>
         </div>
     </div>
 
     <div class="fixed right-6 bottom-6 z-50 flex flex-col items-end gap-4" id="ai-widget">
-        <div id="ai-chat" class="hidden glass-panel rounded-2xl w-80 p-4 transform origin-bottom-right transition-all duration-300 mb-2">
-            <div class="flex justify-between items-center mb-4 border-b border-gray-100 dark:border-gray-700 pb-2">
-                <div class="flex items-center gap-2">
-                    <div class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
-                    <span class="font-bold text-sm">Mu'allimin AI</span>
+        <div id="ai-chat" class="hidden glass-panel rounded-3xl w-80 sm:w-96 p-0 transform origin-bottom-right transition-all duration-300 mb-2 shadow-2xl overflow-hidden border border-brand-light/50">
+            <div class="bg-gradient-to-r from-brand-primary to-brand-blue p-4 flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <div class="relative">
+                        <div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur flex items-center justify-center text-white border border-white/30">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-400 border-2 border-brand-blue rounded-full animate-pulse"></div>
+                    </div>
+                    <div>
+                        <span class="font-bold text-white text-sm block">Mu'allimin Assistant</span>
+                        <span class="text-[10px] text-blue-200 flex items-center gap-1"><i class="fas fa-shield-alt"></i> Privacy-First AI</span>
+                    </div>
                 </div>
-                <button onclick="toggleAI()" class="text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
+                <button onclick="toggleAI()" class="text-white/70 hover:text-white transition"><i class="fas fa-times"></i></button>
             </div>
-            <div class="space-y-3 max-h-60 overflow-y-auto text-sm" id="chat-content">
-                <div class="bg-brand-light/50 dark:bg-slate-700 p-3 rounded-lg rounded-tl-none">
-                    Assalamualaikum! Saya asisten AI. Ada yang bisa saya bantu terkait PPDB atau kurikulum?
+            
+            <div class="p-4 space-y-4 max-h-72 overflow-y-auto bg-slate-50/50 dark:bg-slate-900/50" id="chat-content">
+                <div class="flex gap-3">
+                    <div class="w-8 h-8 rounded-full bg-brand-primary text-white flex-shrink-0 flex items-center justify-center text-xs"><i class="fas fa-robot"></i></div>
+                    <div class="bg-white dark:bg-slate-800 p-3.5 rounded-2xl rounded-tl-none shadow-sm text-sm border border-slate-100 dark:border-slate-700">
+                        <p>Assalamualaikum! 👋 Saya asisten virtual yang siap membantu. Anda bisa tanya soal:</p>
+                        <div class="mt-2 flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-brand-light text-brand-blue text-xs rounded-full cursor-pointer hover:bg-brand-accent transition">Biaya</span>
+                            <span class="px-2 py-1 bg-brand-light text-brand-blue text-xs rounded-full cursor-pointer hover:bg-brand-accent transition">Asrama</span>
+                            <span class="px-2 py-1 bg-brand-light text-brand-blue text-xs rounded-full cursor-pointer hover:bg-brand-accent transition">Kurikulum</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="mt-4 relative">
-                <input type="text" placeholder="Ketik atau gunakan suara..." class="w-full bg-white dark:bg-slate-800 border-none rounded-full px-4 py-2 text-sm focus:ring-2 focus:ring-brand-primary pr-10 shadow-inner">
-                <button class="absolute right-3 top-2 text-brand-primary hover:text-brand-accent transition" onclick="activateVoiceUI()">
-                    <i class="fas fa-microphone"></i>
-                </button>
+
+            <div class="p-3 bg-white dark:bg-slate-800 border-t border-slate-100 dark:border-slate-700">
+                <div class="relative">
+                    <input type="text" placeholder="Ketik pesan..." class="w-full bg-slate-100 dark:bg-slate-900 border-none rounded-full px-4 py-3 text-sm focus:ring-2 focus:ring-brand-primary pr-10 transition-all">
+                    <button class="absolute right-2 top-2 w-8 h-8 rounded-full bg-brand-primary text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-blue transition" onclick="activateVoiceUI()">
+                        <i class="fas fa-microphone"></i>
+                    </button>
+                </div>
+                <p class="text-[10px] text-center text-slate-400 mt-2">Data diproses secara lokal & aman.</p>
             </div>
         </div>
         
-        <button onclick="toggleAI()" class="w-14 h-14 rounded-full bg-gradient-to-r from-brand-primary to-blue-600 text-white shadow-xl flex items-center justify-center hover:scale-110 hover:shadow-2xl transition-all duration-300 animate-bounce-slow border-2 border-white/20">
-            <i class="fas fa-robot text-2xl"></i>
+        <button onclick="toggleAI()" class="w-16 h-16 rounded-full bg-brand-primary text-white shadow-2xl flex items-center justify-center hover:scale-105 transition-all duration-300 animate-float border-4 border-white/20 relative group">
+            <span class="absolute inset-0 rounded-full bg-brand-primary animate-ping opacity-20"></span>
+            <i class="fas fa-comment-dots text-2xl group-hover:hidden"></i>
+            <i class="fas fa-chevron-up text-2xl hidden group-hover:block"></i>
         </button>
     </div>
 
@@ -174,28 +226,29 @@
         <div class="absolute inset-0 bg-white/0 backdrop-blur-0 transition-all duration-500" id="nav-bg"></div>
         <div class="container mx-auto px-6 relative z-10 flex justify-between items-center">
             <a href="#" class="flex items-center gap-3 group">
-                <img src="logo-putih-muallimin.webp" alt="Logo" class="h-10 w-auto group-hover:rotate-12 transition-transform duration-500">
+                <img src="logo-putih-muallimin.webp" alt="Logo" class="h-10 w-auto group-hover:rotate-12 transition-transform duration-500 filter drop-shadow-md">
                 <div class="leading-none">
-                    <h1 class="font-display font-bold text-xl tracking-tight text-white transition-colors duration-300" id="brand-text">MU'ALLIMIN</h1>
+                    <h1 class="font-display font-bold text-xl tracking-tight text-white transition-colors duration-300 drop-shadow-md" id="brand-text">MU'ALLIMIN</h1>
+                    <p class="text-[9px] text-white/80 uppercase tracking-[0.2em] hidden sm:block">Yogyakarta</p>
                 </div>
             </a>
 
-            <div class="hidden lg:flex items-center gap-1 p-1 rounded-full bg-white/10 backdrop-blur-md border border-white/10 shadow-lg px-2">
-                <a href="#home" class="px-5 py-2 rounded-full text-sm font-medium text-white hover:bg-white/20 transition-all">Beranda</a>
-                <a href="#about" class="px-5 py-2 rounded-full text-sm font-medium text-white hover:bg-white/20 transition-all">Tentang</a>
-                <a href="#programs" class="px-5 py-2 rounded-full text-sm font-medium text-white hover:bg-white/20 transition-all">Program</a>
-                <a href="#news" class="px-5 py-2 rounded-full text-sm font-medium text-white hover:bg-white/20 transition-all">Berita</a>
-                <a href="#ppdb" class="px-5 py-2 rounded-full text-sm font-medium text-brand-blue bg-brand-accent hover:bg-yellow-300 transition-all shadow-md">
+            <div class="hidden lg:flex items-center gap-1 p-1.5 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl">
+                <a href="#home" class="px-6 py-2.5 rounded-full text-sm font-semibold text-white hover:bg-white/20 transition-all">Beranda</a>
+                <a href="#about" class="px-6 py-2.5 rounded-full text-sm font-medium text-white/90 hover:bg-white/20 hover:text-white transition-all">Tentang</a>
+                <a href="#programs" class="px-6 py-2.5 rounded-full text-sm font-medium text-white/90 hover:bg-white/20 hover:text-white transition-all">Program</a>
+                <a href="#news" class="px-6 py-2.5 rounded-full text-sm font-medium text-white/90 hover:bg-white/20 hover:text-white transition-all">Berita</a>
+                <a href="#ppdb" class="ml-2 px-6 py-2.5 rounded-full text-sm font-bold text-brand-blue bg-brand-accent hover:bg-yellow-300 hover:shadow-lg transition-all transform hover:-translate-y-0.5">
                     PPDB 2026
                 </a>
             </div>
 
             <div class="flex items-center gap-3">
-                <button onclick="toggleDarkMode()" class="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-all" aria-label="Toggle Theme">
+                <button onclick="toggleDarkMode()" class="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/30 transition-all active:scale-95" aria-label="Toggle Theme">
                     <i class="fas fa-moon dark:hidden"></i>
                     <i class="fas fa-sun hidden dark:block text-yellow-300"></i>
                 </button>
-                <button class="lg:hidden text-white text-2xl" id="mobile-toggle"><i class="fas fa-bars"></i></button>
+                <button class="lg:hidden text-white text-2xl drop-shadow-md" id="mobile-toggle"><i class="fas fa-bars"></i></button>
             </div>
         </div>
     </nav>
@@ -203,75 +256,77 @@
     <header id="home" class="relative min-h-screen flex items-center overflow-hidden">
         <div class="absolute inset-0 z-0 scale-105" id="hero-bg">
             <img src="Gemini_Generated_Image_spb1lospb1lospb1.png" class="w-full h-full object-cover" alt="Background">
-            <div class="absolute inset-0 bg-gradient-to-r from-brand-dark/95 via-brand-blue/80 to-transparent mix-blend-multiply"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-blue/95 via-brand-blue/70 to-transparent mix-blend-multiply"></div>
             <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-50 dark:to-brand-dark"></div>
+            <div class="absolute top-20 left-20 w-72 h-72 bg-purple-500 rounded-full mix-blend-screen filter blur-[100px] opacity-30 animate-blob"></div>
+            <div class="absolute bottom-20 right-20 w-72 h-72 bg-brand-accent rounded-full mix-blend-screen filter blur-[100px] opacity-20 animate-blob animation-delay-2000"></div>
         </div>
 
-        <div class="container mx-auto px-6 relative z-10 pt-20 grid lg:grid-cols-12 gap-12 items-center">
+        <div class="container mx-auto px-6 relative z-10 pt-20 grid lg:grid-cols-12 gap-16 items-center">
             
             <div class="lg:col-span-7 space-y-8" data-aos="fade-up" data-aos-duration="1200">
-                <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full glass-panel border-l-4 border-l-brand-accent">
-                    <span class="text-brand-accent text-lg"><i class="fas fa-sun" id="greeting-icon"></i></span>
-                    <span class="text-sm font-semibold text-slate-800 dark:text-white" id="greeting-text">Selamat Pagi, Calon Pemimpin</span>
+                <div class="inline-flex items-center gap-3 px-5 py-2.5 rounded-full glass-panel border-l-4 border-l-brand-accent shadow-lg animate-float">
+                    <span class="text-brand-accent text-lg filter drop-shadow-md"><i class="fas fa-sun" id="greeting-icon"></i></span>
+                    <span class="text-sm font-bold text-slate-800 dark:text-white tracking-wide" id="greeting-text">Selamat Pagi, Calon Pemimpin</span>
                 </div>
                 
-                <h1 class="text-5xl lg:text-7xl font-display font-bold text-white leading-[0.9] tracking-tight">
+                <h1 class="text-5xl lg:text-7xl font-display font-extrabold text-white leading-[0.95] tracking-tight drop-shadow-xl">
                     Future <br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-yellow-200 animate-gradient-x">Leaders</span> <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent via-yellow-200 to-brand-accent animate-gradient-x">Leaders</span> <br>
                     Start Here.
                 </h1>
                 
-                <p class="text-xl text-slate-300 font-light max-w-xl leading-relaxed">
-                    Sistem pendidikan adaptif yang memadukan <strong class="text-white font-medium">Kecerdasan Buatan</strong>, <strong class="text-white font-medium">Sains</strong>, dan <strong class="text-white font-medium">Nilai Keislaman</strong> dalam ekosistem berasrama.
+                <p class="text-xl text-blue-100 font-light max-w-xl leading-relaxed">
+                    Sistem pendidikan adaptif yang memadukan <strong class="text-white font-semibold">AI</strong>, <strong class="text-white font-semibold">Sains</strong>, dan <strong class="text-white font-semibold">Nilai Keislaman</strong> dalam ekosistem berasrama modern.
                 </p>
 
                 <div class="flex flex-wrap gap-4 pt-4">
-                    <button class="px-8 py-4 rounded-full bg-white text-brand-blue font-bold shadow-[0_0_40px_-10px_rgba(255,255,255,0.5)] hover:scale-105 transition-transform flex items-center gap-3 group">
+                    <button class="px-8 py-4 rounded-full bg-white text-brand-blue font-bold shadow-[0_0_40px_-10px_rgba(255,255,255,0.6)] hover:shadow-[0_0_60px_-10px_rgba(255,255,255,0.8)] hover:scale-105 transition-all flex items-center gap-3 group">
                         <span>Jelajahi Virtual Tour</span>
-                        <i class="fas fa-vr-cardboard text-xl group-hover:rotate-12 transition-transform"></i>
+                        <i class="fas fa-vr-cardboard text-xl group-hover:rotate-12 transition-transform text-brand-primary"></i>
                     </button>
-                    <button class="px-8 py-4 rounded-full glass-panel text-white font-bold hover:bg-white/20 transition-colors flex items-center gap-3">
-                        <i class="fas fa-play-circle text-xl text-brand-accent"></i>
-                        <span>Video Profil 2026</span>
+                    <button class="px-8 py-4 rounded-full glass-panel text-white font-bold hover:bg-white/20 transition-colors flex items-center gap-3 border border-white/30">
+                        <div class="w-8 h-8 rounded-full bg-white text-brand-primary flex items-center justify-center pl-0.5"><i class="fas fa-play text-xs"></i></div>
+                        <span>Profil 2026</span>
                     </button>
                 </div>
             </div>
 
             <div class="lg:col-span-5 relative perspective-container" data-aos="fade-left" data-aos-delay="200">
-                <div class="tilt-card glass-panel p-8 rounded-3xl relative overflow-hidden group hover:shadow-[0_20px_60px_-15px_rgba(254,205,47,0.3)] transition-shadow duration-500" id="hero-card">
-                    <div class="absolute inset-0 border-2 border-transparent rounded-3xl bg-gradient-to-br from-white/40 to-transparent opacity-50 pointer-events-none"></div>
+                <div class="tilt-card glass-panel p-8 rounded-[2rem] relative overflow-hidden group hover:shadow-[0_20px_60px_-15px_rgba(254,205,47,0.3)] transition-shadow duration-500" id="hero-card">
+                    <div class="absolute inset-0 border-2 border-transparent rounded-[2rem] bg-gradient-to-br from-white/60 to-transparent opacity-50 pointer-events-none"></div>
                     
                     <div class="tilt-content relative z-10">
-                        <div class="flex justify-between items-start mb-6">
+                        <div class="flex justify-between items-start mb-8">
                             <div>
-                                <h3 class="text-2xl font-bold text-slate-800 dark:text-white mb-1">Pendaftaran Cepat</h3>
-                                <p class="text-xs text-slate-500 dark:text-slate-300">AI-Assisted Registration</p>
+                                <h3 class="text-2xl font-bold text-slate-800 dark:text-white mb-1">Cek Kelayakan</h3>
+                                <p class="text-xs text-slate-500 dark:text-slate-300 flex items-center gap-1"><i class="fas fa-sparkles text-brand-accent"></i> AI-Assisted Assessment</p>
                             </div>
-                            <div class="w-10 h-10 rounded-full bg-brand-light flex items-center justify-center text-brand-primary animate-pulse-slow">
-                                <i class="fas fa-fingerprint text-xl"></i>
+                            <div class="w-12 h-12 rounded-2xl bg-brand-light/50 backdrop-blur flex items-center justify-center text-brand-primary border border-white/50">
+                                <i class="fas fa-fingerprint text-2xl"></i>
                             </div>
                         </div>
 
-                        <form class="space-y-5">
+                        <form class="space-y-6">
                             <div class="group/input relative">
-                                <input type="text" required class="peer w-full bg-white/50 dark:bg-slate-900/50 border-0 rounded-xl px-4 py-4 pt-6 text-slate-800 dark:text-white outline-none focus:ring-2 focus:ring-brand-accent transition-all placeholder-transparent" placeholder="Nama" id="inputName">
-                                <label for="inputName" class="absolute left-4 top-1 text-[10px] uppercase font-bold text-slate-400 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-placeholder-shown:font-normal peer-focus:top-1 peer-focus:text-[10px] peer-focus:font-bold">Nama Lengkap Santri</label>
+                                <input type="text" required class="peer w-full bg-slate-50/50 dark:bg-slate-900/50 border-b-2 border-slate-200 dark:border-slate-700 px-0 py-3 text-lg font-medium text-slate-800 dark:text-white outline-none focus:border-brand-primary transition-all placeholder-transparent" placeholder="Nama" id="inputName">
+                                <label for="inputName" class="absolute left-0 top-3 text-slate-400 transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-4 peer-focus:text-xs peer-focus:font-bold peer-focus:text-brand-primary cursor-text">Nama Lengkap Santri</label>
                             </div>
 
                             <div class="group/input relative">
-                                <div class="absolute right-3 top-3 text-slate-400 cursor-pointer hover:text-brand-primary" onclick="activateVoiceUI()" title="Voice Input">
-                                    <i class="fas fa-microphone"></i>
+                                <div class="absolute right-0 top-3 text-slate-400 cursor-pointer hover:text-brand-primary transition-colors" onclick="activateVoiceUI()" title="Gunakan Suara">
+                                    <i class="fas fa-microphone text-lg hover:scale-110 transition-transform"></i>
                                 </div>
-                                <input type="text" required class="peer w-full bg-white/50 dark:bg-slate-900/50 border-0 rounded-xl px-4 py-4 pt-6 text-slate-800 dark:text-white outline-none focus:ring-2 focus:ring-brand-accent transition-all placeholder-transparent" placeholder="Asal" id="inputOrigin">
-                                <label for="inputOrigin" class="absolute left-4 top-1 text-[10px] uppercase font-bold text-slate-400 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-placeholder-shown:font-normal peer-focus:top-1 peer-focus:text-[10px] peer-focus:font-bold">Asal Sekolah / Kota</label>
+                                <input type="text" required class="peer w-full bg-slate-50/50 dark:bg-slate-900/50 border-b-2 border-slate-200 dark:border-slate-700 px-0 py-3 text-lg font-medium text-slate-800 dark:text-white outline-none focus:border-brand-primary transition-all placeholder-transparent" placeholder="Asal" id="inputOrigin">
+                                <label for="inputOrigin" class="absolute left-0 top-3 text-slate-400 transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-4 peer-focus:text-xs peer-focus:font-bold peer-focus:text-brand-primary cursor-text">Asal Sekolah / Kota</label>
                             </div>
 
-                            <button type="button" class="w-full py-4 rounded-xl bg-gradient-to-r from-brand-primary to-brand-blue text-white font-bold shadow-lg relative overflow-hidden group-btn" onclick="submitForm()">
+                            <button type="button" class="w-full py-4 rounded-xl btn-shimmer text-white font-bold shadow-lg relative overflow-hidden group/btn hover:shadow-xl transition-all mt-4" onclick="submitForm()">
                                 <span class="relative z-10 flex justify-center items-center gap-2">
-                                    Cek Kelayakan via AI <i class="fas fa-magic"></i>
+                                    Analisis dengan AI <i class="fas fa-magic group-hover/btn:rotate-12 transition-transform"></i>
                                 </span>
-                                <div class="absolute inset-0 bg-brand-accent transform scale-x-0 group-btn-hover:scale-x-100 transition-transform origin-left duration-300"></div>
                             </button>
+                            <p class="text-[10px] text-center text-slate-500 dark:text-slate-400">Dengan melanjutkan, Anda menyetujui <a href="#" class="underline hover:text-brand-primary">Kebijakan Privasi</a> kami.</p>
                         </form>
                     </div>
                 </div>
@@ -279,9 +334,9 @@
         </div>
     </header>
 
-    <section class="py-12 relative z-20 -mt-10">
+    <section class="py-12 relative z-20 -mt-16">
         <div class="container mx-auto px-6">
-            <div class="glass-panel rounded-3xl p-8 shadow-2xl bg-white/40 dark:bg-slate-900/40 backdrop-blur-2xl grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-slate-200 dark:divide-slate-700/50" data-aos="fade-up">
+            <div class="glass-panel rounded-[2rem] p-10 shadow-2xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-2xl grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-slate-200/50 dark:divide-slate-700/50 border border-white/50 dark:border-slate-700" data-aos="fade-up">
                 <div class="text-center group cursor-default">
                     <div class="text-4xl lg:text-5xl font-mono font-bold text-transparent bg-clip-text bg-gradient-to-b from-brand-primary to-brand-blue dark:from-white dark:to-slate-400 mb-2 group-hover:scale-110 transition-transform">
                         <span class="count-up" data-target="1918">0</span>
@@ -304,7 +359,7 @@
                     <div class="text-4xl lg:text-5xl font-mono font-bold text-transparent bg-clip-text bg-gradient-to-b from-brand-primary to-brand-blue dark:from-white dark:to-slate-400 mb-2 group-hover:scale-110 transition-transform">
                         <span class="count-up" data-target="98">0</span>%
                     </div>
-                    <div class="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">University Acceptance</div>
+                    <div class="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">Univ Acceptance</div>
                 </div>
             </div>
         </div>
@@ -312,36 +367,38 @@
 
     <section id="about" class="py-24 relative overflow-hidden">
         <div class="absolute inset-0 bg-brand-light/30 dark:bg-brand-dark/50"></div>
-        <div class="absolute -right-20 top-20 w-96 h-96 bg-brand-accent/20 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div class="absolute -right-20 top-20 w-96 h-96 bg-brand-accent/20 rounded-full blur-[100px] animate-pulse-slow"></div>
         
         <div class="container mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-16 items-center">
-            <div class="relative" data-aos="fade-right">
-                <div class="tilt-card">
-                    <img src="https://muallimin.my.id/wp-content/uploads/2021/10/image19.jpeg" alt="Historical" class="rounded-3xl shadow-2xl dark:opacity-80 relative z-10 border-4 border-white/20">
-                    <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-brand-primary rounded-full blur-2xl z-0 opacity-50"></div>
+            <div class="relative group" data-aos="fade-right">
+                <div class="tilt-card relative z-10">
+                    <img src="https://muallimin.my.id/wp-content/uploads/2021/10/image19.jpeg" alt="Historical" class="rounded-[2rem] shadow-2xl dark:opacity-90 border-4 border-white/40 dark:border-white/10 group-hover:scale-[1.02] transition-transform duration-700">
                 </div>
-                <div class="absolute -bottom-6 -right-6 glass-panel p-4 rounded-2xl animate-float z-20">
-                    <div class="flex items-center gap-3">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Ahmad_Dahlan.jpg" class="w-12 h-12 rounded-full object-cover border-2 border-brand-accent">
+                <div class="absolute -inset-4 bg-brand-primary/30 rounded-[2rem] blur-2xl -z-10 group-hover:bg-brand-accent/30 transition-colors duration-700"></div>
+                
+                <div class="absolute -bottom-8 -right-8 glass-panel p-5 rounded-2xl animate-float z-20 shadow-xl border border-white/50">
+                    <div class="flex items-center gap-4">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Ahmad_Dahlan.jpg" class="w-14 h-14 rounded-full object-cover border-2 border-brand-accent shadow-md">
                         <div>
-                            <p class="text-xs font-bold text-slate-500 uppercase">Founder</p>
-                            <p class="font-bold text-slate-800 dark:text-white">K.H. Ahmad Dahlan</p>
+                            <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Founder Vision</p>
+                            <p class="font-bold text-lg text-slate-800 dark:text-white font-serif">K.H. Ahmad Dahlan</p>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div data-aos="fade-left">
-                <i class="fas fa-quote-left text-6xl text-brand-primary/20 absolute -top-10 -left-10"></i>
-                <h2 class="text-3xl lg:text-4xl font-serif italic leading-relaxed text-slate-700 dark:text-slate-200 mb-8 relative z-10">
-                    "...hendaklah warga muda-mudi muhammadiyah terus menjalani dan menempuh pendidikan serta menuntut ilmu pengetahuan dimana dan kemana saja."
+                <i class="fas fa-quote-left text-7xl text-brand-primary/10 absolute -top-10 -left-10 transform -rotate-12"></i>
+                <h2 class="text-3xl lg:text-5xl font-serif italic leading-relaxed text-slate-800 dark:text-slate-100 mb-8 relative z-10 drop-shadow-sm">
+                    "...hendaklah warga muda-mudi muhammadiyah terus menjalani dan menempuh pendidikan serta menuntut ilmu pengetahuan..."
                 </h2>
                 <div class="space-y-6 text-slate-600 dark:text-slate-400 text-lg leading-relaxed">
                     <p>
-                        Madrasah Mu'allimin Muhammadiyah Yogyakarta bukan sekadar sekolah, melainkan kawah candradimuka bagi kader persyarikatan. Sejak 1918, kami berkomitmen mencetak intelektual ulama yang siap menjawab tantangan zaman.
+                        Sejak 1918, Madrasah Mu'allimin Muhammadiyah Yogyakarta menjadi <span class="text-brand-primary font-bold bg-brand-light/50 px-1 rounded">kawah candradimuka</span> bagi kader persyarikatan. Kami berkomitmen mencetak intelektual ulama yang adaptif terhadap perubahan zaman.
                     </p>
-                    <a href="#" class="inline-flex items-center gap-2 text-brand-primary dark:text-brand-accent font-bold hover:gap-4 transition-all">
-                        Pelajari Sejarah Kami <i class="fas fa-arrow-right"></i>
+                    <a href="#" class="inline-flex items-center gap-2 text-brand-primary dark:text-brand-accent font-bold hover:gap-4 transition-all group">
+                        <span class="border-b-2 border-transparent group-hover:border-brand-primary transition-colors">Pelajari Sejarah Kami</span> 
+                        <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
@@ -351,53 +408,62 @@
     <section id="programs" class="py-24 relative bg-white dark:bg-brand-dark/50">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16" data-aos="fade-up">
-                <span class="text-brand-accent font-mono text-sm tracking-widest uppercase">Kurikulum 2026</span>
-                <h2 class="text-4xl lg:text-5xl font-display font-bold mt-3 text-slate-900 dark:text-white">Pendidikan Masa Depan</h2>
+                <span class="text-brand-accent font-mono text-sm tracking-[0.3em] uppercase font-bold">Kurikulum 2026</span>
+                <h2 class="text-4xl lg:text-6xl font-display font-bold mt-3 text-slate-900 dark:text-white">Pendidikan Masa Depan</h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 h-auto md:h-[600px]">
-                <div class="md:col-span-2 glass-panel rounded-3xl p-8 relative overflow-hidden group cursor-pointer transition-transform hover:scale-[1.01]" data-aos="fade-up">
-                    <div class="absolute top-0 right-0 w-64 h-64 bg-brand-accent/20 rounded-full blur-3xl group-hover:bg-brand-accent/30 transition-colors"></div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(250px,auto)]">
+                <div class="md:col-span-2 glass-panel rounded-[2rem] p-8 relative overflow-hidden group cursor-pointer border border-slate-100 dark:border-slate-800" data-aos="fade-up">
+                    <div class="absolute top-0 right-0 w-80 h-80 bg-blue-400/10 rounded-full blur-[80px] group-hover:bg-blue-400/20 transition-colors"></div>
                     <div class="relative z-10 h-full flex flex-col justify-between">
                         <div>
-                            <div class="w-12 h-12 rounded-xl bg-brand-blue text-white flex items-center justify-center text-2xl mb-6">
+                            <div class="w-14 h-14 rounded-2xl bg-brand-blue text-white flex items-center justify-center text-2xl mb-6 shadow-lg shadow-brand-blue/20">
                                 <i class="fas fa-globe-asia"></i>
                             </div>
-                            <h3 class="text-3xl font-bold text-slate-800 dark:text-white mb-2">Kelas Internasional Cambridge</h3>
-                            <p class="text-slate-600 dark:text-slate-300 max-w-md">Persiapan studi lanjut ke Timur Tengah, Eropa, dan Australia dengan kurikulum hybrid dan native speaker in-house.</p>
+                            <h3 class="text-3xl font-bold text-slate-800 dark:text-white mb-3 group-hover:text-brand-primary transition-colors">Kelas Internasional Cambridge</h3>
+                            <p class="text-slate-600 dark:text-slate-300 max-w-md text-lg leading-relaxed">Persiapan studi lanjut global dengan kurikulum hybrid dan native speaker in-house untuk wawasan tanpa batas.</p>
                         </div>
-                        <div class="flex items-center gap-2 text-brand-primary font-bold mt-8">
-                            <span>Lihat Kurikulum</span> <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                        <div class="flex items-center gap-3 text-brand-primary font-bold mt-8 group/link">
+                            <span class="group-hover/link:underline decoration-2 underline-offset-4">Lihat Kurikulum</span> 
+                            <div class="w-8 h-8 rounded-full bg-brand-light flex items-center justify-center group-hover/link:bg-brand-primary group-hover/link:text-white transition-all">
+                                <i class="fas fa-arrow-right -rotate-45 group-hover/link:rotate-0 transition-transform"></i>
+                            </div>
                         </div>
                     </div>
-                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800" class="absolute bottom-0 right-0 w-1/2 h-full object-cover mask-image-linear opacity-50 group-hover:opacity-80 transition-opacity rounded-tl-[100px]">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800" class="absolute bottom-0 right-0 w-2/5 h-full object-cover mask-image-linear opacity-60 group-hover:opacity-80 transition-opacity rounded-l-[100px] grayscale group-hover:grayscale-0 duration-500">
                 </div>
 
-                <div class="glass-panel rounded-3xl p-8 relative overflow-hidden group hover:bg-brand-primary hover:text-white transition-colors duration-500" data-aos="fade-up" data-aos-delay="100">
-                    <div class="relative z-10">
-                        <i class="fas fa-quran text-4xl text-brand-primary group-hover:text-brand-accent mb-6 transition-colors"></i>
-                        <h3 class="text-2xl font-bold text-slate-800 dark:text-white group-hover:text-white mb-4">Tahfidz & Ulama Tarjih</h3>
-                        <p class="text-slate-600 dark:text-slate-300 group-hover:text-blue-100 text-sm leading-relaxed">
-                            Program akselerasi hafalan 30 juz bersanad dengan pendalaman kitab kuning digital dan metodologi fatwa kontemporer.
-                        </p>
+                <div class="glass-panel rounded-[2rem] p-8 relative overflow-hidden group hover:bg-brand-primary hover:border-brand-primary transition-all duration-500" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative z-10 flex flex-col h-full justify-between">
+                        <div>
+                            <i class="fas fa-quran text-5xl text-brand-primary group-hover:text-brand-accent mb-6 transition-colors drop-shadow-sm"></i>
+                            <h3 class="text-2xl font-bold text-slate-800 dark:text-white group-hover:text-white mb-4">Tahfidz & Ulama Tarjih</h3>
+                            <p class="text-slate-600 dark:text-slate-300 group-hover:text-blue-100 text-sm leading-relaxed">
+                                Akselerasi hafalan 30 juz bersanad dengan pendalaman kitab kuning digital.
+                            </p>
+                        </div>
+                        <div class="w-full h-1 bg-slate-100 group-hover:bg-white/20 mt-4 rounded-full overflow-hidden">
+                            <div class="h-full w-1/3 bg-brand-accent rounded-full"></div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="md:col-span-3 glass-panel rounded-3xl p-8 flex flex-col md:flex-row items-center gap-8 group" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-full md:w-1/3 aspect-video rounded-2xl overflow-hidden relative">
+                <div class="md:col-span-3 glass-panel rounded-[2rem] p-8 flex flex-col md:flex-row items-center gap-10 group hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-full md:w-1/3 aspect-video rounded-2xl overflow-hidden relative shadow-lg group-hover:shadow-2xl transition-all">
                         <img src="https://muallimin.sch.id/wp-content/uploads/2023/07/DJI_0444-scaled.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                         <div class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-colors">
-                            <div class="w-12 h-12 rounded-full bg-white/30 backdrop-blur flex items-center justify-center text-white"><i class="fas fa-play"></i></div>
+                            <div class="w-14 h-14 rounded-full bg-white/30 backdrop-blur flex items-center justify-center text-white border border-white/50 group-hover:scale-110 transition-transform"><i class="fas fa-play ml-1"></i></div>
                         </div>
                     </div>
                     <div class="flex-1">
-                        <h3 class="text-2xl font-bold text-slate-800 dark:text-white mb-2">STEM & Robotik</h3>
-                        <p class="text-slate-600 dark:text-slate-300 mb-4">Mengembangkan inovasi teknologi tepat guna berbasis IoT dan AI. Juara 1 Robotik Internasional 2024.</p>
-                        <div class="flex gap-2">
-                            <span class="px-3 py-1 rounded-md bg-slate-100 dark:bg-slate-700 text-xs font-bold text-slate-600 dark:text-slate-300">Coding</span>
-                            <span class="px-3 py-1 rounded-md bg-slate-100 dark:bg-slate-700 text-xs font-bold text-slate-600 dark:text-slate-300">IoT</span>
-                            <span class="px-3 py-1 rounded-md bg-slate-100 dark:bg-slate-700 text-xs font-bold text-slate-600 dark:text-slate-300">Drone</span>
+                        <div class="flex gap-2 mb-4">
+                            <span class="px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 text-xs font-bold border border-blue-200 dark:border-blue-800">Coding</span>
+                            <span class="px-3 py-1 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-300 text-xs font-bold border border-purple-200 dark:border-purple-800">IoT</span>
+                            <span class="px-3 py-1 rounded-full bg-teal-100 dark:bg-teal-900/30 text-teal-600 dark:text-teal-300 text-xs font-bold border border-teal-200 dark:border-teal-800">Drone</span>
                         </div>
+                        <h3 class="text-3xl font-bold text-slate-800 dark:text-white mb-3">STEM & Robotik Center</h3>
+                        <p class="text-slate-600 dark:text-slate-300 mb-6 text-lg">Mengembangkan inovasi teknologi tepat guna berbasis IoT dan AI. Juara 1 Robotik Internasional 2024 di Jepang.</p>
+                        <button class="text-sm font-bold text-slate-500 uppercase tracking-widest hover:text-brand-primary transition-colors">Lihat Fasilitas Lab &rarr;</button>
                     </div>
                 </div>
             </div>
@@ -408,135 +474,147 @@
         <div class="container mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-end mb-12" data-aos="fade-in">
                 <div>
-                    <h2 class="text-3xl font-display font-bold text-slate-900 dark:text-white">Berita Terkini</h2>
-                    <p class="text-slate-500 mt-2">Update kegiatan santri dan prestasi madrasah.</p>
+                    <h2 class="text-4xl font-display font-bold text-slate-900 dark:text-white">Berita Terkini</h2>
+                    <p class="text-slate-500 mt-2 text-lg">Update kegiatan santri dan prestasi madrasah.</p>
                 </div>
-                <button class="px-6 py-2 rounded-full border border-slate-300 dark:border-slate-700 text-sm font-bold hover:bg-slate-100 dark:hover:bg-slate-800 transition">Lihat Semua</button>
+                <button class="px-8 py-3 rounded-full border border-slate-300 dark:border-slate-700 text-sm font-bold hover:bg-slate-100 dark:hover:bg-slate-800 transition shadow-sm hover:shadow">Lihat Semua Arsip</button>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="group glass-panel p-4 rounded-3xl hover:bg-white dark:hover:bg-slate-800 transition-colors" data-aos="fade-up">
-                    <div class="aspect-[4/3] rounded-2xl overflow-hidden mb-4">
-                        <img src="https://muallimin.my.id/wp-content/uploads/2021/09/MUALIMIN-Aerial-view-01_REV-01-1-scaled.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="group glass-panel p-5 rounded-[2rem] hover:bg-white dark:hover:bg-slate-800 transition-colors" data-aos="fade-up">
+                    <div class="aspect-[4/3] rounded-2xl overflow-hidden mb-5 relative">
+                        <img src="https://muallimin.my.id/wp-content/uploads/2021/09/MUALIMIN-Aerial-view-01_REV-01-1-scaled.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded-lg text-xs font-bold text-brand-primary shadow-sm">PRESTASI</div>
                     </div>
-                    <span class="text-xs font-bold text-brand-primary uppercase tracking-wider">Prestasi</span>
-                    <h3 class="font-bold text-lg mt-2 mb-2 text-slate-800 dark:text-white line-clamp-2 group-hover:text-brand-primary transition-colors">Juara Umum Olimpiade Sains Nasional 2025</h3>
-                    <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">Kontingen Mu'allimin berhasil memborong 5 medali emas pada ajang bergengsi...</p>
+                    <h3 class="font-bold text-xl mt-2 mb-3 text-slate-800 dark:text-white line-clamp-2 group-hover:text-brand-primary transition-colors leading-tight">Juara Umum Olimpiade Sains Nasional 2025</h3>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-3 leading-relaxed">Kontingen Mu'allimin berhasil memborong 5 medali emas pada ajang bergengsi tingkat nasional...</p>
                 </div>
 
-                <div class="group glass-panel p-4 rounded-3xl hover:bg-white dark:hover:bg-slate-800 transition-colors" data-aos="fade-up" data-aos-delay="100">
-                    <div class="aspect-[4/3] rounded-2xl overflow-hidden mb-4">
-                        <img src="https://muallimin.sch.id/wp-content/uploads/2023/07/DJI_0444-scaled.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                <div class="group glass-panel p-5 rounded-[2rem] hover:bg-white dark:hover:bg-slate-800 transition-colors" data-aos="fade-up" data-aos-delay="100">
+                    <div class="aspect-[4/3] rounded-2xl overflow-hidden mb-5 relative">
+                        <img src="https://muallimin.sch.id/wp-content/uploads/2023/07/DJI_0444-scaled.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded-lg text-xs font-bold text-brand-primary shadow-sm">GLOBAL</div>
                     </div>
-                    <span class="text-xs font-bold text-brand-primary uppercase tracking-wider">International</span>
-                    <h3 class="font-bold text-lg mt-2 mb-2 text-slate-800 dark:text-white line-clamp-2 group-hover:text-brand-primary transition-colors">Student Exchange Program: Japan 2026</h3>
-                    <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">Pelepasan 20 santri untuk mengikuti program pertukaran pelajar di Tokyo...</p>
+                    <h3 class="font-bold text-xl mt-2 mb-3 text-slate-800 dark:text-white line-clamp-2 group-hover:text-brand-primary transition-colors leading-tight">Student Exchange Program: Japan 2026</h3>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-3 leading-relaxed">Pelepasan 20 santri untuk mengikuti program pertukaran pelajar di Tokyo High School...</p>
                 </div>
 
-                <div class="group glass-panel p-4 rounded-3xl hover:bg-white dark:hover:bg-slate-800 transition-colors" data-aos="fade-up" data-aos-delay="200">
-                    <div class="aspect-[4/3] rounded-2xl overflow-hidden mb-4">
-                        <img src="https://muallimin.my.id/wp-content/uploads/2021/10/image19.jpeg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                <div class="group glass-panel p-5 rounded-[2rem] hover:bg-white dark:hover:bg-slate-800 transition-colors" data-aos="fade-up" data-aos-delay="200">
+                    <div class="aspect-[4/3] rounded-2xl overflow-hidden mb-5 relative">
+                        <img src="https://muallimin.my.id/wp-content/uploads/2021/10/image19.jpeg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded-lg text-xs font-bold text-brand-primary shadow-sm">KAMPUS</div>
                     </div>
-                    <span class="text-xs font-bold text-brand-primary uppercase tracking-wider">Keasramaan</span>
-                    <h3 class="font-bold text-lg mt-2 mb-2 text-slate-800 dark:text-white line-clamp-2 group-hover:text-brand-primary transition-colors">Peresmian Gedung Asrama Digital Baru</h3>
-                    <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">Fasilitas baru dengan smart room system untuk menunjang kenyamanan santri...</p>
+                    <h3 class="font-bold text-xl mt-2 mb-3 text-slate-800 dark:text-white line-clamp-2 group-hover:text-brand-primary transition-colors leading-tight">Peresmian Gedung Asrama Digital Baru</h3>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-3 leading-relaxed">Fasilitas baru dengan smart room system untuk menunjang kenyamanan santri...</p>
                 </div>
 
-                <div class="glass-panel p-6 rounded-3xl bg-gradient-to-br from-brand-primary to-brand-blue text-white flex flex-col justify-center" data-aos="fade-up" data-aos-delay="300">
-                    <i class="fas fa-bullhorn text-4xl mb-4 text-brand-accent"></i>
-                    <h3 class="font-bold text-xl mb-2">Pengumuman PPDB</h3>
-                    <p class="text-blue-100 text-sm mb-6">Hasil seleksi gelombang 1 akan diumumkan pada tanggal 10 November 2025.</p>
-                    <button class="w-full py-3 rounded-xl bg-white text-brand-primary font-bold hover:bg-brand-accent hover:text-brand-blue transition-colors">Cek Hasil</button>
+                <div class="glass-panel p-8 rounded-[2rem] bg-gradient-to-br from-brand-primary to-brand-blue text-white flex flex-col justify-center relative overflow-hidden group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="absolute -top-10 -right-10 w-32 h-32 bg-white/10 rounded-full blur-2xl group-hover:bg-white/20 transition-colors"></div>
+                    
+                    <i class="fas fa-bullhorn text-4xl mb-6 text-brand-accent animate-pulse-slow"></i>
+                    <h3 class="font-bold text-2xl mb-2">Pengumuman PPDB</h3>
+                    <p class="text-blue-100 text-sm mb-8 leading-relaxed">Hasil seleksi gelombang 1 akan diumumkan pada tanggal 10 November 2025 pukul 09:00 WIB.</p>
+                    <button class="w-full py-4 rounded-xl bg-white text-brand-primary font-bold hover:bg-brand-accent hover:text-brand-blue transition-colors shadow-lg">Cek Hasil Seleksi</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="ppdb" class="py-24 relative overflow-hidden bg-slate-900 text-white">
-        <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+    <section id="ppdb" class="py-32 relative overflow-hidden bg-brand-dark text-white">
+        <div class="absolute inset-0 bg-brand-blue opacity-50"></div>
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 mix-blend-overlay"></div>
+        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-brand-dark via-transparent to-transparent"></div>
+        
         <div class="container mx-auto px-6 relative z-10 text-center">
-            <div class="inline-block p-2 px-4 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm text-brand-accent text-sm font-bold mb-6 animate-pulse">
+            <div class="inline-block p-2 px-5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm text-brand-accent text-sm font-bold mb-8 animate-bounce">
                 <i class="fas fa-clock mr-2"></i> Pendaftaran Gelombang 1 Segera Ditutup
             </div>
             
-            <h2 class="text-4xl md:text-6xl font-display font-bold mb-8">Siap Bergabung dengan <br> Generasi Pemimpin?</h2>
+            <h2 class="text-5xl md:text-7xl font-display font-bold mb-8 tracking-tight">
+                Siap Bergabung dengan <br> 
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">Generasi Pemimpin?</span>
+            </h2>
+            
+            <p class="text-xl text-slate-300 max-w-2xl mx-auto mb-12">Bergabunglah dengan komunitas pembelajar global yang berakar pada tradisi keilmuan Islam.</p>
             
             <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <a href="https://spmb.muallimin.sch.id" class="px-10 py-5 bg-brand-accent text-brand-blue font-bold rounded-full shadow-[0_0_30px_rgba(254,205,47,0.4)] hover:scale-105 transition duration-300 text-lg">
-                    Daftar Sekarang
+                <a href="https://spmb.muallimin.sch.id" class="px-12 py-5 bg-brand-accent text-brand-blue font-bold rounded-full shadow-[0_0_50px_rgba(254,205,47,0.5)] hover:shadow-[0_0_80px_rgba(254,205,47,0.7)] hover:scale-105 transition-all duration-300 text-lg relative overflow-hidden group">
+                    <span class="relative z-10">Daftar Sekarang</span>
+                    <div class="absolute inset-0 bg-white/30 transform -skew-x-12 translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
                 </a>
-                <a href="#" class="px-10 py-5 bg-transparent border border-white text-white font-bold rounded-full hover:bg-white hover:text-brand-blue transition duration-300 text-lg flex items-center gap-3">
+                <a href="#" class="px-10 py-5 bg-transparent border border-white/30 text-white font-bold rounded-full hover:bg-white/10 hover:border-white transition-all duration-300 text-lg flex items-center gap-3 backdrop-blur-sm">
                     <i class="fas fa-file-download"></i> Unduh Brosur
                 </a>
             </div>
         </div>
     </section>
 
-    <footer class="pt-20 pb-10 bg-white dark:bg-brand-dark border-t border-slate-200 dark:border-slate-800 transition-colors duration-500">
+    <footer class="pt-24 pb-12 bg-white dark:bg-brand-dark border-t border-slate-200 dark:border-slate-800 transition-colors duration-500">
         <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-                <div class="space-y-6">
-                    <div class="flex items-center gap-3">
-                        <img src="https://muallimin.my.id/wp-content/uploads/2017/01/logo-medium.png" class="h-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
+                <div class="space-y-8">
+                    <div class="flex items-center gap-4">
+                        <img src="https://muallimin.my.id/wp-content/uploads/2017/01/logo-medium.png" class="h-14 filter drop-shadow-sm">
                         <div>
-                            <h4 class="font-bold text-lg text-slate-800 dark:text-white">MU'ALLIMIN</h4>
-                            <p class="text-xs text-slate-500 tracking-wider uppercase">Yogyakarta</p>
+                            <h4 class="font-bold text-xl text-slate-900 dark:text-white tracking-tight">MU'ALLIMIN</h4>
+                            <p class="text-[10px] text-slate-500 tracking-[0.3em] uppercase">Yogyakarta 1918</p>
                         </div>
                     </div>
-                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
-                        Sekolah Kader Muhammadiyah yang mengintegrasikan nilai-nilai keislaman dan kemajuan zaman untuk mencetak pemimpin masa depan.
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-loose">
+                        Sekolah Kader Muhammadiyah yang mengintegrasikan nilai-nilai keislaman dan kemajuan zaman untuk mencetak pemimpin masa depan yang mencerahkan semesta.
                     </p>
                     <div class="flex gap-4">
-                        <a href="#" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-blue-600 hover:text-white transition-all"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-pink-600 hover:text-white transition-all"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-red-600 hover:text-white transition-all"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:bg-blue-600 hover:text-white transition-all shadow-sm hover:shadow-lg"><i class="fab fa-facebook-f text-lg"></i></a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:bg-pink-600 hover:text-white transition-all shadow-sm hover:shadow-lg"><i class="fab fa-instagram text-lg"></i></a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:bg-red-600 hover:text-white transition-all shadow-sm hover:shadow-lg"><i class="fab fa-youtube text-lg"></i></a>
                     </div>
                 </div>
 
                 <div>
-                    <h4 class="font-bold text-slate-800 dark:text-white mb-6">Jelajahi</h4>
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-8 text-lg">Jelajahi</h4>
                     <ul class="space-y-4 text-sm text-slate-500 dark:text-slate-400">
-                        <li><a href="#" class="hover:text-brand-primary transition">Profil Madrasah</a></li>
-                        <li><a href="#" class="hover:text-brand-primary transition">Kurikulum</a></li>
-                        <li><a href="#" class="hover:text-brand-primary transition">Fasilitas</a></li>
-                        <li><a href="#" class="hover:text-brand-primary transition">Prestasi Santri</a></li>
-                        <li><a href="#" class="hover:text-brand-primary transition">Alumni</a></li>
+                        <li><a href="#" class="hover:text-brand-primary transition flex items-center gap-2 group"><span class="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover:bg-brand-primary transition-colors"></span> Profil Madrasah</a></li>
+                        <li><a href="#" class="hover:text-brand-primary transition flex items-center gap-2 group"><span class="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover:bg-brand-primary transition-colors"></span> Kurikulum 2026</a></li>
+                        <li><a href="#" class="hover:text-brand-primary transition flex items-center gap-2 group"><span class="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover:bg-brand-primary transition-colors"></span> Fasilitas Digital</a></li>
+                        <li><a href="#" class="hover:text-brand-primary transition flex items-center gap-2 group"><span class="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover:bg-brand-primary transition-colors"></span> Prestasi Santri</a></li>
+                        <li><a href="#" class="hover:text-brand-primary transition flex items-center gap-2 group"><span class="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover:bg-brand-primary transition-colors"></span> Portal Alumni</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="font-bold text-slate-800 dark:text-white mb-6">Hubungi Kami</h4>
-                    <ul class="space-y-4 text-sm text-slate-500 dark:text-slate-400">
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-map-marker-alt mt-1 text-brand-primary"></i>
-                            <span>Jl. Letjen S. Parman No.68, Wirobrajan, Yogyakarta 55252</span>
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-8 text-lg">Hubungi Kami</h4>
+                    <ul class="space-y-6 text-sm text-slate-500 dark:text-slate-400">
+                        <li class="flex items-start gap-4">
+                            <i class="fas fa-map-marker-alt mt-1 text-brand-primary text-lg"></i>
+                            <span class="leading-relaxed">Jl. Letjen S. Parman No.68,<br>Wirobrajan, Yogyakarta 55252</span>
                         </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fas fa-phone text-brand-primary"></i>
+                        <li class="flex items-center gap-4">
+                            <i class="fas fa-phone text-brand-primary text-lg"></i>
                             <span>(0274) 373122</span>
                         </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fab fa-whatsapp text-brand-primary"></i>
+                        <li class="flex items-center gap-4">
+                            <i class="fab fa-whatsapp text-brand-primary text-lg"></i>
                             <span>0823 2007 2018</span>
                         </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fas fa-envelope text-brand-primary"></i>
+                        <li class="flex items-center gap-4">
+                            <i class="fas fa-envelope text-brand-primary text-lg"></i>
                             <span>humas@muallimin.sch.id</span>
                         </li>
                     </ul>
                 </div>
 
-                <div class="rounded-2xl overflow-hidden h-48 bg-slate-200 relative group">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.924872583849!2d110.35338131477755!3d-7.802521994377353!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a578912c90c73%3A0x6b77242137071e62!2sMadrasah%20Mu'allimin%20Muhammadiyah%20Yogyakarta!5e0!3m2!1sen!2sid!4v1679808392113!5m2!1sen!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                    <div class="absolute inset-0 bg-brand-primary/0 group-hover:bg-brand-primary/20 transition-colors pointer-events-none"></div>
+                <div class="rounded-3xl overflow-hidden h-64 bg-slate-200 relative group shadow-inner">
+                    <iframe src="https://maps.google.com/maps?q=Madrasah%20Muallimin%20Muhammadiyah%20Yogyakarta&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" class="grayscale hover:grayscale-0 transition-all duration-700 opacity-80 hover:opacity-100"></iframe>
+                    <div class="absolute top-4 right-4 bg-white px-3 py-1 rounded-lg text-xs font-bold shadow-md">Kampus Induk</div>
                 </div>
             </div>
 
-            <div class="border-t border-slate-200 dark:border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="border-t border-slate-200 dark:border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
                 <p class="text-xs text-slate-400">© 2026 Madrasah Mu'allimin Muhammadiyah. All rights reserved.</p>
-                <div class="flex gap-6 text-xs text-slate-400 font-medium">
-                    <a href="#" class="hover:text-brand-primary">Privacy Policy</a>
-                    <a href="#" class="hover:text-brand-primary">Terms of Service</a>
+                <div class="flex gap-8 text-xs text-slate-400 font-bold">
+                    <a href="#" class="hover:text-brand-primary transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-brand-primary transition">Terms of Service</a>
+                    <a href="#" class="hover:text-brand-primary transition">Cookie Settings</a>
                 </div>
             </div>
         </div>
@@ -550,9 +628,9 @@
                 <i class="fas fa-microphone text-3xl text-white"></i>
             </div>
         </div>
-        <h3 class="text-2xl font-display font-bold text-white mt-8 mb-2">Mendengarkan...</h3>
-        <p class="text-slate-400">Coba katakan "Daftar PPDB" atau "Biaya Pendidikan"</p>
-        <button onclick="closeVoiceUI()" class="mt-12 text-slate-500 hover:text-white text-sm uppercase tracking-widest font-bold">Batal</button>
+        <h3 class="text-3xl font-display font-bold text-white mt-10 mb-3">Mendengarkan...</h3>
+        <p class="text-slate-400 text-lg">Coba katakan "Daftar PPDB" atau "Biaya Pendidikan"</p>
+        <button onclick="closeVoiceUI()" class="mt-16 text-slate-500 hover:text-white text-sm uppercase tracking-widest font-bold border border-slate-700 px-6 py-2 rounded-full hover:border-white transition-all">Batal</button>
     </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
