@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madrasah Muallimin Muhammadiyah – Future Ready Education</title>
+    <meta name="description" content="Pendidikan Integratif Holistik berbasis AI dan Nilai Islam untuk Pemimpin Masa Depan.">
+    <link rel="icon" href="https://muallimin.my.id/wp-content/uploads/2017/01/logo-medium-150x150.png">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+    
+    <!-- Icons & Animation -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            blue: '#003366',    
+                            primary: '#014a97', 
+                            light: '#e0f2fe',   
+                            accent: '#fecd2f',  
+                            dark: '#020617',    
+                            surface: '#ffffff',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                        mono: ['Space Grotesk', 'monospace'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    backgroundImage: {
+                        'noise': "url('https://grainy-gradients.vercel.app/noise.svg')",
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'gradient-x': 'gradient-x 15s ease infinite',
+                        'spin-slow': 'spin 12s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        'gradient-x': {
+                            '0%, 100%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'left center'
+                            },
+                            '50%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'right center'
+                            },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Glassmorphism 2.0 */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+        }
+        .dark .glass-panel {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        /* Spatial 3D Tilt Base */
+        .tilt-card {
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+        }
+        .tilt-content {
+            transform: translateZ(20px);
+        }
+
+        /* Noise Texture Overlay */
+        .bg-noise {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* High Contrast Mode */
+        .high-contrast {
+            filter: contrast(1.5);
+        }
+        .high-contrast * {
+            background-color: white !important;
+            color: black !important;
+            border-color: black !important;
+            box-shadow: none !important;
+            text-shadow: none !important;
+        }
+        .high-contrast img {
+            filter: grayscale(100%) contrast(1.2);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .dark ::-webkit-scrollbar-thumb { background: #334155; }
+    </style>
+</head>
+<body class="font-sans text-slate-800 dark:text-slate-100 bg-slate-50 dark:bg-brand-dark transition-colors duration-500 overflow-x-hidden selection:bg-brand-accent selection:text-brand-blue" id="main-body">
+
+    <!-- Global Noise Texture -->
+    <div class="bg-noise"></div>
+
+    <!-- Accessibility Widget -->
+    <div class="fixed left-6 bottom-6 z-50 group">
+        <button class="w-12 h-12 rounded-full bg-brand-primary text-white shadow-lg flex items-center justify-center hover:scale-110 transition-transform focus:outline-none focus:ring-4 focus:ring-brand-light" aria-label="Accessibility Menu">
+            <i class="fas fa-universal-access text-xl"></i>
+        </button>
+        <div class="absolute bottom-16 left-0 bg-white dark:bg-slate-800 rounded-xl shadow-2xl p-4 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+            <p class="text-xs font-bold text-gray-400 uppercase mb-2">Aksesibilitas</p>
+            <button onclick="toggleContrast()" class="flex items-center gap-3 w-full p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg text-sm transition">
+                <i class="fas fa-adjust"></i> High Contrast
+            </button>
+            <button onclick="toggleTextSize()" class="flex items-center gap-3 w-full p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg text-sm transition">
+                <i class="fas fa-text-height"></i> Perbesar Teks
+            </button>
+        </div>
+    </div>
+
+    <!-- Floating AI Assistant -->
+    <div class="fixed right-6 bottom-6 z-50 flex flex-col items-end gap-4" id="ai-widget">
+        <!-- Chat Bubble -->
+        <div id="ai-chat" class="hidden glass-panel rounded-2xl w-80 p-4 transform origin-bottom-right transition-all duration-300 mb-2">
+            <div class="flex justify-between items-center mb-4 border-b border-gray-100 dark:border-gray-700 pb-2">
+                <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
+                    <span class="font-bold text-sm">Mu'allimin AI</span>
+                </div>
+                <button onclick="toggleAI()" class="text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="space-y-3 max-h-60 overflow-y-auto text-sm" id="chat-content">
+                <div class="bg-brand-light/50 dark:bg-slate-700 p-3 rounded-lg rounded-tl-none">
+                    Assalamualaikum! Saya asisten AI. Ada yang bisa saya bantu terkait PPDB atau kurikulum?
+                </div>
+            </div>
+            <div class="mt-4 relative">
+                <input type="text" placeholder="Ketik atau gunakan suara..." class="w-full bg-white dark:bg-slate-800 border-none rounded-full px-4 py-2 text-sm focus:ring-2 focus:ring-brand-primary pr-10 shadow-inner">
+                <button class="absolute right-3 top-2 text-brand-primary hover:text-brand-accent transition" onclick="activateVoiceUI()">
+                    <i class="fas fa-microphone"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Toggle Button -->
+        <button onclick="toggleAI()" class="w-14 h-14 rounded-full bg-gradient-to-r from-brand-primary to-blue-600 text-white shadow-xl flex items-center justify-center hover:scale-110 hover:shadow-2xl transition-all duration-300 animate-bounce-slow border-2 border-white/20">
+            <i class="fas fa-robot text-2xl"></i>
+        </button>
+    </div>
+
+    <!-- Intelligent Navbar -->
+    <nav id="navbar" class="fixed w-full z-40 transition-all duration-500 py-4 top-0 border-b border-transparent">
+        <div class="absolute inset-0 bg-white/0 backdrop-blur-0 transition-all duration-500" id="nav-bg"></div>
+        <div class="container mx-auto px-6 relative z-10 flex justify-between items-center">
+            <!-- Brand -->
+            <a href="#" class="flex items-center gap-3 group">
+                <img src="https://muallimin.my.id/wp-content/uploads/2017/01/logo-medium.png" alt="Logo" class="h-10 w-auto group-hover:rotate-12 transition-transform duration-500">
+                <div class="leading-none">
+                    <h1 class="font-display font-bold text-xl tracking-tight text-white transition-colors duration-300" id="brand-text">MU'ALLIMIN</h1>
+                </div>
+            </a>
+
+            <!-- Menu -->
+            <div class="hidden lg:flex items-center gap-1 p-1 rounded-full bg-white/10 backdrop-blur-md border border-white/10 shadow-lg px-2">
+                <a href="#home" class="px-5 py-2 rounded-full text-sm font-medium text-white hover:bg-white/20 transition-all">Beranda</a>
+                <a href="#about" class="px-5 py-2 rounded-full text-sm font-medium text-white hover:bg-white/20 transition-all">Tentang</a>
+                <a href="#programs" class="px-5 py-2 rounded-full text-sm font-medium text-white hover:bg-white/20 transition-all">Program</a>
+                <a href="#news" class="px-5 py-2 rounded-full text-sm font-medium text-white hover:bg-white/20 transition-all">Berita</a>
+                <a href="#ppdb" class="px-5 py-2 rounded-full text-sm font-medium text-brand-blue bg-brand-accent hover:bg-yellow-300 transition-all shadow-md">
+                    PPDB 2026
+                </a>
+            </div>
+
+            <!-- Context Controls -->
+            <div class="flex items-center gap-3">
+                <button onclick="toggleDarkMode()" class="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-all" aria-label="Toggle Theme">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:block text-yellow-300"></i>
+                </button>
+                <button class="lg:hidden text-white text-2xl" id="mobile-toggle"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Immersive Hero Section -->
+    <header id="home" class="relative min-h-screen flex items-center overflow-hidden">
+        <!-- 3D Parallax Background -->
+        <div class="absolute inset-0 z-0 scale-105" id="hero-bg">
+            <img src="https://muallimin.my.id/wp-content/uploads/2021/09/MUALIMIN-Aerial-view-01_REV-01-1-scaled.jpg" class="w-full h-full object-cover" alt="Background">
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-dark/95 via-brand-blue/80 to-transparent mix-blend-multiply"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-50 dark:to-brand-dark"></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10 pt-20 grid lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- Context-Aware Greeting & Text -->
+            <div class="lg:col-span-7 space-y-8" data-aos="fade-up" data-aos-duration="1200">
+                <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full glass-panel border-l-4 border-l-brand-accent">
+                    <span class="text-brand-accent text-lg"><i class="fas fa-sun" id="greeting-icon"></i></span>
+                    <span class="text-sm font-semibold text-slate-800 dark:text-white" id="greeting-text">Selamat Pagi, Calon Pemimpin</span>
+                </div>
+                
+                <h1 class="text-5xl lg:text-7xl font-display font-bold text-white leading-[0.9] tracking-tight">
+                    Future <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-yellow-200 animate-gradient-x">Leaders</span> <br>
+                    Start Here.
+                </h1>
+                
+                <p class="text-xl text-slate-300 font-light max-w-xl leading-relaxed">
+                    Sistem pendidikan adaptif yang memadukan <strong class="text-white font-medium">Kecerdasan Buatan</strong>, <strong class="text-white font-medium">Sains</strong>, dan <strong class="text-white font-medium">Nilai Keislaman</strong> dalam ekosistem berasrama.
+                </p>
+
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <button class="px-8 py-4 rounded-full bg-white text-brand-blue font-bold shadow-[0_0_40px_-10px_rgba(255,255,255,0.5)] hover:scale-105 transition-transform flex items-center gap-3 group">
+                        <span>Jelajahi Virtual Tour</span>
+                        <i class="fas fa-vr-cardboard text-xl group-hover:rotate-12 transition-transform"></i>
+                    </button>
+                    <button class="px-8 py-4 rounded-full glass-panel text-white font-bold hover:bg-white/20 transition-colors flex items-center gap-3">
+                        <i class="fas fa-play-circle text-xl text-brand-accent"></i>
+                        <span>Video Profil 2026</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 3D Interactive Card -->
+            <div class="lg:col-span-5 relative perspective-container" data-aos="fade-left" data-aos-delay="200">
+                <div class="tilt-card glass-panel p-8 rounded-3xl relative overflow-hidden group hover:shadow-[0_20px_60px_-15px_rgba(254,205,47,0.3)] transition-shadow duration-500" id="hero-card">
+                    <!-- Iridescent Border Gradient -->
+                    <div class="absolute inset-0 border-2 border-transparent rounded-3xl bg-gradient-to-br from-white/40 to-transparent opacity-50 pointer-events-none"></div>
+                    
+                    <div class="tilt-content relative z-10">
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <h3 class="text-2xl font-bold text-slate-800 dark:text-white mb-1">Pendaftaran Cepat</h3>
+                                <p class="text-xs text-slate-500 dark:text-slate-300">AI-Assisted Registration</p>
+                            </div>
+                            <div class="w-10 h-10 rounded-full bg-brand-light flex items-center justify-center text-brand-primary animate-pulse-slow">
+                                <i class="fas fa-fingerprint text-xl"></i>
+                            </div>
+                        </div>
+
+                        <form class="space-y-5">
+                            <div class="group/input relative">
+                                <input type="text" required class="peer w-full bg-white/50 dark:bg-slate-900/50 border-0 rounded-xl px-4 py-4 pt-6 text-slate-800 dark:text-white outline-none focus:ring-2 focus:ring-brand-accent transition-all placeholder-transparent" placeholder="Nama" id="inputName">
+                                <label for="inputName" class="absolute left-4 top-1 text-[10px] uppercase font-bold text-slate-400 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-placeholder-shown:font-normal peer-focus:top-1 peer-focus:text-[10px] peer-focus:font-bold">Nama Lengkap Santri</label>
+                            </div>
+
+                            <div class="group/input relative">
+                                <div class="absolute right-3 top-3 text-slate-400 cursor-pointer hover:text-brand-primary" onclick="activateVoiceUI()" title="Voice Input">
+                                    <i class="fas fa-microphone"></i>
+                                </div>
+                                <input type="text" required class="peer w-full bg-white/50 dark:bg-slate-900/50 border-0 rounded-xl px-4 py-4 pt-6 text-slate-800 dark:text-white outline-none focus:ring-2 focus:ring-brand-accent transition-all placeholder-transparent" placeholder="Asal" id="inputOrigin">
+                                <label for="inputOrigin" class="absolute left-4 top-1 text-[10px] uppercase font-bold text-slate-400 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-placeholder-shown:font-normal peer-focus:top-1 peer-focus:text-[10px] peer-focus:font-bold">Asal Sekolah / Kota</label>
+                            </div>
+
+                            <button type="button" class="w-full py-4 rounded-xl bg-gradient-to-r from-brand-primary to-brand-blue text-white font-bold shadow-lg relative overflow-hidden group-btn" onclick="submitForm()">
+                                <span class="relative z-10 flex justify-center items-center gap-2">
+                                    Cek Kelayakan via AI <i class="fas fa-magic"></i>
+                                </span>
+                                <div class="absolute inset-0 bg-brand-accent transform scale-x-0 group-btn-hover:scale-x-100 transition-transform origin-left duration-300"></div>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Holographic Stats Section (Restored & Upgraded) -->
+    <section class="py-12 relative z-20 -mt-10">
+        <div class="container mx-auto px-6">
+            <div class="glass-panel rounded-3xl p-8 shadow-2xl bg-white/40 dark:bg-slate-900/40 backdrop-blur-2xl grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-slate-200 dark:divide-slate-700/50" data-aos="fade-up">
+                <div class="text-center group cursor-default">
+                    <div class="text-4xl lg:text-5xl font-mono font-bold text-transparent bg-clip-text bg-gradient-to-b from-brand-primary to-brand-blue dark:from-white dark:to-slate-400 mb-2 group-hover:scale-110 transition-transform">
+                        <span class="count-up" data-target="1918">0</span>
+                    </div>
+                    <div class="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">Founded</div>
+                </div>
+                <div class="text-center group cursor-default">
+                    <div class="text-4xl lg:text-5xl font-mono font-bold text-transparent bg-clip-text bg-gradient-to-b from-brand-primary to-brand-blue dark:from-white dark:to-slate-400 mb-2 group-hover:scale-110 transition-transform">
+                        <span class="count-up" data-target="100">0</span>+
+                    </div>
+                    <div class="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">Years Legacy</div>
+                </div>
+                <div class="text-center group cursor-default">
+                    <div class="text-4xl lg:text-5xl font-mono font-bold text-transparent bg-clip-text bg-gradient-to-b from-brand-primary to-brand-blue dark:from-white dark:to-slate-400 mb-2 group-hover:scale-110 transition-transform">
+                        <span class="count-up" data-target="1650">0</span>
+                    </div>
+                    <div class="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">Active Cadets</div>
+                </div>
+                <div class="text-center group cursor-default">
+                    <div class="text-4xl lg:text-5xl font-mono font-bold text-transparent bg-clip-text bg-gradient-to-b from-brand-primary to-brand-blue dark:from-white dark:to-slate-400 mb-2 group-hover:scale-110 transition-transform">
+                        <span class="count-up" data-target="98">0</span>%
+                    </div>
+                    <div class="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">University Acceptance</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Immersive Quote Section (Restored) -->
+    <section id="about" class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-brand-light/30 dark:bg-brand-dark/50"></div>
+        <!-- Animated Background Shape -->
+        <div class="absolute -right-20 top-20 w-96 h-96 bg-brand-accent/20 rounded-full blur-3xl animate-pulse-slow"></div>
+        
+        <div class="container mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-16 items-center">
+            <div class="relative" data-aos="fade-right">
+                <div class="tilt-card">
+                    <img src="https://muallimin.my.id/wp-content/uploads/2021/10/image19.jpeg" alt="Historical" class="rounded-3xl shadow-2xl dark:opacity-80 relative z-10 border-4 border-white/20">
+                    <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-brand-primary rounded-full blur-2xl z-0 opacity-50"></div>
+                </div>
+                <!-- Floating badge -->
+                <div class="absolute -bottom-6 -right-6 glass-panel p-4 rounded-2xl animate-float z-20">
+                    <div class="flex items-center gap-3">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Ahmad_Dahlan.jpg" class="w-12 h-12 rounded-full object-cover border-2 border-brand-accent">
+                        <div>
+                            <p class="text-xs font-bold text-slate-500 uppercase">Founder</p>
+                            <p class="font-bold text-slate-800 dark:text-white">K.H. Ahmad Dahlan</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div data-aos="fade-left">
+                <i class="fas fa-quote-left text-6xl text-brand-primary/20 absolute -top-10 -left-10"></i>
+                <h2 class="text-3xl lg:text-4xl font-serif italic leading-relaxed text-slate-700 dark:text-slate-200 mb-8 relative z-10">
+                    "...hendaklah warga muda-mudi muhammadiyah terus menjalani dan menempuh pendidikan serta menuntut ilmu pengetahuan dimana dan kemana saja."
+                </h2>
+                <div class="space-y-6 text-slate-600 dark:text-slate-400 text-lg leading-relaxed">
+                    <p>
+                        Madrasah Mu'allimin Muhammadiyah Yogyakarta bukan sekadar sekolah, melainkan kawah candradimuka bagi kader persyarikatan. Sejak 1918, kami berkomitmen mencetak intelektual ulama yang siap menjawab tantangan zaman.
+                    </p>
+                    <a href="#" class="inline-flex items-center gap-2 text-brand-primary dark:text-brand-accent font-bold hover:gap-4 transition-all">
+                        Pelajari Sejarah Kami <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Bento Grid Programs -->
+    <section id="programs" class="py-24 relative bg-white dark:bg-brand-dark/50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-brand-accent font-mono text-sm tracking-widest uppercase">Kurikulum 2026</span>
+                <h2 class="text-4xl lg:text-5xl font-display font-bold mt-3 text-slate-900 dark:text-white">Pendidikan Masa Depan</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 h-auto md:h-[600px]">
+                <!-- Card 1: Large -->
+                <div class="md:col-span-2 glass-panel rounded-3xl p-8 relative overflow-hidden group cursor-pointer transition-transform hover:scale-[1.01]" data-aos="fade-up">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-brand-accent/20 rounded-full blur-3xl group-hover:bg-brand-accent/30 transition-colors"></div>
+                    <div class="relative z-10 h-full flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-brand-blue text-white flex items-center justify-center text-2xl mb-6">
+                                <i class="fas fa-globe-asia"></i>
+                            </div>
+                            <h3 class="text-3xl font-bold text-slate-800 dark:text-white mb-2">Kelas Internasional Cambridge</h3>
+                            <p class="text-slate-600 dark:text-slate-300 max-w-md">Persiapan studi lanjut ke Timur Tengah, Eropa, dan Australia dengan kurikulum hybrid dan native speaker in-house.</p>
+                        </div>
+                        <div class="flex items-center gap-2 text-brand-primary font-bold mt-8">
+                            <span>Lihat Kurikulum</span> <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                        </div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800" class="absolute bottom-0 right-0 w-1/2 h-full object-cover mask-image-linear opacity-50 group-hover:opacity-80 transition-opacity rounded-tl-[100px]">
+                </div>
+
+                <!-- Card 2: Vertical -->
+                <div class="glass-panel rounded-3xl p-8 relative overflow-hidden group hover:bg-brand-primary hover:text-white transition-colors duration-500" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative z-10">
+                        <i class="fas fa-quran text-4xl text-brand-primary group-hover:text-brand-accent mb-6 transition-colors"></i>
+                        <h3 class="text-2xl font-bold text-slate-800 dark:text-white group-hover:text-white mb-4">Tahfidz & Ulama Tarjih</h3>
+                        <p class="text-slate-600 dark:text-slate-300 group-hover:text-blue-100 text-sm leading-relaxed">
+                            Program akselerasi hafalan 30 juz bersanad dengan pendalaman kitab kuning digital dan metodologi fatwa kontemporer.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 3: Horizontal -->
+                <div class="md:col-span-3 glass-panel rounded-3xl p-8 flex flex-col md:flex-row items-center gap-8 group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-full md:w-1/3 aspect-video rounded-2xl overflow-hidden relative">
+                        <img src="https://muallimin.sch.id/wp-content/uploads/2023/07/DJI_0444-scaled.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-colors">
+                            <div class="w-12 h-12 rounded-full bg-white/30 backdrop-blur flex items-center justify-center text-white"><i class="fas fa-play"></i></div>
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-bold text-slate-800 dark:text-white mb-2">STEM & Robotik</h3>
+                        <p class="text-slate-600 dark:text-slate-300 mb-4">Mengembangkan inovasi teknologi tepat guna berbasis IoT dan AI. Juara 1 Robotik Internasional 2024.</p>
+                        <div class="flex gap-2">
+                            <span class="px-3 py-1 rounded-md bg-slate-100 dark:bg-slate-700 text-xs font-bold text-slate-600 dark:text-slate-300">Coding</span>
+                            <span class="px-3 py-1 rounded-md bg-slate-100 dark:bg-slate-700 text-xs font-bold text-slate-600 dark:text-slate-300">IoT</span>
+                            <span class="px-3 py-1 rounded-md bg-slate-100 dark:bg-slate-700 text-xs font-bold text-slate-600 dark:text-slate-300">Drone</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section Smart Grid (Restored) -->
+    <section id="news" class="py-24">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12" data-aos="fade-in">
+                <div>
+                    <h2 class="text-3xl font-display font-bold text-slate-900 dark:text-white">Berita Terkini</h2>
+                    <p class="text-slate-500 mt-2">Update kegiatan santri dan prestasi madrasah.</p>
+                </div>
+                <button class="px-6 py-2 rounded-full border border-slate-300 dark:border-slate-700 text-sm font-bold hover:bg-slate-100 dark:hover:bg-slate-800 transition">Lihat Semua</button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- News Item 1 -->
+                <div class="group glass-panel p-4 rounded-3xl hover:bg-white dark:hover:bg-slate-800 transition-colors" data-aos="fade-up">
+                    <div class="aspect-[4/3] rounded-2xl overflow-hidden mb-4">
+                        <img src="https://muallimin.my.id/wp-content/uploads/2021/09/MUALIMIN-Aerial-view-01_REV-01-1-scaled.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <span class="text-xs font-bold text-brand-primary uppercase tracking-wider">Prestasi</span>
+                    <h3 class="font-bold text-lg mt-2 mb-2 text-slate-800 dark:text-white line-clamp-2 group-hover:text-brand-primary transition-colors">Juara Umum Olimpiade Sains Nasional 2025</h3>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">Kontingen Mu'allimin berhasil memborong 5 medali emas pada ajang bergengsi...</p>
+                </div>
+
+                <!-- News Item 2 -->
+                <div class="group glass-panel p-4 rounded-3xl hover:bg-white dark:hover:bg-slate-800 transition-colors" data-aos="fade-up" data-aos-delay="100">
+                    <div class="aspect-[4/3] rounded-2xl overflow-hidden mb-4">
+                        <img src="https://muallimin.sch.id/wp-content/uploads/2023/07/DJI_0444-scaled.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <span class="text-xs font-bold text-brand-primary uppercase tracking-wider">International</span>
+                    <h3 class="font-bold text-lg mt-2 mb-2 text-slate-800 dark:text-white line-clamp-2 group-hover:text-brand-primary transition-colors">Student Exchange Program: Japan 2026</h3>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">Pelepasan 20 santri untuk mengikuti program pertukaran pelajar di Tokyo...</p>
+                </div>
+
+                <!-- News Item 3 -->
+                <div class="group glass-panel p-4 rounded-3xl hover:bg-white dark:hover:bg-slate-800 transition-colors" data-aos="fade-up" data-aos-delay="200">
+                    <div class="aspect-[4/3] rounded-2xl overflow-hidden mb-4">
+                        <img src="https://muallimin.my.id/wp-content/uploads/2021/10/image19.jpeg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <span class="text-xs font-bold text-brand-primary uppercase tracking-wider">Keasramaan</span>
+                    <h3 class="font-bold text-lg mt-2 mb-2 text-slate-800 dark:text-white line-clamp-2 group-hover:text-brand-primary transition-colors">Peresmian Gedung Asrama Digital Baru</h3>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">Fasilitas baru dengan smart room system untuk menunjang kenyamanan santri...</p>
+                </div>
+
+                <!-- Announcement Box -->
+                <div class="glass-panel p-6 rounded-3xl bg-gradient-to-br from-brand-primary to-brand-blue text-white flex flex-col justify-center" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-bullhorn text-4xl mb-4 text-brand-accent"></i>
+                    <h3 class="font-bold text-xl mb-2">Pengumuman PPDB</h3>
+                    <p class="text-blue-100 text-sm mb-6">Hasil seleksi gelombang 1 akan diumumkan pada tanggal 10 November 2025.</p>
+                    <button class="w-full py-3 rounded-xl bg-white text-brand-primary font-bold hover:bg-brand-accent hover:text-brand-blue transition-colors">Cek Hasil</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PPDB CTA Section (Restored) -->
+    <section id="ppdb" class="py-24 relative overflow-hidden bg-slate-900 text-white">
+        <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <div class="inline-block p-2 px-4 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm text-brand-accent text-sm font-bold mb-6 animate-pulse">
+                <i class="fas fa-clock mr-2"></i> Pendaftaran Gelombang 1 Segera Ditutup
+            </div>
+            
+            <h2 class="text-4xl md:text-6xl font-display font-bold mb-8">Siap Bergabung dengan <br> Generasi Pemimpin?</h2>
+            
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <a href="https://spmb.muallimin.sch.id" class="px-10 py-5 bg-brand-accent text-brand-blue font-bold rounded-full shadow-[0_0_30px_rgba(254,205,47,0.4)] hover:scale-105 transition duration-300 text-lg">
+                    Daftar Sekarang
+                </a>
+                <a href="#" class="px-10 py-5 bg-transparent border border-white text-white font-bold rounded-full hover:bg-white hover:text-brand-blue transition duration-300 text-lg flex items-center gap-3">
+                    <i class="fas fa-file-download"></i> Unduh Brosur
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expanded Footer (Restored) -->
+    <footer class="pt-20 pb-10 bg-white dark:bg-brand-dark border-t border-slate-200 dark:border-slate-800 transition-colors duration-500">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <!-- Brand Info -->
+                <div class="space-y-6">
+                    <div class="flex items-center gap-3">
+                        <img src="https://muallimin.my.id/wp-content/uploads/2017/01/logo-medium.png" class="h-12">
+                        <div>
+                            <h4 class="font-bold text-lg text-slate-800 dark:text-white">MU'ALLIMIN</h4>
+                            <p class="text-xs text-slate-500 tracking-wider uppercase">Yogyakarta</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                        Sekolah Kader Muhammadiyah yang mengintegrasikan nilai-nilai keislaman dan kemajuan zaman untuk mencetak pemimpin masa depan.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-blue-600 hover:text-white transition-all"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-pink-600 hover:text-white transition-all"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-red-600 hover:text-white transition-all"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-bold text-slate-800 dark:text-white mb-6">Jelajahi</h4>
+                    <ul class="space-y-4 text-sm text-slate-500 dark:text-slate-400">
+                        <li><a href="#" class="hover:text-brand-primary transition">Profil Madrasah</a></li>
+                        <li><a href="#" class="hover:text-brand-primary transition">Kurikulum</a></li>
+                        <li><a href="#" class="hover:text-brand-primary transition">Fasilitas</a></li>
+                        <li><a href="#" class="hover:text-brand-primary transition">Prestasi Santri</a></li>
+                        <li><a href="#" class="hover:text-brand-primary transition">Alumni</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="font-bold text-slate-800 dark:text-white mb-6">Hubungi Kami</h4>
+                    <ul class="space-y-4 text-sm text-slate-500 dark:text-slate-400">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-map-marker-alt mt-1 text-brand-primary"></i>
+                            <span>Jl. Letjen S. Parman No.68, Wirobrajan, Yogyakarta 55252</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-phone text-brand-primary"></i>
+                            <span>(0274) 373122</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fab fa-whatsapp text-brand-primary"></i>
+                            <span>0823 2007 2018</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-envelope text-brand-primary"></i>
+                            <span>humas@muallimin.sch.id</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Maps/Location -->
+                <div class="rounded-2xl overflow-hidden h-48 bg-slate-200 relative group">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.924872583849!2d110.35338131477755!3d-7.802521994377353!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a578912c90c73%3A0x6b77242137071e62!2sMadrasah%20Mu&#39;allimin%20Muhammadiyah%20Yogyakarta!5e0!3m2!1sen!2sid!4v1679808392113!5m2!1sen!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    <div class="absolute inset-0 bg-brand-primary/0 group-hover:bg-brand-primary/20 transition-colors pointer-events-none"></div>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-200 dark:border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-xs text-slate-400">&copy; 2026 Madrasah Mu'allimin Muhammadiyah. All rights reserved.</p>
+                <div class="flex gap-6 text-xs text-slate-400 font-medium">
+                    <a href="#" class="hover:text-brand-primary">Privacy Policy</a>
+                    <a href="#" class="hover:text-brand-primary">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Voice Interface Overlay (Hidden) -->
+    <div id="voice-overlay" class="fixed inset-0 z-[100] bg-brand-dark/95 hidden flex flex-col items-center justify-center backdrop-blur-xl transition-opacity duration-300 opacity-0">
+        <div class="relative w-32 h-32 flex items-center justify-center">
+            <div class="absolute inset-0 bg-brand-accent rounded-full animate-ping opacity-20"></div>
+            <div class="absolute inset-4 bg-brand-accent rounded-full animate-pulse opacity-40"></div>
+            <div class="relative z-10 w-20 h-20 bg-gradient-to-tr from-brand-primary to-blue-500 rounded-full flex items-center justify-center shadow-[0_0_50px_rgba(1,74,151,0.6)]">
+                <i class="fas fa-microphone text-3xl text-white"></i>
+            </div>
+        </div>
+        <h3 class="text-2xl font-display font-bold text-white mt-8 mb-2">Mendengarkan...</h3>
+        <p class="text-slate-400">Coba katakan "Daftar PPDB" atau "Biaya Pendidikan"</p>
+        <button onclick="closeVoiceUI()" class="mt-12 text-slate-500 hover:text-white text-sm uppercase tracking-widest font-bold">Batal</button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        // 1. Initialization
+        AOS.init({ once: true, duration: 800 });
+
+        // 2. Context-Aware Greeting Logic
+        function updateGreeting() {
+            const hour = new Date().getHours();
+            const textEl = document.getElementById('greeting-text');
+            const iconEl = document.getElementById('greeting-icon');
+            
+            if (hour < 11) {
+                textEl.innerText = 'Selamat Pagi, Calon Pemimpin';
+                iconEl.className = 'fas fa-sun text-yellow-400';
+            } else if (hour < 15) {
+                textEl.innerText = 'Selamat Siang, Generasi Unggul';
+                iconEl.className = 'fas fa-cloud-sun text-orange-400';
+            } else if (hour < 19) {
+                textEl.innerText = 'Selamat Sore, Sobat Muin';
+                iconEl.className = 'fas fa-cloud-moon text-indigo-400';
+            } else {
+                textEl.innerText = 'Selamat Malam, Istirahatlah';
+                iconEl.className = 'fas fa-moon text-blue-400';
+            }
+        }
+        updateGreeting();
+
+        // 3. Lightweight 3D Tilt Effect
+        const heroCard = document.getElementById('hero-card');
+        
+        heroCard.addEventListener('mousemove', (e) => {
+            const rect = heroCard.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = ((y - centerY) / centerY) * -10;
+            const rotateY = ((x - centerX) / centerX) * 10;
+
+            heroCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            heroCard.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.8), rgba(255,255,255,0.7) 40%)`;
+        });
+
+        heroCard.addEventListener('mouseleave', () => {
+            heroCard.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+            heroCard.style.background = ''; 
+        });
+
+        // 4. Parallax Background
+        document.addEventListener('mousemove', (e) => {
+            const bg = document.getElementById('hero-bg');
+            const x = (window.innerWidth - e.pageX * 2) / 90;
+            const y = (window.innerHeight - e.pageY * 2) / 90;
+            bg.style.transform = `scale(1.05) translate(${x}px, ${y}px)`;
+        });
+
+        // 5. Intelligent Navbar Scroll
+        const navbar = document.getElementById('navbar');
+        const brandText = document.getElementById('brand-text');
+        const navBg = document.getElementById('nav-bg');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navBg.classList.remove('bg-white/0', 'backdrop-blur-0');
+                navBg.classList.add('bg-white/80', 'dark:bg-brand-dark/90', 'backdrop-blur-xl', 'shadow-sm');
+                brandText.classList.remove('text-white');
+                brandText.classList.add('text-brand-blue', 'dark:text-white');
+            } else {
+                navBg.classList.add('bg-white/0', 'backdrop-blur-0');
+                navBg.classList.remove('bg-white/80', 'dark:bg-brand-dark/90', 'backdrop-blur-xl', 'shadow-sm');
+                brandText.classList.add('text-white');
+                brandText.classList.remove('text-brand-blue', 'dark:text-white');
+            }
+        });
+
+        // 6. Voice Interaction UI
+        const voiceOverlay = document.getElementById('voice-overlay');
+        function activateVoiceUI() {
+            voiceOverlay.classList.remove('hidden');
+            void voiceOverlay.offsetWidth;
+            voiceOverlay.classList.remove('opacity-0');
+            
+            setTimeout(() => {
+                closeVoiceUI();
+                const chatContent = document.getElementById('chat-content');
+                chatContent.innerHTML += `<div class="bg-brand-primary text-white p-3 rounded-lg rounded-tr-none ml-auto max-w-[80%] mt-2">Saya ingin mendaftar.</div>`;
+                
+                setTimeout(() => {
+                    chatContent.innerHTML += `<div class="bg-brand-light/50 dark:bg-slate-700 p-3 rounded-lg rounded-tl-none mt-2">Baik, saya arahkan ke formulir pendaftaran. Mohon lengkapi nama Anda.</div>`;
+                    document.getElementById('inputName').focus();
+                    toggleAI(true); 
+                }, 1000);
+
+            }, 3000);
+        }
+
+        function closeVoiceUI() {
+            voiceOverlay.classList.add('opacity-0');
+            setTimeout(() => {
+                voiceOverlay.classList.add('hidden');
+            }, 300);
+        }
+
+        // 7. Toggle Dark Mode
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+        }
+
+        // 8. Accessibility Features
+        function toggleContrast() {
+            document.body.classList.toggle('high-contrast');
+        }
+        function toggleTextSize() {
+            document.body.classList.toggle('text-lg'); 
+        }
+
+        // 9. AI Widget Toggle
+        function toggleAI(forceOpen = false) {
+            const chat = document.getElementById('ai-chat');
+            if (forceOpen) {
+                chat.classList.remove('hidden');
+            } else {
+                chat.classList.toggle('hidden');
+            }
+        }
+
+        function submitForm() {
+            Swal.fire({
+                title: 'Analisis AI Berjalan...',
+                text: 'Memeriksa kelayakan data awal Anda.',
+                icon: 'info',
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading()
+                }
+            }).then(() => {
+                Swal.fire({
+                    title: 'Data Valid!',
+                    text: 'Silakan lanjutkan ke tahap wawancara virtual.',
+                    icon: 'success',
+                    confirmButtonColor: '#014a97'
+                });
+            });
+        }
+
+        // 10. Number Counter Animation (Observer)
+        const counters = document.querySelectorAll('.count-up');
+        const countObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = +entry.target.getAttribute('data-target');
+                    const duration = 2000; 
+                    const increment = target / (duration / 16); 
+                    
+                    let count = 0;
+                    const updateCount = () => {
+                        count += increment;
+                        if (count < target) {
+                            entry.target.innerText = Math.ceil(count);
+                            requestAnimationFrame(updateCount);
+                        } else {
+                            entry.target.innerText = target;
+                        }
+                    };
+                    updateCount();
+                    countObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        counters.forEach(counter => countObserver.observe(counter));
+    </script>
+</body>
+</html>
