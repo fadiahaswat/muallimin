@@ -794,22 +794,104 @@
         </div>
     </section>
 
-    <footer class="pt-24 pb-12 bg-slate-50 dark:bg-brand-dark border-t border-slate-200 dark:border-slate-800 transition-colors duration-500">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
-                <div class="space-y-8">
+    <footer class="pt-20 pb-10 bg-slate-50 dark:bg-brand-dark border-t border-slate-200 dark:border-slate-800 transition-colors duration-500 font-sans text-slate-600 dark:text-slate-400 relative overflow-hidden">
+        
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
+                
+                <div class="lg:col-span-4 space-y-6">
                     <div class="flex items-center gap-4">
-                        <img src="https://muallimin.sch.id/wp-content/uploads/2019/11/Logo-Muallimin-Baru.png" class="h-14 filter drop-shadow-sm">
+                        <div class="relative w-12 h-12">
+                            <div class="absolute inset-0 bg-brand-primary/20 rounded-full blur-md"></div>
+                            <img src="https://muallimin.sch.id/wp-content/uploads/2019/11/Logo-Muallimin-Baru.png" class="relative w-full h-full object-contain filter drop-shadow-sm" alt="Logo Footer">
+                        </div>
                         <div>
-                            <h4 class="font-bold text-xl text-slate-900 dark:text-white">MU'ALLIMIN</h4>
-                            <p class="text-[10px] text-slate-500 tracking-[0.3em] uppercase">Yogyakarta 1918</p>
+                            <h4 class="font-display font-bold text-xl text-slate-900 dark:text-white leading-none">MU'ALLIMIN</h4>
+                            <p class="text-[10px] text-brand-primary dark:text-brand-accent tracking-[0.2em] uppercase mt-1 font-bold">Yogyakarta 1918</p>
                         </div>
                     </div>
-                    <p class="text-slate-500 text-sm leading-loose">Sekolah Kader Muhammadiyah yang mengintegrasikan nilai keislaman dan kemajuan zaman.</p>
+                    <p class="text-sm leading-relaxed max-w-sm">
+                        Sekolah Kader Muhammadiyah yang mengintegrasikan nilai-nilai keislaman, keilmuan modern, dan semangat kebangsaan untuk mencetak pemimpin masa depan yang mencerahkan semesta.
+                    </p>
+                    <div class="flex gap-4 pt-2">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white dark:bg-slate-800 flex items-center justify-center shadow-sm hover:bg-brand-primary hover:text-white transition-all duration-300 group border border-slate-200 dark:border-slate-700">
+                            <i class="fab fa-facebook-f text-sm group-hover:scale-110 transition-transform"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white dark:bg-slate-800 flex items-center justify-center shadow-sm hover:bg-pink-600 hover:text-white transition-all duration-300 group border border-slate-200 dark:border-slate-700">
+                            <i class="fab fa-instagram text-sm group-hover:scale-110 transition-transform"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white dark:bg-slate-800 flex items-center justify-center shadow-sm hover:bg-red-600 hover:text-white transition-all duration-300 group border border-slate-200 dark:border-slate-700">
+                            <i class="fab fa-youtube text-sm group-hover:scale-110 transition-transform"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white dark:bg-slate-800 flex items-center justify-center shadow-sm hover:bg-black hover:text-white transition-all duration-300 group border border-slate-200 dark:border-slate-700">
+                            <i class="fab fa-tiktok text-sm group-hover:scale-110 transition-transform"></i>
+                        </a>
+                    </div>
                 </div>
+
+                <div class="lg:col-span-2 lg:pl-8">
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-6 text-sm uppercase tracking-wider">Jelajahi</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li><a href="#about" class="hover:text-brand-primary dark:hover:text-brand-accent transition-colors flex items-center gap-2 group"><span class="w-1 h-1 bg-slate-400 rounded-full group-hover:w-2 group-hover:bg-brand-primary transition-all"></span> Profil</a></li>
+                        <li><a href="#programs" class="hover:text-brand-primary dark:hover:text-brand-accent transition-colors flex items-center gap-2 group"><span class="w-1 h-1 bg-slate-400 rounded-full group-hover:w-2 group-hover:bg-brand-primary transition-all"></span> Kurikulum</a></li>
+                        <li><a href="#news" class="hover:text-brand-primary dark:hover:text-brand-accent transition-colors flex items-center gap-2 group"><span class="w-1 h-1 bg-slate-400 rounded-full group-hover:w-2 group-hover:bg-brand-primary transition-all"></span> Berita</a></li>
+                        <li><a href="#gallery" class="hover:text-brand-primary dark:hover:text-brand-accent transition-colors flex items-center gap-2 group"><span class="w-1 h-1 bg-slate-400 rounded-full group-hover:w-2 group-hover:bg-brand-primary transition-all"></span> Galeri</a></li>
+                        <li><a href="https://muallimin.sch.id/karir" class="hover:text-brand-primary dark:hover:text-brand-accent transition-colors flex items-center gap-2 group"><span class="w-1 h-1 bg-slate-400 rounded-full group-hover:w-2 group-hover:bg-brand-primary transition-all"></span> Karir</a></li>
+                    </ul>
                 </div>
-            <div class="border-t border-slate-200 dark:border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-slate-400">
-                <p>© 2026 Madrasah Mu'allimin Muhammadiyah. All rights reserved.</p>
+
+                <div class="lg:col-span-3">
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-6 text-sm uppercase tracking-wider">Akademik</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li><a href="#" class="hover:text-brand-primary dark:hover:text-brand-accent transition-colors">Madrasah Tsanawiyah (MTs)</a></li>
+                        <li><a href="#" class="hover:text-brand-primary dark:hover:text-brand-accent transition-colors">Madrasah Aliyah (MA)</a></li>
+                        <li><a href="#" class="hover:text-brand-primary dark:hover:text-brand-accent transition-colors">Kelas Internasional</a></li>
+                        <li><a href="#" class="hover:text-brand-primary dark:hover:text-brand-accent transition-colors">Program Takhassus</a></li>
+                        <li><a href="#" class="hover:text-brand-primary dark:hover:text-brand-accent transition-colors">Ekstrakurikuler</a></li>
+                    </ul>
+                </div>
+
+                <div class="lg:col-span-3">
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-6 text-sm uppercase tracking-wider">Hubungi Kami</h4>
+                    <ul class="space-y-5 text-sm">
+                        <li class="flex items-start gap-4">
+                            <div class="mt-1 w-8 h-8 rounded-lg bg-brand-light/50 dark:bg-slate-800 flex items-center justify-center text-brand-primary flex-shrink-0">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <span class="leading-relaxed">Jl. Letjen S. Parman No.68, Wirobrajan, Yogyakarta 55252</span>
+                        </li>
+                        <li class="flex items-center gap-4">
+                            <div class="w-8 h-8 rounded-lg bg-brand-light/50 dark:bg-slate-800 flex items-center justify-center text-brand-primary flex-shrink-0">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <span class="font-mono">(0274) 373122</span>
+                        </li>
+                        <li class="flex items-center gap-4">
+                            <div class="w-8 h-8 rounded-lg bg-brand-light/50 dark:bg-slate-800 flex items-center justify-center text-brand-primary flex-shrink-0">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <span>humas@muallimin.sch.id</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="https://wa.me/6282320072018" target="_blank" class="mt-6 flex items-center justify-center gap-2 w-full py-3 rounded-xl border border-green-500/30 bg-green-500/10 text-green-600 dark:text-green-400 font-bold hover:bg-green-500 hover:text-white transition-all">
+                        <i class="fab fa-whatsapp text-lg"></i> Chat WhatsApp
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-xs text-center md:text-left">
+                    &copy; 2026 <strong class="text-slate-700 dark:text-slate-300">Madrasah Mu'allimin Muhammadiyah</strong>. All rights reserved.
+                </p>
+                <div class="flex gap-6 text-xs font-medium">
+                    <a href="#" class="hover:text-brand-primary dark:hover:text-brand-accent transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-brand-primary dark:hover:text-brand-accent transition-colors">Terms of Use</a>
+                    <a href="#" class="hover:text-brand-primary dark:hover:text-brand-accent transition-colors">Sitemap</a>
+                </div>
             </div>
         </div>
     </footer>
