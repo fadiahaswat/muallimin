@@ -794,98 +794,94 @@
         </div>
     </section>
 
-    <footer class="relative bg-brand-blue text-white pt-24 pb-10 font-sans overflow-hidden">
+    <footer class="relative bg-[#020617] pt-24 pb-12 overflow-hidden font-sans text-slate-300">
         
-        <div class="absolute top-0 left-0 w-full overflow-hidden leading-none rotate-180 z-10">
-            <svg class="relative block w-[calc(100%+1.3px)] h-[60px] lg:h-[100px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-white dark:fill-brand-dark transition-colors duration-500"></path>
-            </svg>
-        </div>
+        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-brand-primary/10 rounded-full blur-[120px] pointer-events-none"></div>
 
-        <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0); background-size: 24px 24px;"></div>
-
-        <div class="container mx-auto px-6 relative z-20">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div class="container mx-auto px-6 relative z-10">
+            
+            <div class="glass-panel rounded-[3rem] p-10 lg:p-14 border border-white/10 bg-white/5 backdrop-blur-xl shadow-2xl relative overflow-hidden">
                 
-                <div class="lg:col-span-4 space-y-6">
-                    <div class="bg-white p-4 rounded-2xl inline-block shadow-lg">
-                        <img src="muallimin.png" onerror="this.src='https://muallimin.sch.id/wp-content/uploads/2019/11/Logo-Muallimin-Baru.png'" alt="Logo Muallimin Berwarna" class="h-16 w-auto object-contain">
-                    </div>
-                    <div class="space-y-2">
-                        <h4 class="text-2xl font-bold font-display tracking-tight">Madrasah Mu'allimin</h4>
-                        <p class="text-sm text-brand-accent font-medium tracking-widest uppercase">Muhammadiyah Yogyakarta</p>
-                    </div>
-                    <p class="text-blue-100 text-sm leading-relaxed max-w-sm">
-                        Institusi pendidikan kader yang memadukan keilmuan Islam, sains, dan teknologi untuk mencetak pemimpin masa depan yang mencerahkan semesta.
-                    </p>
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
                     
-                    <div class="flex gap-3 pt-2">
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 hover:bg-brand-accent hover:text-brand-blue flex items-center justify-center transition-all duration-300 border border-white/10"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 hover:bg-brand-accent hover:text-brand-blue flex items-center justify-center transition-all duration-300 border border-white/10"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 hover:bg-brand-accent hover:text-brand-blue flex items-center justify-center transition-all duration-300 border border-white/10"><i class="fab fa-youtube"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 hover:bg-brand-accent hover:text-brand-blue flex items-center justify-center transition-all duration-300 border border-white/10"><i class="fab fa-tiktok"></i></a>
+                    <div class="lg:col-span-4 space-y-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center p-2 shadow-lg">
+                                <img src="muallimin.png" onerror="this.src='https://muallimin.sch.id/wp-content/uploads/2019/11/Logo-Muallimin-Baru.png'" alt="Logo Muallimin" class="w-full h-full object-contain">
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white tracking-tight">MU'ALLIMIN</h3>
+                                <p class="text-[10px] text-brand-accent uppercase tracking-[0.2em] font-bold">Yogyakarta • 1918</p>
+                            </div>
+                        </div>
+                        <p class="text-sm leading-relaxed text-slate-400">
+                            Sekolah kader pemimpin bangsa yang memadukan tradisi keilmuan Islam, sains modern, dan teknologi untuk mencerahkan semesta.
+                        </p>
+                        
+                        <div class="flex gap-3">
+                            <a href="#" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-brand-primary hover:text-white flex items-center justify-center transition-all border border-white/10"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-pink-600 hover:text-white flex items-center justify-center transition-all border border-white/10"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-red-600 hover:text-white flex items-center justify-center transition-all border border-white/10"><i class="fab fa-youtube"></i></a>
+                            <a href="#" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-black hover:text-white flex items-center justify-center transition-all border border-white/10"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-2 lg:pl-6">
+                        <h4 class="text-white font-bold mb-6">Menu Utama</h4>
+                        <ul class="space-y-4 text-sm">
+                            <li><a href="#home" class="hover:text-brand-accent transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-primary"></span> Beranda</a></li>
+                            <li><a href="#about" class="hover:text-brand-accent transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-primary"></span> Tentang Kami</a></li>
+                            <li><a href="#programs" class="hover:text-brand-accent transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-primary"></span> Kurikulum</a></li>
+                            <li><a href="#ppdb" class="hover:text-brand-accent transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-primary"></span> Info PPDB</a></li>
+                            <li><a href="#news" class="hover:text-brand-accent transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-primary"></span> Berita</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="lg:col-span-3">
+                        <h4 class="text-white font-bold mb-6">Hubungi Kami</h4>
+                        <ul class="space-y-5 text-sm">
+                            <li class="flex gap-3">
+                                <i class="fas fa-map-pin text-brand-primary mt-1"></i>
+                                <span>Jl. Letjen S. Parman No.68, Wirobrajan, Yogyakarta 55252</span>
+                            </li>
+                            <li class="flex gap-3">
+                                <i class="fas fa-phone text-brand-primary mt-1"></i>
+                                <span class="font-mono text-white">(0274) 373122</span>
+                            </li>
+                            <li class="flex gap-3">
+                                <i class="fas fa-envelope text-brand-primary mt-1"></i>
+                                <span>humas@muallimin.sch.id</span>
+                            </li>
+                        </ul>
+                        
+                        <a href="https://wa.me/6282320072018" target="_blank" class="mt-6 inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-green-600 hover:bg-green-500 text-white font-bold text-xs uppercase tracking-wider transition-all shadow-lg shadow-green-900/20">
+                            <i class="fab fa-whatsapp text-lg"></i> Chat WhatsApp
+                        </a>
+                    </div>
+
+                    <div class="lg:col-span-3">
+                        <div class="h-full min-h-[200px] w-full rounded-2xl overflow-hidden relative border border-white/10 group">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.969627678516!2d110.35246731477793!3d-7.792524994384351!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a578636737527%3A0x6273410526978415!2sMadrasah%20Mu&#39;allimin%20Muhammadiyah%20Yogyakarta!5e0!3m2!1sen!2sid!4v1633000000000!5m2!1sen!2sid" width="100%" height="100%" style="border:0; filter: grayscale(100%) invert(90%) contrast(0.8);" allowfullscreen="" loading="lazy"></iframe>
+                            
+                            <a href="https://goo.gl/maps/xyz" target="_blank" class="absolute bottom-4 left-4 right-4 bg-brand-blue/90 backdrop-blur text-white text-xs font-bold py-3 px-4 rounded-lg text-center opacity-0 group-hover:opacity-100 transition-opacity translate-y-2 group-hover:translate-y-0 duration-300 border border-white/10">
+                                Buka di Google Maps
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent my-10"></div>
+
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+                    <p>&copy; 2026 Madrasah Mu'allimin Muhammadiyah. Hak Cipta Dilindungi.</p>
+                    <div class="flex gap-6">
+                        <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                        <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                        <a href="#" class="hover:text-white transition-colors">Sitemap</a>
                     </div>
                 </div>
 
-                <div class="lg:col-span-2">
-                    <h4 class="font-bold text-lg mb-6 text-white border-b-2 border-brand-accent/50 inline-block pb-1">Jelajahi</h4>
-                    <ul class="space-y-4 text-sm text-blue-100">
-                        <li><a href="#about" class="hover:text-brand-accent hover:pl-2 transition-all duration-300 flex items-center gap-2"><i class="fas fa-chevron-right text-[10px]"></i> Profil</a></li>
-                        <li><a href="#programs" class="hover:text-brand-accent hover:pl-2 transition-all duration-300 flex items-center gap-2"><i class="fas fa-chevron-right text-[10px]"></i> Kurikulum</a></li>
-                        <li><a href="#ppdb" class="hover:text-brand-accent hover:pl-2 transition-all duration-300 flex items-center gap-2"><i class="fas fa-chevron-right text-[10px]"></i> Info PPDB</a></li>
-                        <li><a href="#news" class="hover:text-brand-accent hover:pl-2 transition-all duration-300 flex items-center gap-2"><i class="fas fa-chevron-right text-[10px]"></i> Berita</a></li>
-                        <li><a href="#" class="hover:text-brand-accent hover:pl-2 transition-all duration-300 flex items-center gap-2"><i class="fas fa-chevron-right text-[10px]"></i> Alumni</a></li>
-                    </ul>
-                </div>
-
-                <div class="lg:col-span-3">
-                    <h4 class="font-bold text-lg mb-6 text-white border-b-2 border-brand-accent/50 inline-block pb-1">Hubungi Kami</h4>
-                    <ul class="space-y-5 text-sm text-blue-100">
-                        <li class="flex items-start gap-3">
-                            <div class="mt-1 w-8 h-8 rounded bg-white/10 flex items-center justify-center flex-shrink-0 text-brand-accent">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <span class="leading-relaxed">Jl. Letjen S. Parman No.68, Wirobrajan, Yogyakarta 55252</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <div class="w-8 h-8 rounded bg-white/10 flex items-center justify-center flex-shrink-0 text-brand-accent">
-                                <i class="fas fa-phone-alt"></i>
-                            </div>
-                            <span class="font-mono text-base">(0274) 373122</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <div class="w-8 h-8 rounded bg-white/10 flex items-center justify-center flex-shrink-0 text-brand-accent">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <span>humas@muallimin.sch.id</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="lg:col-span-3">
-                    <div class="bg-white/10 p-6 rounded-2xl border border-white/10 backdrop-blur-sm">
-                        <h5 class="font-bold text-white mb-2">Ingin Mendaftar?</h5>
-                        <p class="text-xs text-blue-200 mb-4 leading-relaxed">Dapatkan informasi lengkap mengenai pendaftaran santri baru tahun ajaran 2026/2027.</p>
-                        
-                        <a href="https://wa.me/6282320072018" target="_blank" class="block w-full py-3 mb-3 bg-green-500 hover:bg-green-600 text-white text-center rounded-xl font-bold transition-all shadow-lg flex items-center justify-center gap-2 group">
-                            <i class="fab fa-whatsapp text-lg group-hover:scale-110 transition-transform"></i> Chat WhatsApp
-                        </a>
-                        
-                        <a href="#" class="block w-full py-3 bg-white hover:bg-gray-100 text-brand-blue text-center rounded-xl font-bold transition-all shadow-lg flex items-center justify-center gap-2">
-                            <i class="fas fa-download"></i> Unduh Brosur
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="border-t border-white/10 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-blue-200/60">
-                <p>&copy; 2026 Madrasah Mu'allimin Muhammadiyah. All rights reserved.</p>
-                <div class="flex gap-6">
-                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-                    <a href="#" class="hover:text-white transition-colors">Terms of Use</a>
-                    <a href="#" class="hover:text-white transition-colors">Sitemap</a>
-                </div>
             </div>
         </div>
     </footer>
