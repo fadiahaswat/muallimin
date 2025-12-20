@@ -113,14 +113,12 @@
         <div class="container mx-auto px-6 relative z-10 h-24 flex items-center justify-between">
             
             <a href="#home" class="flex items-center gap-3 relative z-20 group">
-                <div class="relative w-10 h-10">
-                    <div class="absolute inset-0 bg-brand-primary/50 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                    <img src="logo-putih-muallimin.webp" onerror="this.src='https://muallimin.sch.id/wp-content/uploads/2019/11/Logo-Muallimin-Baru.png'" alt="Logo" class="relative w-full h-full object-contain drop-shadow-md group-hover:scale-110 transition-transform duration-300">
+                <div class="relative w-10 h-10 md:w-12 md:h-12 flex-shrink-0">
+                    <div class="absolute inset-0 bg-white/30 rounded-full blur-md opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                    <img src="logo header.png" alt="Logo Muallimin" class="relative w-full h-full object-contain drop-shadow-sm group-hover:scale-110 transition-transform duration-300">
                 </div>
-                <div class="flex flex-col">
-                    <span class="font-display font-bold text-xl tracking-tight text-white leading-none drop-shadow-sm group-hover:text-brand-accent transition-colors">MU'ALLIMIN</span>
-                    <span class="text-[10px] uppercase tracking-[0.3em] text-white/60 leading-none mt-1 group-hover:text-white transition-colors">Yogyakarta</span>
-                </div>
+
+                <img src="title_header_kiri_10_1.png" alt="Muallimin Yogyakarta" class="h-5 md:h-8 w-auto object-contain hidden md:block transition-all duration-300">
             </a>
 
             <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 hidden lg:block" id="nav-center">
@@ -160,6 +158,7 @@
             </div>
 
             <div class="flex items-center gap-3 relative z-20">
+                
                 <button onclick="toggleDarkMode()" class="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-all group" aria-label="Toggle Theme">
                     <i class="fas fa-moon dark:hidden group-hover:-rotate-12 transition-transform"></i>
                     <i class="fas fa-sun hidden dark:block text-yellow-300 group-hover:spin-slow"></i>
@@ -173,8 +172,12 @@
                 <button class="lg:hidden w-10 h-10 flex items-center justify-center text-white text-xl hover:text-brand-accent transition-colors" onclick="toggleMobileMenu()">
                     <i class="fas fa-bars"></i>
                 </button>
+
+                <img src="title_header_kanan_9_6.png" alt="Muallimin Arabic" class="h-10 w-auto object-contain hidden lg:block ml-2 drop-shadow-sm">
+            
             </div>
         </div>
+
         <div id="mobile-menu" class="fixed inset-y-0 right-0 w-64 bg-white dark:bg-slate-900 shadow-2xl transform translate-x-full transition-transform duration-300 z-50 flex flex-col p-6 lg:hidden">
             <div class="flex justify-end mb-8">
                 <button onclick="toggleMobileMenu()" class="text-slate-500 hover:text-brand-primary">
@@ -196,7 +199,7 @@
         
         <div id="mobile-overlay" onclick="toggleMobileMenu()" class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden transition-opacity opacity-0"></div>
     </nav>
-
+    
     <header id="home" class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-slate-900">
         
         <div class="absolute inset-0 z-0">
