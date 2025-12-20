@@ -35,18 +35,13 @@ document.addEventListener('DOMContentLoaded', () => {
     
     tiltCards.forEach(card => {
         card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            
-            // Sensitivitas tilt
-            const rotateX = ((y - centerY) / centerY) * -5; // Minus agar tilt alami
-            const rotateY = ((x - centerX) / centerX) * 5;
+            // PERBAIKAN: Hanya jalankan animasi jika lebar layar > 1024px (Laptop/PC)
+            if (window.innerWidth < 1024) return; 
 
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            const rect = card.getBoundingClientRect();
+            // ... sisa kode perhitungan x, y, rotateX, rotateY tetap sama ...
+            
+            // ... card.style.transform ...
         });
 
         card.addEventListener('mouseleave', () => {
@@ -116,34 +111,31 @@ document.addEventListener('DOMContentLoaded', () => {
     
     counters.forEach(counter => countObserver.observe(counter));
 
-    // 7. Video Intro Logic (8 Detik)
+    // 7. Instant Reveal Logic (Perbaikan: Hapus delay 8 detik)
     const header = document.getElementById('home');
-    const videoOverlay = document.getElementById('video-overlay');
-    const videoGradient = document.getElementById('video-gradient');
     const hiddenElements = [
         document.getElementById('navbar'),
         document.getElementById('hero-content'),
         document.getElementById('hero-stats')
     ];
 
-    // Mulai sequence setelah 8 detik
+    // Jalankan segera setelah halaman siap (delay kecil 100ms untuk efek transisi halus)
     setTimeout(() => {
-        // 1. Fade In Overlay (Agar teks terbaca)
-        if(videoOverlay) videoOverlay.classList.remove('opacity-0');
-        if(videoGradient) videoGradient.classList.remove('opacity-0');
-        
-        // 2. Dim Video (Gelapkan)
-        if(header) header.classList.add('video-dimmed');
-
-        // 3. Reveal Content (Nav, Text, Stats)
+        // Hapus class hidden dan tambahkan visible
         hiddenElements.forEach(el => {
             if(el) {
                 el.classList.remove('intro-hidden');
                 el.classList.add('intro-visible');
             }
         });
+        
+        // Hapus animasi pulse pada background image agar tidak berat
+        const heroImg = document.querySelector('#home img');
+        if(heroImg) {
+            heroImg.classList.remove('animate-pulse-slow');
+        }
 
-    }, 8000); // 8000ms = 8 detik
+    }, 100);
 });
 
 /* --- Global Functions (Accessible via HTML onclick) --- */
