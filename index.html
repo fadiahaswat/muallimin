@@ -1120,14 +1120,17 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        // URL API: Ambil 3 post terbaru + gambar (_embed)
-        const apiUrl = 'https://muallimin.my.id/wp-json/wp/v2/posts?per_page=3&_embed';
+        // GANTI API URL: Kita gunakan layanan rss2json sebagai perantara
+        const feedUrl = 'https://muallimin.my.id/feed/';
+        const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
+        
         const newsGrid = document.getElementById('news-grid');
         const loadingSkeleton = document.getElementById('loading-skeleton');
         
         // Fungsi format tanggal Indonesia
-        function formatDate(isoString) {
-            const date = new Date(isoString);
+        function formatDate(dateString) {
+            // Format dari RSS biasanya "YYYY-MM-DD HH:mm:ss"
+            const date = new Date(dateString.replace(/-/g, "/")); // replace fix untuk safari
             const options = { day: 'numeric', month: 'long', year: 'numeric' };
             return date.toLocaleDateString('id-ID', options);
         }
@@ -1135,38 +1138,43 @@
         // Fetch Data
         fetch(apiUrl)
             .then(response => response.json())
-            .then(posts => {
+            .then(data => {
                 // Hapus loading text
                 if(loadingSkeleton) loadingSkeleton.remove();
 
-                // Generate HTML untuk setiap post
-                // Kita gunakan reverse() agar insertAdjacentHTML 'afterbegin' urutannya benar (1, 2, 3)
-                // Atau kita buat string dulu baru prepend.
+                // Ambil items dari data RSS (batasi 3 berita)
+                const posts = data.items.slice(0, 3);
                 
                 let postsHtml = '';
 
                 posts.forEach((post, index) => {
                     // 1. Ambil Gambar
-                    let imgUrl = 'https://muallimin.sch.id/wp-content/uploads/2023/07/DJI_0444-scaled.jpg'; // Fallback image
-                    if (post._embedded && post._embedded['wp:featuredmedia'] && post._embedded['wp:featuredmedia'][0].source_url) {
-                        imgUrl = post._embedded['wp:featuredmedia'][0].source_url;
+                    // rss2json mencoba mencari thumbnail, jika tidak ada pakai gambar default
+                    let imgUrl = post.thumbnail;
+                    if (!imgUrl || imgUrl === "") {
+                         // Fallback ke gambar default jika RSS tidak punya gambar
+                        imgUrl = 'https://muallimin.sch.id/wp-content/uploads/2023/07/DJI_0444-scaled.jpg';
                     }
 
-                    // 2. Ambil Kategori (jika ada)
+                    // 2. Kategori (RSS2Json kadang menyimpannya di array categories)
                     let categoryName = 'Kabar Mu\'allimin';
-                    if (post._embedded && post._embedded['wp:term'] && post._embedded['wp:term'][0] && post._embedded['wp:term'][0][0]) {
-                        categoryName = post._embedded['wp:term'][0][0].name;
+                    if (post.categories && post.categories.length > 0) {
+                        categoryName = post.categories[0]; // Ambil kategori pertama
                     }
 
-                    // 3. Bersihkan Excerpt dari tag HTML <p> [...]
-                    let excerpt = post.excerpt.rendered.replace(/<[^>]+>/g, '').substring(0, 100) + '...';
+                    // 3. Bersihkan Deskripsi
+                    // RSS description biasanya panjang, kita potong
+                    let rawContent = post.description || "";
+                    // Hapus tag HTML agar jadi text murni
+                    let cleanText = rawContent.replace(/<[^>]+>/g, '');
+                    let excerpt = cleanText.substring(0, 100) + '...';
 
-                    // 4. HTML Template (Sesuai desain Anda)
+                    // 4. HTML Template
                     const cardHtml = `
                     <div class="group glass-panel p-4 rounded-[2rem] hover:bg-white dark:hover:bg-slate-800 transition-all duration-300 border border-slate-200 dark:border-slate-800 hover:-translate-y-2 hover:shadow-xl" data-aos="fade-up" data-aos-delay="${index * 100}">
                         <div class="aspect-[4/3] rounded-2xl overflow-hidden mb-5 relative">
                             <div class="absolute inset-0 bg-slate-900/10 group-hover:bg-transparent transition-colors z-10"></div>
-                            <img src="${imgUrl}" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="${post.title.rendered}">
+                            <img src="${imgUrl}" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="${post.title}">
                             <div class="absolute top-3 left-3 z-20">
                                 <span class="bg-white/90 dark:bg-slate-900/90 backdrop-blur px-3 py-1 rounded-lg text-[10px] font-bold text-brand-primary shadow-sm tracking-wide uppercase truncate max-w-[120px] block">
                                     ${categoryName}
@@ -1176,10 +1184,10 @@
                         
                         <div class="px-2 pb-2">
                             <div class="flex items-center gap-2 text-[10px] text-slate-400 mb-3">
-                                <i class="far fa-calendar"></i> ${formatDate(post.date)}
+                                <i class="far fa-calendar"></i> ${formatDate(post.pubDate)}
                             </div>
                             <h3 class="font-display font-bold text-lg text-slate-800 dark:text-white line-clamp-2 group-hover:text-brand-primary transition-colors leading-snug mb-3 min-h-[3.5rem]">
-                                <a href="${post.link}" target="_blank">${post.title.rendered}</a>
+                                <a href="${post.link}" target="_blank">${post.title}</a>
                             </h3>
                             <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-3 leading-relaxed mb-4 min-h-[4rem]">
                                 ${excerpt}
@@ -1194,13 +1202,17 @@
                     postsHtml += cardHtml;
                 });
 
-                // Masukkan berita di awal grid (sebelum kartu statis PPDB)
+                // Masukkan berita di awal grid
                 newsGrid.insertAdjacentHTML('afterbegin', postsHtml);
             })
             .catch(error => {
                 console.error('Gagal mengambil berita:', error);
                 if(loadingSkeleton) {
-                    loadingSkeleton.innerHTML = '<div class="text-red-500">Gagal memuat berita. Silakan refresh.</div>';
+                    loadingSkeleton.innerHTML = `
+                        <div class="col-span-3 text-center py-10">
+                            <p class="text-red-500 mb-2">Gagal memuat berita otomatis.</p>
+                            <a href="https://muallimin.sch.id/kabar/" target="_blank" class="text-brand-primary underline text-sm">Buka Website Resmi</a>
+                        </div>`;
                 }
             });
     });
