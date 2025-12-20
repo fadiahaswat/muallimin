@@ -167,12 +167,6 @@ function toggleMobileMenu() {
     }
 }
 
-// 2. AI Widget Toggle
-function toggleAI() {
-    const chat = document.getElementById('ai-chat');
-    chat.classList.toggle('hidden');
-}
-
 // 3. Dark Mode Toggle
 function toggleDarkMode() {
     document.documentElement.classList.toggle('dark');
