@@ -140,18 +140,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* --- Global Functions (Accessible via HTML onclick) --- */
 
-// 1. Mobile Menu Toggle
+// 1. Mobile Menu Toggle (Updated)
 function toggleMobileMenu() {
     const mobileMenu = document.getElementById('mobile-menu');
-    // Cek apakah menu sedang terbuka (translate-x-full = tertutup)
+    const overlay = document.getElementById('mobile-overlay');
+    
+    // Cek apakah menu sedang tertutup
     const isClosed = mobileMenu.classList.contains('translate-x-full');
     
     if (isClosed) {
         // Buka Menu
         mobileMenu.classList.remove('translate-x-full');
+        // Tampilkan overlay jika ada
+        if(overlay) {
+            overlay.classList.remove('hidden');
+            setTimeout(() => overlay.classList.remove('opacity-0'), 10);
+        }
     } else {
         // Tutup Menu
         mobileMenu.classList.add('translate-x-full');
+        // Sembunyikan overlay
+        if(overlay) {
+            overlay.classList.add('opacity-0');
+            setTimeout(() => overlay.classList.add('hidden'), 300);
+        }
     }
 }
 
