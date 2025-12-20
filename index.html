@@ -197,15 +197,14 @@
         <div id="mobile-overlay" onclick="toggleMobileMenu()" class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden transition-opacity opacity-0"></div>
     </nav>
 
-    <header id="home" class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-brand-dark">
+    <header id="home" class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-slate-900">
         
         <div class="absolute inset-0 z-0">
-            <img src="muallimin_terpadu.jpg" class="w-full h-full object-cover opacity-40 animate-pulse-slow" style="animation-duration: 20s;" alt="Muallimin Hero">
+            <img src="muallimin_terpadu.jpg" class="w-full h-full object-cover brightness-[0.35] animate-pulse-slow" style="animation-duration: 20s;" alt="Muallimin Hero">
             
-            <div class="absolute inset-0 bg-slate-950/60 mix-blend-multiply"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-transparent to-slate-900/90"></div>
             
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(2,6,23,0.9)_100%)]"></div>
-            <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-brand-dark to-transparent"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(2,6,23,0.4)_100%)]"></div>
         </div>
 
         <div id="hero-content" class="container mx-auto px-6 relative z-10 flex-grow flex flex-col items-center justify-center text-center pt-24 pb-32 intro-hidden">
@@ -226,21 +225,21 @@
                         <svg class="absolute w-full h-3 -bottom-2 left-0 text-brand-accent opacity-80" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 5 Q 50 10 100 5" stroke="currentColor" stroke-width="2" fill="none" /></svg>
                     </span>
                 </h1>
-                <p class="text-xl md:text-2xl font-serif italic text-slate-300 mt-8 tracking-wide max-w-2xl mx-auto text-shadow-sm">
+                <p class="text-xl md:text-2xl font-serif italic text-slate-100 mt-8 tracking-wide max-w-2xl mx-auto drop-shadow-md">
                     "Mencetak Kader Ulama, Intelektual, dan Pemimpin Bangsa yang Mencerahkan Semesta"
                 </p>
             </div>
             
             <div class="flex flex-col sm:flex-row gap-5 items-center justify-center w-full" data-aos="fade-up" data-aos-delay="400">
                 
-                <a href="https://spmb.muallimin.sch.id/" target="_blank" class="group px-8 py-4 rounded-full bg-brand-primary text-white font-bold text-sm tracking-wide hover:bg-brand-blue transition-all shadow-[0_0_30px_rgba(37,99,235,0.3)] hover:scale-105 flex items-center gap-3">
+                <a href="https://spmb.muallimin.sch.id/" target="_blank" class="group px-8 py-4 rounded-full bg-brand-primary text-white font-bold text-sm tracking-wide hover:bg-brand-blue transition-all shadow-[0_0_30px_rgba(37,99,235,0.4)] hover:scale-105 flex items-center gap-3">
                     <span>DAFTAR SPMB</span>
                     <div class="w-6 h-6 rounded-full bg-white/20 text-white flex items-center justify-center group-hover:translate-x-1 transition-transform">
                         <i class="fas fa-external-link-alt text-[10px]"></i>
                     </div>
                 </a>
                 
-                <button onclick="document.getElementById('videoModal').classList.remove('hidden')" class="group px-8 py-4 rounded-full border border-white/30 bg-white/5 backdrop-blur-md text-white font-medium text-sm tracking-wide hover:bg-white/10 hover:border-white transition-all flex items-center gap-3">
+                <button onclick="document.getElementById('videoModal').classList.remove('hidden')" class="group px-8 py-4 rounded-full border border-white/30 bg-black/30 backdrop-blur-md text-white font-medium text-sm tracking-wide hover:bg-white/10 hover:border-white transition-all flex items-center gap-3 shadow-lg">
                     <div class="relative w-8 h-8 flex items-center justify-center">
                         <span class="absolute inset-0 rounded-full border border-white/30 group-hover:animate-ping opacity-75"></span>
                         <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-sm">
@@ -252,9 +251,9 @@
             </div>
         </div>
 
-        <div id="hero-stats" class="absolute bottom-0 w-full z-20 border-t border-white/5 bg-gradient-to-r from-brand-dark/90 via-slate-900/90 to-brand-dark/90 backdrop-blur-xl intro-hidden">
+        <div id="hero-stats" class="absolute bottom-0 w-full z-20 border-t border-white/10 bg-gradient-to-r from-slate-900/95 via-slate-800/90 to-slate-900/95 backdrop-blur-xl intro-hidden">
             <div class="container mx-auto px-6">
-                <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/5">
+                <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
                     <div class="py-6 text-center hover:bg-white/5 transition-colors cursor-default group">
                         <div class="text-3xl lg:text-4xl font-serif font-bold text-white mb-1 group-hover:-translate-y-1 transition-transform duration-300">
                             <span class="count-up" data-target="1918">0</span>
@@ -286,13 +285,13 @@
             </div>
         </div>
 
-        <div id="videoModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm transition-all" onclick="if(event.target === this) this.classList.add('hidden')">
-            <div class="relative w-full max-w-4xl bg-black rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-                <button onclick="document.getElementById('videoModal').classList.add('hidden')" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-brand-primary transition-colors">
+        <div id="videoModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md transition-all duration-300" onclick="if(event.target === this) this.classList.add('hidden')">
+            <div class="relative w-full max-w-4xl bg-black rounded-2xl overflow-hidden shadow-2xl border border-white/10 transform transition-all scale-100">
+                <button onclick="document.getElementById('videoModal').classList.add('hidden')" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-brand-primary transition-colors border border-white/20">
                     <i class="fas fa-times"></i>
                 </button>
                 <div class="aspect-video">
-                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/Qab4iyuMuLw?si=S2Nxm3d27-eeaBGR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/Qab4iyuMuLw?si=S2Nxm3d27-eeaBGR" title="Profil Muallimin" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
