@@ -1644,156 +1644,131 @@
     <script src="script.js"></script>
     <script>
 document.addEventListener("DOMContentLoaded", function() {
-    // URL Feed Utama
+    
+    // 1. ALAMAT SUMBER
     const feedUrl = 'https://muallimin.my.id/feed/';
     
+    // 2. GUNAKAN PROXY 'ALLORIGINS' (Jalur Tikus)
+    // Kita pakai mode 'raw' (mentah) agar dapat teks XML aslinya, bukan JSON olahan yg sering error
+    const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(feedUrl)}`;
+
     const newsGrid = document.getElementById('news-grid');
-    const loadingSkeleton = document.getElementById('loading-skeleton');
+    const loadingIndicator = document.getElementById('loading-indicator');
 
-    // --- DATA CADANGAN (DUMMY) ---
-    // Dipakai jika server asli memblokir akses (Anti-Blank Page)
-    const backupNews = [
-        {
-            title: "Penerimaan Pesantren Baru Tahun Ajaran 2025/2026",
-            link: "https://muallimin.sch.id/ppdb",
-            pubDate: "2025-01-01",
-            thumbnail: "https://muallimin.sch.id/wp-content/uploads/2023/07/DJI_0444-scaled.jpg",
-            description: "Informasi lengkap mengenai pendaftaran santri baru Madrasah Mu'allimin Yogyakarta telah dibuka. Segera daftarkan diri Anda."
-        },
-        {
-            title: "Prestasi Santri: Juara Umum Olimpiade Sains Nasional",
-            link: "#",
-            pubDate: "2024-12-20",
-            thumbnail: "https://muallimin.sch.id/wp-content/uploads/2021/10/image19.jpeg",
-            description: "Alhamdulillah, santri Mu'allimin kembali menorehkan tinta emas dalam ajang kompetisi sains tingkat nasional."
-        },
-        {
-            title: "Kunjungan Studi Banding dari Malaysia",
-            link: "#",
-            pubDate: "2024-12-15",
-            thumbnail: "https://muallimin.sch.id/wp-content/uploads/2021/08/kweekschool.jpg",
-            description: "Menerima kunjungan delegasi pendidikan internasional untuk mempererat ukhuwah dan kerjasama kurikulum."
-        }
-    ];
-
+    // Fungsi Format Tanggal (Biar jadi: 24 Desember 2025)
     function formatDate(dateString) {
-        try {
-            const date = new Date(dateString);
-            return date.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
-        } catch(e) { return dateString; }
+        const options = { day: 'numeric', month: 'long', year: 'numeric' };
+        return new Date(dateString).toLocaleDateString('id-ID', options);
     }
 
-    function renderNews(items) {
-        if(loadingSkeleton) loadingSkeleton.remove();
-        let postsHtml = '';
-        
-        items.forEach((post, index) => {
-            postsHtml += `
-            <div class="group glass-panel p-4 rounded-[2rem] hover:bg-white dark:hover:bg-slate-800 transition-all duration-300 border border-slate-200 dark:border-slate-800 hover:-translate-y-2 hover:shadow-xl">
-                <div class="aspect-[4/3] rounded-2xl overflow-hidden mb-5 relative bg-slate-200">
-                    <img src="${post.thumbnail}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="${post.title}" onerror="this.src='https://muallimin.sch.id/wp-content/uploads/2023/07/DJI_0444-scaled.jpg'">
-                </div>
-                <div class="px-2 pb-2">
-                    <div class="flex items-center gap-2 text-[10px] text-slate-400 mb-3">
-                        <i class="far fa-calendar"></i> ${formatDate(post.pubDate)}
-                    </div>
-                    <h3 class="font-display font-bold text-lg text-slate-800 dark:text-white line-clamp-2 mb-3 leading-snug">
-                        <a href="${post.link}" target="_blank" class="hover:text-brand-primary transition-colors">${post.title}</a>
-                    </h3>
-                    <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-3 mb-4 leading-relaxed">
-                        ${post.description.substring(0, 100)}...
-                    </p>
-                    <a href="${post.link}" target="_blank" class="inline-flex items-center text-xs font-bold text-brand-primary hover:underline">
-                        Baca Selengkapnya
-                    </a>
-                </div>
-            </div>
-            `;
-        });
-        
-        // Bersihkan grid sebelum mengisi (untuk mencegah duplikasi)
-        // Kita simpan elemen statis lainnya jika ada, tapi di kasus ini langsung insert saja
-        const staticCards = newsGrid.innerHTML; // Simpan kartu statis (Pengumuman PPDB)
-        newsGrid.innerHTML = postsHtml + staticCards; 
-        
-        // Hapus skeleton (karena kita me-rewrite innerHTML, pastikan skeleton hilang)
-        const oldSkeleton = document.getElementById('loading-skeleton');
-        if(oldSkeleton) oldSkeleton.remove();
-    }
-
-    // --- PROSES PENGAMBILAN DATA ---
-    const proxyUrl = `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(feedUrl)}`;
-
-    console.log("Mencoba mengambil berita dari:", feedUrl);
-
+    // 3. MULAI MENGAMBIL DATA
     fetch(proxyUrl)
         .then(response => {
-            if (!response.ok) throw new Error("Koneksi Proxy Gagal");
-            return response.text();
+            if (!response.ok) throw new Error("Gagal terhubung ke proxy");
+            return response.text(); // Kita minta TEKS, bukan JSON
         })
         .then(str => {
-            // Cek apakah server membalas dengan XML valid atau HTML error
-            if (str.trim().startsWith("<!DOCTYPE html>") || str.includes("403 Forbidden")) {
-                throw new Error("Target memblokir akses bot (Security Block)");
-            }
-
+            // 4. MEMBEDAH XML (PARSING)
+            // Karena datanya bentuk XML (seperti HTML tapi tag-nya beda), kita butuh alat bedah
             const parser = new DOMParser();
             const xmlDoc = parser.parseFromString(str, "text/xml");
+            
+            // Ambil semua tag <item> (ini adalah per satu berita)
             const items = xmlDoc.getElementsByTagName("item");
 
-            if (items.length === 0) {
-                // Kadang tag item ada di dalam namespace, coba cari 'entry' (format Atom)
-                const entries = xmlDoc.getElementsByTagName("entry");
-                if (entries.length > 0) {
-                     // Handle format Atom jika perlu, tapi anggap error dulu untuk fallback
-                     throw new Error("Format Atom belum didukung, gunakan fallback");
-                }
-                throw new Error("XML Kosong / Tidak ada tag <item>");
-            }
+            if (items.length === 0) throw new Error("Tidak ada berita ditemukan");
 
-            // Parsing Sukses!
-            const fetchedNews = [];
-            for (let i = 0; i < Math.min(items.length, 3); i++) {
-                const item = items[i];
-                const title = item.getElementsByTagName("title")[0]?.textContent || "Tanpa Judul";
-                const link = item.getElementsByTagName("link")[0]?.textContent || "#";
-                const pubDate = item.getElementsByTagName("pubDate")[0]?.textContent || new Date().toISOString();
-                
-                // Ambil deskripsi bersih
-                let descRaw = item.getElementsByTagName("description")[0]?.textContent || "";
-                let descClean = descRaw.replace(/<[^>]+>/g, ''); // Hapus HTML tags
-                
-                // Cari Gambar
-                let imgUrl = "";
-                const enclosure = item.getElementsByTagName('enclosure')[0];
-                if (enclosure) imgUrl = enclosure.getAttribute('url');
-                
-                if (!imgUrl) {
-                    // Cari di content:encoded atau description
-                    const contentRaw = item.getElementsByTagName("content:encoded")[0]?.textContent || descRaw;
-                    const imgMatch = contentRaw.match(/src="([^"]+)"/);
-                    if(imgMatch) imgUrl = imgMatch[1];
-                }
-                
-                if(!imgUrl) imgUrl = 'https://muallimin.sch.id/wp-content/uploads/2023/07/DJI_0444-scaled.jpg';
+            // Hapus Loading Spinner
+            if (loadingIndicator) loadingIndicator.remove();
 
-                fetchedNews.push({
-                    title: title,
-                    link: link,
-                    pubDate: pubDate,
-                    thumbnail: imgUrl,
-                    description: descClean
-                });
-            }
+            let htmlContent = '';
             
-            console.log("Berita berhasil diambil!");
-            renderNews(fetchedNews);
+            // Ambil maksimal 3 berita saja
+            const maxNews = Math.min(items.length, 3);
+
+            // 5. LOOPING (MEMBUAT KARTU BERITA)
+            for (let i = 0; i < maxNews; i++) {
+                const item = items[i];
+
+                // a. Ambil Judul
+                const title = item.getElementsByTagName("title")[0].textContent;
+                
+                // b. Ambil Link Berita
+                const link = item.getElementsByTagName("link")[0].textContent;
+                
+                // c. Ambil Tanggal
+                const pubDate = item.getElementsByTagName("pubDate")[0].textContent;
+
+                // d. Ambil Deskripsi & Bersihkan HTML-nya
+                // (Kadang deskripsi berisi kode HTML panjang, kita cuma mau teksnya)
+                let description = "";
+                if(item.getElementsByTagName("description")[0]) {
+                    description = item.getElementsByTagName("description")[0].textContent;
+                }
+                // Hapus semua tag HTML (<p>, <div>, dll) dari deskripsi biar bersih
+                const cleanDesc = description.replace(/<[^>]+>/g, '').substring(0, 100) + "...";
+
+                // e. CARI GAMBAR (Bagian paling tricky di RSS)
+                let imgUrl = "https://muallimin.sch.id/wp-content/uploads/2023/07/DJI_0444-scaled.jpg"; // Gambar Default
+                
+                // Cek 1: Apakah ada di tag <content:encoded>?
+                const content = item.getElementsByTagName("content:encoded")[0];
+                if (content) {
+                    // Cari pola src="..." di dalam konten
+                    const imgMatch = content.textContent.match(/src="([^"]+)"/);
+                    if (imgMatch) imgUrl = imgMatch[1];
+                }
+
+                // 6. SUSUN HTML KARTU BERITA
+                htmlContent += `
+                <div class="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg border border-slate-100 dark:border-slate-700 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <div class="h-48 overflow-hidden relative group">
+                        <img src="${imgUrl}" alt="${title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute top-4 right-4 bg-white/90 dark:bg-slate-900/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-brand-primary">
+                            Berita
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <div class="flex items-center text-xs text-slate-400 mb-3 gap-2">
+                            <i class="far fa-calendar"></i>
+                            <span>${formatDate(pubDate)}</span>
+                        </div>
+                        
+                        <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-3 leading-snug line-clamp-2">
+                            <a href="${link}" target="_blank" class="hover:text-brand-primary transition-colors">
+                                ${title}
+                            </a>
+                        </h3>
+                        
+                        <p class="text-slate-500 dark:text-slate-400 text-sm mb-4 line-clamp-3">
+                            ${cleanDesc}
+                        </p>
+                        
+                        <a href="${link}" target="_blank" class="inline-flex items-center text-sm font-semibold text-brand-primary hover:text-brand-dark transition-colors group">
+                            Baca Selengkapnya 
+                            <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                    </div>
+                </div>
+                `;
+            }
+
+            // 7. TEMPEL KE HTML
+            newsGrid.innerHTML = htmlContent;
+
         })
         .catch(error => {
-            console.warn("Gagal mengambil Live Data, menggunakan Data Cadangan. Error:", error);
-            // JIKA GAGAL, PAKAI DATA CADANGAN
-            // Ini agar website Anda tetap terlihat profesional dan tidak rusak
-            renderNews(backupNews);
+            console.error('Error detail:', error);
+            // Tampilan jika gagal total (Fallback)
+            if (loadingIndicator) {
+                loadingIndicator.innerHTML = `
+                    <div class="p-4 bg-red-50 text-red-600 rounded-lg">
+                        Gagal memuat berita otomatis. 
+                        <a href="https://muallimin.my.id" target="_blank" class="underline font-bold">Buka Website Resmi</a>
+                    </div>
+                `;
+            }
         });
 });
 </script>
