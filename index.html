@@ -1643,95 +1643,132 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="script.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // 1. Alamat sumber berita (RSS)
-            const feedUrl = 'https://muallimin.my.id/feed/';
-            
-            // 2. Alamat perantara (Penerjemah ke JSON)
-            const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
-            
-            // 3. Cari "rak" yang sudah kita buat tadi di HTML
-            const newsGrid = document.getElementById('news-grid');
-            const loadingSkeleton = document.getElementById('loading-skeleton');
-            
-            // 4. Perintah "Ambil Data!"
-        fetch(apiUrl)
-            .then(response => response.json()) // Kalau sampai, ubah jadi JSON
-            .then(data => {
-                // 5. Kalau data sukses diterima:
+document.addEventListener("DOMContentLoaded", function() {
+    const feedUrl = 'https://muallimin.my.id/feed/';
+    // Kita gunakan proxy 'allorigins' yang lebih bebas blokir daripada rss2json
+    const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(feedUrl)}`;
+    
+    const newsGrid = document.getElementById('news-grid');
+    const loadingSkeleton = document.getElementById('loading-skeleton');
+
+    // Fungsi Format Tanggal
+    function formatDate(dateString) {
+        if(!dateString) return "";
+        const date = new Date(dateString);
+        return date.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+    }
+
+    // Fungsi untuk mengambil Text dari XML tag dengan aman
+    function getTagValue(item, tagName) {
+        const tag = item.getElementsByTagName(tagName)[0];
+        return tag ? tag.textContent : "";
+    }
+
+    // Fungsi Mencari Gambar dari konten XML
+    function extractImage(content, item) {
+        // 1. Cek tag <enclosure> (standar RSS)
+        const enclosure = item.getElementsByTagName('enclosure')[0];
+        if (enclosure && enclosure.getAttribute('type').includes('image')) {
+            return enclosure.getAttribute('url');
+        }
+        
+        // 2. Cek tag <media:content> (biasa di WordPress)
+        const media = item.getElementsByTagName('media:content')[0];
+        if (media) return media.getAttribute('url');
+
+        // 3. Cek tag <thumbnail>
+        const thumb = item.getElementsByTagName('thumbnail')[0]; // kadang ada di namespace
+        if (thumb) return thumb.getAttribute('url') || thumb.textContent;
+
+        // 4. Cari paksa tag <img> di dalam deskripsi HTML
+        const imgMatch = content.match(/<img[^>]+src="([^">]+)"/);
+        if (imgMatch) return imgMatch[1];
+
+        // 5. Gambar Default jika semua gagal
+        return 'https://muallimin.sch.id/wp-content/uploads/2023/07/DJI_0444-scaled.jpg';
+    }
+
+    fetch(proxyUrl)
+        .then(response => {
+            if (!response.ok) throw new Error('Jaringan bermasalah');
+            return response.json();
+        })
+        .then(data => {
+            // Parsing data XML manual
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(data.contents, "text/xml");
+            const items = xmlDoc.getElementsByTagName("item"); // Ambil semua item berita
+
+            if (items.length === 0) {
+                throw new Error("Tidak ada berita ditemukan di feed ini.");
+            }
+
+            // Hapus Loading
+            if(loadingSkeleton) loadingSkeleton.remove();
+
+            let postsHtml = '';
+            // Ambil maksimal 3 berita
+            const limit = Math.min(items.length, 3);
+
+            for (let i = 0; i < limit; i++) {
+                const item = items[i];
                 
-                // Hapus tulisan "Sedang memuat..." karena data sudah ada
-                if(loadingSkeleton) loadingSkeleton.remove();
-    
-                // Ambil hanya 3 berita pertama (supaya tidak kepenuhan)
-                const posts = data.items.slice(0, 3);
+                const title = getTagValue(item, "title");
+                const link = getTagValue(item, "link");
+                const pubDate = getTagValue(item, "pubDate");
                 
-                let postsHtml = ''; // Siapkan teks kosong untuk menampung HTML berita
-                // 6. Ulangi untuk setiap berita yang didapat
-                posts.forEach((post, index) => {
-                    
-                    // --- Logika Gambar ---
-                    // Cek apakah berita punya gambar thumbnail?
-                    let imgUrl = post.thumbnail;
-                    // Kalau tidak ada gambar, pakai gambar cadangan (default)
-                    if (!imgUrl || imgUrl === "") {
-                        imgUrl = 'https://muallimin.sch.id/wp-content/uploads/2023/07/DJI_0444-scaled.jpg';
-                    }
-    
-                    // --- Logika Tanggal ---
-                    // Format tanggal biar jadi "24 Desember 2025" (Bahasa Indonesia)
-                    const date = new Date(post.pubDate.replace(/-/g, "/"));
-                    const formattedDate = date.toLocaleDateString('id-ID', { 
-                        day: 'numeric', month: 'long', year: 'numeric' 
-                    });
-    
-                    // --- Logika Teks ---
-                    // Potong deskripsi biar tidak kepanjangan (maksimal 100 huruf)
-                    // Kita juga hapus tag HTML aneh-aneh dari deskripsi aslinya
-                    let cleanText = (post.description || "").replace(/<[^>]+>/g, '');
-                    let excerpt = cleanText.substring(0, 100) + '...';
-    
-                    // --- Susun Kartu Berita (Template HTML) ---
-                    // Ini adalah desain kotaknya. Perhatikan variabel ${...} itu data dinamis.
-                    const cardHtml = `
-                    <div class="group glass-panel p-4 rounded-[2rem] hover:bg-white dark:hover:bg-slate-800 transition-all border border-slate-200 dark:border-slate-800">
-                        <div class="aspect-[4/3] rounded-2xl overflow-hidden mb-5 relative">
-                            <img src="${imgUrl}" class="w-full h-full object-cover group-hover:scale-110 transition-transform" alt="${post.title}">
-                        </div>
-                        
-                        <div class="px-2 pb-2">
-                            <div class="flex items-center gap-2 text-[10px] text-slate-400 mb-3">
-                                <i class="far fa-calendar"></i> ${formattedDate}
-                            </div>
-                            <h3 class="font-bold text-lg text-slate-800 dark:text-white mb-3">
-                                <a href="${post.link}" target="_blank">${post.title}</a>
-                            </h3>
-                            <p class="text-xs text-slate-500 mb-4">
-                                ${excerpt}
-                            </p>
-                            <a href="${post.link}" target="_blank" class="text-xs font-bold text-brand-primary">
-                                Baca Selengkapnya
-                            </a>
-                        </div>
+                // Ambil konten deskripsi (bisa di description atau content:encoded)
+                let rawDescription = getTagValue(item, "description");
+                const contentEncoded = item.getElementsByTagName("content:encoded")[0];
+                if(contentEncoded) rawDescription = contentEncoded.textContent;
+
+                // Bersihkan HTML dari deskripsi untuk cuplikan teks
+                const cleanText = rawDescription.replace(/<[^>]+>/g, '').substring(0, 100) + '...';
+                
+                // Cari URL Gambar
+                const imgUrl = extractImage(rawDescription, item);
+
+                // Template HTML
+                postsHtml += `
+                <div class="group glass-panel p-4 rounded-[2rem] hover:bg-white dark:hover:bg-slate-800 transition-all duration-300 border border-slate-200 dark:border-slate-800 hover:-translate-y-2 hover:shadow-xl">
+                    <div class="aspect-[4/3] rounded-2xl overflow-hidden mb-5 relative">
+                        <img src="${imgUrl}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="${title}" onerror="this.src='https://muallimin.sch.id/wp-content/uploads/2023/07/DJI_0444-scaled.jpg'">
                     </div>
-                    `;
                     
-                    // Tambahkan kartu ini ke tumpukan
-                    postsHtml += cardHtml;
-                });
-    
-                // 7. Tempelkan semua kartu ke dalam "rak" (newsGrid)
-                // 'afterbegin' berarti ditaruh di urutan awal
-                newsGrid.insertAdjacentHTML('afterbegin', postsHtml);
-            })
-            .catch(error => {
-                // 8. Kalau Gagal (Error Handling)
-                console.error('Gagal mengambil berita:', error);
-                if(loadingSkeleton) {
-                    loadingSkeleton.innerHTML = '<p class="text-red-500">Gagal memuat berita.</p>';
-                }
-            });
-    });
-    </script>
+                    <div class="px-2 pb-2">
+                        <div class="flex items-center gap-2 text-[10px] text-slate-400 mb-3">
+                            <i class="far fa-calendar"></i> ${formatDate(pubDate)}
+                        </div>
+                        <h3 class="font-display font-bold text-lg text-slate-800 dark:text-white line-clamp-2 mb-3">
+                            <a href="${link}" target="_blank" class="hover:text-brand-primary transition-colors">${title}</a>
+                        </h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-3 mb-4">
+                            ${cleanText}
+                        </p>
+                        <a href="${link}" target="_blank" class="inline-flex items-center text-xs font-bold text-brand-primary hover:underline">
+                            Baca Selengkapnya
+                        </a>
+                    </div>
+                </div>
+                `;
+            }
+
+            newsGrid.insertAdjacentHTML('afterbegin', postsHtml);
+        })
+        .catch(error => {
+            console.error('Error detail:', error);
+            if(loadingSkeleton) {
+                loadingSkeleton.innerHTML = `
+                    <div class="col-span-1 md:col-span-3 text-center py-10 bg-slate-50 dark:bg-slate-900 rounded-3xl border border-dashed border-slate-300">
+                        <p class="text-red-500 mb-2 font-bold">Gagal memuat berita.</p>
+                        <p class="text-xs text-slate-400 mb-4">Pastikan URL Feed "${feedUrl}" valid dan server mengizinkan akses.</p>
+                        <a href="${feedUrl}" target="_blank" class="px-6 py-2 bg-brand-primary text-white rounded-full text-sm font-bold hover:bg-brand-blue transition-colors">
+                            Cek Feed Manual
+                        </a>
+                    </div>`;
+            }
+        });
+});
+</script>
 </body>
 </html>
