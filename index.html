@@ -1641,6 +1641,97 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="script.js"></script> 
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // 1. Alamat sumber berita (RSS)
+            const feedUrl = 'https://muallimin.my.id/feed/';
+            
+            // 2. Alamat perantara (Penerjemah ke JSON)
+            const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
+            
+            // 3. Cari "rak" yang sudah kita buat tadi di HTML
+            const newsGrid = document.getElementById('news-grid');
+            const loadingSkeleton = document.getElementById('loading-skeleton');
+            
+            // 4. Perintah "Ambil Data!"
+        fetch(apiUrl)
+            .then(response => response.json()) // Kalau sampai, ubah jadi JSON
+            .then(data => {
+                // 5. Kalau data sukses diterima:
+                
+                // Hapus tulisan "Sedang memuat..." karena data sudah ada
+                if(loadingSkeleton) loadingSkeleton.remove();
+    
+                // Ambil hanya 3 berita pertama (supaya tidak kepenuhan)
+                const posts = data.items.slice(0, 3);
+                
+                let postsHtml = ''; // Siapkan teks kosong untuk menampung HTML berita
+                // 6. Ulangi untuk setiap berita yang didapat
+                posts.forEach((post, index) => {
+                    
+                    // --- Logika Gambar ---
+                    // Cek apakah berita punya gambar thumbnail?
+                    let imgUrl = post.thumbnail;
+                    // Kalau tidak ada gambar, pakai gambar cadangan (default)
+                    if (!imgUrl || imgUrl === "") {
+                        imgUrl = 'https://muallimin.sch.id/wp-content/uploads/2023/07/DJI_0444-scaled.jpg';
+                    }
+    
+                    // --- Logika Tanggal ---
+                    // Format tanggal biar jadi "24 Desember 2025" (Bahasa Indonesia)
+                    const date = new Date(post.pubDate.replace(/-/g, "/"));
+                    const formattedDate = date.toLocaleDateString('id-ID', { 
+                        day: 'numeric', month: 'long', year: 'numeric' 
+                    });
+    
+                    // --- Logika Teks ---
+                    // Potong deskripsi biar tidak kepanjangan (maksimal 100 huruf)
+                    // Kita juga hapus tag HTML aneh-aneh dari deskripsi aslinya
+                    let cleanText = (post.description || "").replace(/<[^>]+>/g, '');
+                    let excerpt = cleanText.substring(0, 100) + '...';
+    
+                    // --- Susun Kartu Berita (Template HTML) ---
+                    // Ini adalah desain kotaknya. Perhatikan variabel ${...} itu data dinamis.
+                    const cardHtml = `
+                    <div class="group glass-panel p-4 rounded-[2rem] hover:bg-white dark:hover:bg-slate-800 transition-all border border-slate-200 dark:border-slate-800">
+                        <div class="aspect-[4/3] rounded-2xl overflow-hidden mb-5 relative">
+                            <img src="${imgUrl}" class="w-full h-full object-cover group-hover:scale-110 transition-transform" alt="${post.title}">
+                        </div>
+                        
+                        <div class="px-2 pb-2">
+                            <div class="flex items-center gap-2 text-[10px] text-slate-400 mb-3">
+                                <i class="far fa-calendar"></i> ${formattedDate}
+                            </div>
+                            <h3 class="font-bold text-lg text-slate-800 dark:text-white mb-3">
+                                <a href="${post.link}" target="_blank">${post.title}</a>
+                            </h3>
+                            <p class="text-xs text-slate-500 mb-4">
+                                ${excerpt}
+                            </p>
+                            <a href="${post.link}" target="_blank" class="text-xs font-bold text-brand-primary">
+                                Baca Selengkapnya
+                            </a>
+                        </div>
+                    </div>
+                    `;
+                    
+                    // Tambahkan kartu ini ke tumpukan
+                    postsHtml += cardHtml;
+                });
+    
+                // 7. Tempelkan semua kartu ke dalam "rak" (newsGrid)
+                // 'afterbegin' berarti ditaruh di urutan awal
+                newsGrid.insertAdjacentHTML('afterbegin', postsHtml);
+            })
+            .catch(error => {
+                // 8. Kalau Gagal (Error Handling)
+                console.error('Gagal mengambil berita:', error);
+                if(loadingSkeleton) {
+                    loadingSkeleton.innerHTML = '<p class="text-red-500">Gagal memuat berita.</p>';
+                }
+            });
+    });
+    </script>
 </body>
 </html>
